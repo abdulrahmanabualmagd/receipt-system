@@ -10,6 +10,7 @@ namespace Events
 
     internal class Publisher
     {
+        
 
         #region private
         private string _name;

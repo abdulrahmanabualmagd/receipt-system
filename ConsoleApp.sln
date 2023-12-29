@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events", "Events\Events.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObserverDesignPattern", "ObserverDesignPattern\ObserverDesignPattern.csproj", "{ABE8EE3D-20FD-4BD3-99B0-C67A4D882B17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "Classes\Classes.csproj", "{6DCEC5BD-03D4-4653-B586-487A1584EF68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ABE8EE3D-20FD-4BD3-99B0-C67A4D882B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABE8EE3D-20FD-4BD3-99B0-C67A4D882B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABE8EE3D-20FD-4BD3-99B0-C67A4D882B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DCEC5BD-03D4-4653-B586-487A1584EF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DCEC5BD-03D4-4653-B586-487A1584EF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DCEC5BD-03D4-4653-B586-487A1584EF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DCEC5BD-03D4-4653-B586-487A1584EF68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
