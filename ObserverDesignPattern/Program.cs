@@ -18,7 +18,7 @@ namespace ObserverDesignPattern
             Company company = new Company(25, "TDO");
 
             // Create a Listener for that company (Observer)
-            Supplier supplier = new Supplier(company); 
+            Supplier supplier1 = new Supplier(company); 
             #endregion
 
             #region Add Products to the company
