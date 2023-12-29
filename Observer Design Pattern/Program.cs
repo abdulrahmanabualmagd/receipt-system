@@ -1,4 +1,11 @@
-﻿using System.ComponentModel;
+﻿/*
+ *  The Observer pattern is a behavioral design pattern where an object, known as the subject,
+ *  maintains a list of its dependents, called observers, that are notified of any changes in
+ *  the subject's state. The pattern is used to define a one-to-many dependency between objects
+ *  so that when one object changes state, all its dependents are notified and updated automatically.
+ */
+
+using System.ComponentModel;
 
 namespace ObserverDesignPattern
 {

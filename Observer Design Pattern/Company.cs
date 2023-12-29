@@ -131,8 +131,9 @@ namespace ObserverDesignPattern
             }
             
         }
-        #endregion
 
+
+        // Show the amounts of the products in the company
         public void show()
         {
             foreach (Product product in products.Keys)
@@ -140,6 +141,9 @@ namespace ObserverDesignPattern
                 Console.WriteLine($"{product.Name} => {products[product]}");
             }
         }
+        #endregion
+
+
 
     }
 
