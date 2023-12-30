@@ -36,6 +36,5 @@ namespace IEnumerable_IEnumerator
         public Person(Person person):this(person.Id, person.Name) { }
         #endregion
 
-
     }
 }
