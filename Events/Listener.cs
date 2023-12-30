@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Events
 {
-    internal class Listener
+    public class Listener
     {
         #region Private
         private string _name; 

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
-namespace ObserverDesignPattern
+namespace Icomparer
+
 {
-    public class Product
+    public class Person
     {
         #region Private
         private int _id;
-        private string _name; 
+        private string _name;
         #endregion
 
         #region Properties
@@ -42,24 +39,27 @@ namespace ObserverDesignPattern
         #region Constructor
 
         // Default Constructor 
-        public Product() : this(0,"N/A") { }
+        public Person() : this(0, "N/A") { }
 
         // Parameterized Constructor
-        public Product(int id, string name)
+        public Person(int id, string name)
         {
             this._id = id;
             this._name = name;
         }
 
         // Deep Copy Constructor
-        public Product (Product product) : this(product._id, product._name){}
+        public Person(Person person) : this(person._id, person._name) { }
 
-        // Shallow Copy Constructor
-        public Product Shallow(Product product)
+        // Shallow Copy Method
+        public Person clone()
         {
-            return product;
+            return this;
         }
-       
+
+
+
         #endregion
+
     }
 }

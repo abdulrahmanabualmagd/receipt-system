@@ -8,7 +8,7 @@ namespace Events
 {
     public delegate void MyDelegate(string message);
 
-    internal class Publisher
+    public class Publisher
     {
         
 

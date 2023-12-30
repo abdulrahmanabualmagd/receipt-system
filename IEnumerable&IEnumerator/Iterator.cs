@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IEnumerable_IEnumerator
 {
-    internal class Iterator : IEnumerator
+    public class Iterator : IEnumerator
     {
         #region Private
         private int _index;

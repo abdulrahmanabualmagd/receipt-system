@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ObserverDesignPattern
 {
-    internal class Supplier
+    public class Supplier
     {
         #region Private
         private int _id;

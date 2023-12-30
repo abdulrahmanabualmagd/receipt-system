@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace ObserverDesignPattern
 {
-    internal class Company
+    public class Company
     {
         #region Private
         private int _id;
