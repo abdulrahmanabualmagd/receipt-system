@@ -25,11 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IComparer", "IComparer\ICom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassesRelations", "ClassesRelations\ClassesRelations.csproj", "{A20A8B9F-4F82-4660-987E-C2E54E83C57B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinQToObjects", "LinQToObjects\LinQToObjects.csproj", "{9A7E06D5-7728-4B16-B6D4-B5E298648F75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinQToObjects", "LinQToObjects\LinQToObjects.csproj", "{9A7E06D5-7728-4B16-B6D4-B5E298648F75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yield_Return", "Yeild_Return\Yield_Return.csproj", "{3F605CA6-A27A-4C93-B238-42545A90F3B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yield_Return", "Yeild_Return\Yield_Return.csproj", "{3F605CA6-A27A-4C93-B238-42545A90F3B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IQueryable_IEnumerable", "IQueryable_IEnumerable\IQueryable_IEnumerable.csproj", "{16FF6A68-6C46-4BAB-B76A-0FC5F55A18D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IQueryable_IEnumerable", "IQueryable_IEnumerable\IQueryable_IEnumerable.csproj", "{16FF6A68-6C46-4BAB-B76A-0FC5F55A18D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
