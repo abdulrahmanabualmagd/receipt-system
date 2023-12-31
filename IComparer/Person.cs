@@ -3,7 +3,7 @@
 namespace Icomparer
 
 {
-    public class Person
+    internal class Person
     {
         #region Private
         private int _id;

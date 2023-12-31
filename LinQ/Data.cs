@@ -1,30 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LinQ;
 
-namespace IQueryable_IEnumerable
+namespace LinQToObjects
 {
-    #region Person Class
-    internal class Person
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
+    
 
-        public override string ToString()
-        {
-            return $"{Id} - {Name} - {Age}";
-        }
-    }
-    #endregion
-
-    public class ServerSide
+    public class Data
     {
 
-        #region Data Assignation
         internal List<Person> list = new List<Person>
         {
             #region Data
@@ -50,23 +32,5 @@ namespace IQueryable_IEnumerable
             new Person { Id = 20, Name = "Tom", Age = 27 },
             #endregion
         };
-        #endregion
-
-        #region Dprecated
-        //#region GetIEnumerable
-        //internal IEnumerable<Person> GetPeopleIEnumerable()
-        //{
-        //    return list;
-        //}
-        //#endregion
-
-        //#region GetIQueryable
-        //internal IQueryable<Person> GetPeopleIQueryable()
-        //{
-        //    return list.AsQueryable();
-        //}
-        //#endregion 
-        #endregion
-
     }
 }

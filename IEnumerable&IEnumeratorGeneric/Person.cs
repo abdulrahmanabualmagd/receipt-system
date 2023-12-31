@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IEnumerableIEnumeratorGeneric
 {
-    public class Person
+    internal class Person
     {
         #region Private
         private int _id;

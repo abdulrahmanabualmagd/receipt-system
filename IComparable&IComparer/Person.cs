@@ -2,7 +2,7 @@
 
 namespace IComparable
 {
-    public class Person : IComparable<Person>
+    internal class Person : IComparable<Person>
     {
         #region Private
         private int _id;
