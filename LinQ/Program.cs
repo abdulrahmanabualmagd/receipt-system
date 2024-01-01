@@ -1,4 +1,12 @@
-﻿using LinQ;
+﻿/*
+ * LINQ in C# offers a succinct SQL-like syntax, featuring key 
+ * operators like Where, OrderBy, and Select. Its versatility spans 
+ * in-memory collections and databases, integrating seamlessly with 
+ * language features like lambda expressions and anonymous types. 
+ * The deferred execution boosts efficiency, while concise error handling 
+ * with try-catch blocks ensures robustness.
+ */
+using LinQ.Models;
 
 namespace LinQToObjects
 {

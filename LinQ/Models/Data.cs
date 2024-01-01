@@ -1,8 +1,6 @@
-﻿using LinQ;
-
-namespace LinQToObjects
+﻿namespace LinQ.Models
 {
-    
+
 
     public class Data
     {
