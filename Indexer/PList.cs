@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace Indexer
 {
-    public class PList
+    internal class PList
     {
         #region private
         private Person[] _plist; 
         #endregion
 
         #region Indexer
-        public Person this[int index]
+        internal Person this[int index]
         {
             get { return _plist[index]; }
             set { _plist[index] = value; }
