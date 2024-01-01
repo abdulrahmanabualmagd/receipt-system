@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IQueryable_IEnumerable", "I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinQ", "LinQ\LinQ.csproj", "{C78EDC17-6813-4016-BC76-D565642E613C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension_Methods", "Extension_Methods\Extension_Methods.csproj", "{0046A08D-F17F-4FA3-A878-661850F79E04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{C78EDC17-6813-4016-BC76-D565642E613C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C78EDC17-6813-4016-BC76-D565642E613C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C78EDC17-6813-4016-BC76-D565642E613C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0046A08D-F17F-4FA3-A878-661850F79E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0046A08D-F17F-4FA3-A878-661850F79E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0046A08D-F17F-4FA3-A878-661850F79E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0046A08D-F17F-4FA3-A878-661850F79E04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
