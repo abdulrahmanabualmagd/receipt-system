@@ -29,9 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yield_Return", "Yeild_Retur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IQueryable_IEnumerable", "IQueryable_IEnumerable\IQueryable_IEnumerable.csproj", "{16FF6A68-6C46-4BAB-B76A-0FC5F55A18D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinQToObjects", "LinQ\LinQToObjects.csproj", "{C78EDC17-6813-4016-BC76-D565642E613C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinQToSQL", "LinQToSQL\LinQToSQL.csproj", "{68238A39-9A1B-490A-BA7B-CB4C025BDF8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinQ", "LinQ\LinQ.csproj", "{C78EDC17-6813-4016-BC76-D565642E613C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,10 +93,6 @@ Global
 		{C78EDC17-6813-4016-BC76-D565642E613C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C78EDC17-6813-4016-BC76-D565642E613C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C78EDC17-6813-4016-BC76-D565642E613C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{68238A39-9A1B-490A-BA7B-CB4C025BDF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68238A39-9A1B-490A-BA7B-CB4C025BDF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68238A39-9A1B-490A-BA7B-CB4C025BDF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68238A39-9A1B-490A-BA7B-CB4C025BDF8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
