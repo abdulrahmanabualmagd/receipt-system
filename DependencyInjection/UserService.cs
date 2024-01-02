@@ -13,7 +13,10 @@ namespace Dependency_Injection
      */
     internal class UserService
     {
-        // Constructor Injection
+        /*
+         * - Instead of Creating the whole object here we Inject it using Constructor Injection
+         * - So If I modified the low level class, I won't to have to modify the higher class and that's because the injecion
+         */
         #region Dependency Injection
         private IEmailService _emailService;
 
