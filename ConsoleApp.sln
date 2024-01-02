@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eager_Deferred", "Eager_Def
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dependency_Injection", "DependencyInjection\Dependency_Injection.csproj", "{3A3BE8FB-696C-407F-9649-5762E9E2AC5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{5E43B455-28AE-4331-A88C-3E9A3E397038}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore", "EntityFrameworkCore\EntityFrameworkCore.csproj", "{8E14D227-FB1C-4475-837C-2B19F67F278C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,10 +113,10 @@ Global
 		{3A3BE8FB-696C-407F-9649-5762E9E2AC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A3BE8FB-696C-407F-9649-5762E9E2AC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A3BE8FB-696C-407F-9649-5762E9E2AC5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E43B455-28AE-4331-A88C-3E9A3E397038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E43B455-28AE-4331-A88C-3E9A3E397038}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E43B455-28AE-4331-A88C-3E9A3E397038}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E43B455-28AE-4331-A88C-3E9A3E397038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E14D227-FB1C-4475-837C-2B19F67F278C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E14D227-FB1C-4475-837C-2B19F67F278C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E14D227-FB1C-4475-837C-2B19F67F278C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E14D227-FB1C-4475-837C-2B19F67F278C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
