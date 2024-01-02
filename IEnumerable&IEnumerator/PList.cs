@@ -23,7 +23,7 @@ namespace IEnumerable_IEnumerator
         #endregion
 
         #region Indexer
-        public Person this[int index]
+        internal Person this[int index]
         {
             // Unlike the indexer project, we will add a counter for counting the array length while filling
             get { return _plist[index]; }
