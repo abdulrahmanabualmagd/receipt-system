@@ -28,8 +28,33 @@ namespace EntityFrameworkCore
         {
             Context context = new Context();
 
-            // Use Different Operations Like Filtering, Searching, Modifying, and so on...
-            var q = context.Students.ToList();
+            #region In case using 'virtual' keyword
+            // The related enetity will lazy load becasue we're using virtual which creates a proxy class that enables this feature
+            var q = context.Students;
+
+            foreach (var item in q)
+            {
+                /*
+                 * '?' checks if the item.school is null, It will short the circuits 
+                 * and item.school?.Name evaluates to null without attempting to 
+                 * access the name property
+                 */
+                Console.WriteLine(item.School?.Name);
+            }
+            #endregion
+
+            #region In Case not using 'virtual' keyword
+            // the related entity is loaded eagerly because of using .Include() and not using virtual
+            // if we didn't use Include and virtual, the related entity won't be able to load it in the same query
+            var q2 = context.Students.Include(s => s.School);
+
+            foreach(var item in q2)
+            {
+                // '?' checks if the item.school is null it will short circuit the item.school.Name and 
+                // evaluate it to null without attempting to access the name of the school that related to the student
+                Console.WriteLine(item.School?.Name);
+            }
+            #endregion
         }
     }
 }
