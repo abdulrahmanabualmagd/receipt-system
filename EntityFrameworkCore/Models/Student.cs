@@ -10,7 +10,7 @@ namespace EntityFrameworkCore.Models
     internal class Student
     {
         #region Properties
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string? Name { get; set; }
         #endregion
 

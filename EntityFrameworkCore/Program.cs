@@ -14,8 +14,11 @@
  *  - Add Migration     // EF analyze the differences between the current and previous stat, then generate the migration files include all the updates
  *  - Update Database   // Detect Pending Migration > Generage Sql Scripts > Execute Sql Scripts > Update Migration History Table > Database Updated
  */
+using Azure.Identity;
 using EntityFrameworkCore.Data;
 using EntityFrameworkCore.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EntityFrameworkCore
 {
@@ -23,12 +26,10 @@ namespace EntityFrameworkCore
     {
         static void Main()
         {
-            // Create an instance from the Dbcontext (Connection To Database)
             Context context = new Context();
 
             // Use Different Operations Like Filtering, Searching, Modifying, and so on...
-            
-            
+            var q = context.Students.ToList();
         }
     }
 }
