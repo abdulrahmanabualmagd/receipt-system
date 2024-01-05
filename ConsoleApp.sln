@@ -41,7 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore", "Enti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constructors", "Constructors\Constructors.csproj", "{5FCDD210-3DE4-4C83-AB5C-ACF8C39D83CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_FluentAPI", "EF_FluentAPI\EF_FluentAPI.csproj", "{5E334632-B457-4E59-BC34-B5138DB6C7C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF_FluentAPI", "EF_FluentAPI\EF_FluentAPI.csproj", "{5E334632-B457-4E59-BC34-B5138DB6C7C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async_Await", "Async_Await\Async_Await.csproj", "{A3C5E5E7-C653-49B8-AA8D-5A742FCD48A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{5E334632-B457-4E59-BC34-B5138DB6C7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E334632-B457-4E59-BC34-B5138DB6C7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E334632-B457-4E59-BC34-B5138DB6C7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C5E5E7-C653-49B8-AA8D-5A742FCD48A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C5E5E7-C653-49B8-AA8D-5A742FCD48A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C5E5E7-C653-49B8-AA8D-5A742FCD48A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C5E5E7-C653-49B8-AA8D-5A742FCD48A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
