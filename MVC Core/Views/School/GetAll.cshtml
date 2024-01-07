@@ -1,0 +1,8 @@
+﻿@model IEnumerable<School>
+
+<div class="d-flex flex-wrap container">
+    @foreach(School item in Model)
+    {
+        <button class="btn btn-primary m-1 py-2">@item.Name</button>
+    }
+</div>

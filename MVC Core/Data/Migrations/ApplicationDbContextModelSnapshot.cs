@@ -56,7 +56,7 @@ namespace MVC_Core.Data.Migrations
 
                     b.HasIndex("SchoolId");
 
-                    b.ToTable("students");
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("MVC_Core.Models.Student", b =>

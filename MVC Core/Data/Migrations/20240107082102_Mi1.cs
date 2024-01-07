@@ -24,7 +24,7 @@ namespace MVC_Core.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "students",
+                name: "Students",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,9 +34,9 @@ namespace MVC_Core.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_students", x => x.Id);
+                    table.PrimaryKey("PK_Students", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_students_Schools_SchId",
+                        name: "FK_Students_Schools_SchId",
                         column: x => x.SchId,
                         principalTable: "Schools",
                         principalColumn: "Id",
@@ -44,8 +44,8 @@ namespace MVC_Core.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_students_SchId",
-                table: "students",
+                name: "IX_Students_SchId",
+                table: "Students",
                 column: "SchId");
         }
 
@@ -53,7 +53,7 @@ namespace MVC_Core.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "students");
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "Schools");

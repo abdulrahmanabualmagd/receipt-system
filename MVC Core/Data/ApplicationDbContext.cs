@@ -8,11 +8,17 @@ namespace MVC_Core.Data
     {
         #region Ctor
         public ApplicationDbContext() { }
+
+        /*
+         * [Dependency Injection]
+         * This Constructor is Called using the program Services which Affected by this line of code
+         * => builder.Services(options=> options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionStringName")));
+         */
         public ApplicationDbContext(DbContextOptions options): base(options) { }
         #endregion
 
         #region DbSet
-        public DbSet<Student> students { get; set; }
+        public DbSet<Student> Students { get; set; }
         public DbSet<School> Schools { get; set; }
         #endregion
 

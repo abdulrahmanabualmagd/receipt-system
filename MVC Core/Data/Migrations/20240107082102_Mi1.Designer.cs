@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_Core.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240106113038_Mi1")]
+    [Migration("20240107082102_Mi1")]
     partial class Mi1
     {
         /// <inheritdoc />
@@ -59,7 +59,7 @@ namespace MVC_Core.Data.Migrations
 
                     b.HasIndex("SchoolId");
 
-                    b.ToTable("students");
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("MVC_Core.Models.Student", b =>
