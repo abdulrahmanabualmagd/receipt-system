@@ -1,26 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC_Core.Data;
+using MVC_Core.IRepositories;
 using MVC_Core.Models;
 
 namespace MVC_Core.Controllers
 {
     public class StudentController : Controller
     {
-        #region Dependency Injection
-        private ApplicationDbContext _context;
+            #region Repository Injection
+            private readonly IRepository<Student> _studentRepository;
 
-        public StudentController(ApplicationDbContext context)
+            public StudentController(IRepository<Student> studentRepository)
+            {
+                _studentRepository = studentRepository;
+            }
+            #endregion
+
+        public async Task<IActionResult> GetAll()
         {
-            _context = context;
+            IEnumerable<Student> StudentList = await _studentRepository.GetAll();
+
+            return View(StudentList);
         }
-        #endregion
-
-        public IActionResult GetAll()
-        {
-            IEnumerable<Student> students = _context.students.ToList();
-
-            return View(students);
-        }
-
     }
 }
