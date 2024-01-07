@@ -20,8 +20,8 @@
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
                         <li><a href="/Home/Home"            class="btn btn-dark mx-1 nav-link px-2 text-white">Home</a></li>
-                        <li><a href="/Crud/GetAllStudents"  class="btn btn-dark mx-1 nav-link px-2 text-white">Students</a></li>
-                        <li><a href="/Crud/GetAllSchools"   class="btn btn-dark mx-1 nav-link px-2 text-white">Schools</a></li>
+                        <li><a href="/Student/GetAll"       class="btn btn-dark mx-1 nav-link px-2 text-white">Students</a></li>
+                        <li><a href="/School/GetAll"        class="btn btn-dark mx-1 nav-link px-2 text-white">Schools</a></li>
                         <li><a href="/Crud/GetAll"          class="btn btn-dark mx-1 nav-link px-2 text-white">Crud</a></li>
 
                     </ul>
@@ -47,11 +47,11 @@
 
 
         <div class="flex-grow-1 container-fluid row my-4">
-            <main role="main" class="pb-3">
 
+                <div>
                 @RenderBody()
+                </div>
 
-            </main>
         </div>
 
         <footer class="py-3 bg-dark">
