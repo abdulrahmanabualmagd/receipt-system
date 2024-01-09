@@ -8,6 +8,8 @@
  *      
  *      We are using bool return as a feedback to know if the operation is completed successfully or not
  */
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace MVC_Core.IRepositories
 {
     public interface IRepository<T>
@@ -18,5 +20,6 @@ namespace MVC_Core.IRepositories
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
         Task<int> Count();
+        Task<IEnumerable<SelectListItem>> GetListItems();
     }
 }
