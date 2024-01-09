@@ -1,0 +1,22 @@
+﻿@model Student
+
+<div class="text-center my-5">
+    <form class="w-50 m-auto" method="post" asp-action="Edit" asp-controller="Student" >
+
+        <h1 class="h3 mb-3 fw-normal">Student Details</h1>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="name-input" asp-for="Name">
+            <label for="name-input">Name</label>
+        </div>
+
+        <div class="form-floating my-2">
+            <select type="text" class="form-control" id="school-input"  asp-items="ViewBag.Items" asp-for="SchoolId"></select>
+            <label for="school-input">School Name</label>
+        </div>
+
+        <button class="btn btn-primary w-100 py-4" type="submit">Submit</button>
+        <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
+
+    </form>
+</div>
