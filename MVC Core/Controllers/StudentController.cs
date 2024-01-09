@@ -26,6 +26,19 @@ namespace MVC_Core.Controllers
 
             return View(StudentList);
         } 
+        public async Task<IActionResult> GetPage(int page)
+        {
+            #region Null Exception
+            if (page == null || page < 1)
+            {
+                page = 1;
+            }
+            #endregion
+
+            IEnumerable<Student> StudentList = await _studentRepository.GetPage(page, 5);
+
+            return View("GetAll", StudentList);
+        } 
         #endregion
 
         #region Student Details
@@ -57,6 +70,8 @@ namespace MVC_Core.Controllers
             bool check = await _studentRepository.Update(student);
             if (check)
             {
+                TempData["Message"] = $"Student {student.Name} Have beed Modified Successfully!";
+
                 return Redirect("/Home/Crud");
             }
             else
@@ -72,15 +87,20 @@ namespace MVC_Core.Controllers
             Student student = await _studentRepository.GetById(id);
             bool check = await _studentRepository.Delete(student);
 
+            if (check)
+            {
+                TempData["Message"] = $"Student {student.Name} Deleted Successfully!";
+            }
             return Redirect("/Home/Crud");
         }
         #endregion
 
         #region Student Add
-
         // Get Http
         public async Task<IActionResult> Add()
         {
+            ViewData["Items"] = await _schoolRepository.GetListItems();
+
             return View(new Student());
         }
 
@@ -91,6 +111,7 @@ namespace MVC_Core.Controllers
             bool check = await _studentRepository.Add(student);
             if (check)
             {
+                TempData["Message"] = $"Student {student.Name} Added Successfully!";
                 return Redirect("/Home/Crud");
             }
             else

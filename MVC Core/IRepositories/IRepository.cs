@@ -9,6 +9,7 @@
  *      We are using bool return as a feedback to know if the operation is completed successfully or not
  */
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MVC_Core.Models;
 
 namespace MVC_Core.IRepositories
 {
@@ -16,10 +17,12 @@ namespace MVC_Core.IRepositories
     {
         Task<T> GetById(int id);
         Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetPage(int pageIndex, int pageSize);
         Task<bool> Add(T entity);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
         Task<int> Count();
         Task<IEnumerable<SelectListItem>> GetListItems();
+
     }
 }

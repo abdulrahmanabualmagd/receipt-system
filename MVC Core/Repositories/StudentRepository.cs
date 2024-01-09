@@ -5,6 +5,7 @@
  */
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MVC_Core.Data;
 using MVC_Core.IRepositories;
 using MVC_Core.Models;
@@ -31,6 +32,17 @@ namespace MVC_Core.Repositories
         {
             return await _context.Students.Include(s=> s.School).ToListAsync();
         }
+
+        public async Task<IEnumerable<Student>> GetPage(int pageIndex, int pageSize)
+        {
+            IEnumerable<Student> students = await _context.Students
+                .Include(s => s.School)
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(3).ToListAsync();
+            
+            return students;
+        }
+
 
         public async Task<Student> GetById(int id)
         {

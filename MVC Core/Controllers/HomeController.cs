@@ -58,14 +58,26 @@ namespace MVC_Core.Controllers
             #endregion
 
             return Json(new { schoolCount = SchoolCount, studentCount = StudentCount });
-        } 
+        }
         #endregion
 
-        public async Task<IActionResult> Crud()
+        #region Crud For All Students
+        public async Task<IActionResult> Crud(int page)
         {
-            var data = await _studentRepository.GetAll();
 
-            return View(data);
-        }
+            #region Null Exception
+            if (page == null || page < 1)
+            {
+                page = 1;
+            }
+            #endregion
+
+            IEnumerable<Student> students = await _studentRepository.GetPage(page, 5);
+            ViewData["Page"] = page;
+            TempData["Message"] = $"Current Page is {page}";
+            return View(students);
+        } 
+
+        #endregion
     }
 }

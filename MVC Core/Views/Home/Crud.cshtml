@@ -1,10 +1,37 @@
 ﻿@model IEnumerable<Student>
 
+<div class="d-flex flex-column justify-content-between h-100">
+
+    @if (TempData["Message"] != null)
+    {
+        <style>
+            #alert{
+                transition-duration: 700ms;
+                opacity: 0;
+                transform: scale(0);
+            }
+        </style>
+        <div class="alert alert-primary py-2 my-2" role="alert" id="alert">
+            @TempData["Message"]
+        </div>
+        <script>
+            let alert = document.getElementById("alert");
+            setTimeout(() => {
+                alert.style.transform = "scale(1)";
+                alert.style.opacity = "100";
+                setTimeout(() => {
+                    alert.style.opacity = "0";
+                    alert.style.transform = "scale(0)";
+                    setTimeout(() => { alert.style.display = "none"; }, 700);
+                },5000)
+            }, 500);
+        </script>
+    }
+
     <div class="text-center">
     <a class="btn btn-primary m-3 py-2 px-2 fs-4"
     asp-controller="Student"
-    asp-action="Add"
-    >
+    asp-action="Add"   >
         Add New Student
     </a>
     </div>
@@ -12,34 +39,45 @@
         Modify Students
     </div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">School Name</th>
-            <th scope="col">data</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model)
-        {
-            <tr>
-                <th scope="row">@item.Id</th>
-                <td>@item.Name</td>
-                <td>@item.School?.Name</td>
-                <td>
-                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary by-1 m-1">
-                        Delete
-                    </a>
-                    <a asp-controller="Student" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary by-1 m-1">
-                        Details
-                    </a>
-                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary by-1 m-1">
-                        Modify
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+    <div class="flex-grow-1">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">School Name</th>
+                    <th scope="col">data</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th class="w-25" scope="row">@item.Id</th>
+                        <td class="w-25">@item.Name</td>
+                        <td class="w-25">@item.School?.Name</td>
+                        <td class="w-25">
+                            <a asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary by-1 m-1">
+                                Delete
+                            </a>
+                            <a asp-controller="Student" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary by-1 m-1">
+                                Details
+                            </a>
+                            <a asp-controller="Student" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary by-1 m-1">
+                                Modify
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center">
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Crud" asp-route-page="@(ViewBag.Page - 1)">Prev</a>
+        <span class="px-3 mx-3">@ViewBag.Page</span>
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Crud" asp-route-page="@(ViewBag.Page + 1)">Next</a>
+    </div>
+
+</div>
