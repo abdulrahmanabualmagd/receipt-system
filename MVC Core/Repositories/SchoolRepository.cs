@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using MVC_Core.Data;
 using MVC_Core.IRepositories;
@@ -23,7 +24,7 @@ namespace MVC_Core.Repositories
 
         public async Task<IEnumerable<School>> GetAll()
         {
-            return await _context.Schools.ToListAsync();
+            return await _context.Schools.Include(s=> s.Students).ToListAsync();
         }
 
         public async Task<School> GetById(int id)
@@ -103,6 +104,12 @@ namespace MVC_Core.Repositories
         public async Task<int> Count()
         {
             return await _context.Schools.CountAsync();
+        }
+
+
+        public async Task<IEnumerable<SelectListItem>> GetListItems()
+        {
+            return await _context.Schools.Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name }).ToListAsync();
         }
     }
 }

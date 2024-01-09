@@ -3,6 +3,7 @@
  * Second check if the context saved Successfully
  * It returns false if the entity is null of there is an issue with sql server 
  */
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC_Core.Data;
 using MVC_Core.IRepositories;
@@ -28,12 +29,12 @@ namespace MVC_Core.Repositories
 
         public async Task<IEnumerable<Student>> GetAll()
         {
-            return await _context.Students.ToListAsync();
+            return await _context.Students.Include(s=> s.School).ToListAsync();
         }
 
         public async Task<Student> GetById(int id)
         {
-            return await _context.Students.FindAsync(id);
+            return await _context.Students.Include(s=> s.School).FirstOrDefaultAsync(s=> s.Id == id);
         }
 
         public async Task<bool> Add(Student entity)
@@ -109,5 +110,10 @@ namespace MVC_Core.Repositories
         {
             return await _context.Students.CountAsync();
         }
+        public async Task<IEnumerable<SelectListItem>> GetListItems()
+        {
+            return await _context.Students.Select(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name}).ToListAsync();
+        }
+
     }
 }
