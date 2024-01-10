@@ -1,0 +1,105 @@
+﻿@model RegisterCredentialsDto
+
+
+<div>
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <form class="col-xl-9" asp-controller="Account" asp-action="Register" Method="Post">
+                <h1 class="text-white">Register</h1>
+                <div class="card-body">
+
+                    <div class="row align-items-center py-1">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">First Name</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="text" class="form-control form-control-lg" asp-for="FirstName">
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+                    <div class="row align-items-center py-1">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Last Name</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="text" class="form-control form-control-lg" asp-for="LastName">
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+
+                    <div class="row align-items-center py-1">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Username</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="text" class="form-control form-control-lg" asp-for="Username">
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+
+                    <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Email address</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="email" class="form-control form-control-lg" asp-for="Email">
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+                    <div class="row align-items-center py-1">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Password</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="password" class="form-control form-control-lg" asp-for="Password">
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+                    <div class="row align-items-center py-1">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Confirm Password</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="password" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+                    <div class="row align-items-center py-1">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Phone</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="text" class="form-control form-control-lg" asp-for="PhoneNumber">
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+                    <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Upload Pciture</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input class="form-control form-control-lg" id="formFileLg" type="file">
+                            <div class="small text-muted mt-2">
+                                Upload your CV/Resume or any other relevant file. Max file
+                                size 50 MB
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+                    <div class="px-5 py-4">
+                        <button type="submit" class="btn btn-primary btn-lg py-2">Send application</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
