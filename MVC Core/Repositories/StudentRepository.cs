@@ -38,7 +38,7 @@ namespace MVC_Core.Repositories
             IEnumerable<Student> students = await _context.Students
                 .Include(s => s.School)
                 .Skip((pageIndex - 1) * pageSize)
-                .Take(3).ToListAsync();
+                .Take(pageSize).ToListAsync();
             
             return students;
         }

@@ -10,8 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 #region Add DbContext To Services
-builder.Services.AddDbContext<ApplicationDbContext>(
-options => options.UseSqlServer(builder.Configuration.GetConnectionString("Connection"))
+
+var DefaultConnection = builder.Configuration.GetConnectionString("Connection");
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => 
+        options.UseSqlServer(
+            DefaultConnection,
+            options => options.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
+            // This line is used for determining where to look for migration configurations
 );
 #endregion
 

@@ -64,7 +64,6 @@ namespace MVC_Core.Controllers
         #region Crud For All Students
         public async Task<IActionResult> Crud(int page)
         {
-
             #region Null Exception
             if (page == null || page < 1)
             {
@@ -74,10 +73,8 @@ namespace MVC_Core.Controllers
 
             IEnumerable<Student> students = await _studentRepository.GetPage(page, 5);
             ViewData["Page"] = page;
-            TempData["Message"] = $"Current Page is {page}";
             return View(students);
         } 
-
         #endregion
     }
 }

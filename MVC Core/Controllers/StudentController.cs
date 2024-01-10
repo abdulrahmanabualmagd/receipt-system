@@ -116,6 +116,7 @@ namespace MVC_Core.Controllers
             }
             else
             {
+                TempData["Message"] = "Couldn't Add Student Successfully!";
                 return Redirect("");
             }
         }

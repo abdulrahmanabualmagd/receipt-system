@@ -6,7 +6,6 @@ namespace MVC_Core.Models
     {
         #region Properties
         public int Id { get; set; }
-
         public string? Name { get; set; } 
         #endregion
 

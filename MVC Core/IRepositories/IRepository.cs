@@ -21,8 +21,7 @@ namespace MVC_Core.IRepositories
         Task<bool> Add(T entity);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
-        Task<int> Count();
         Task<IEnumerable<SelectListItem>> GetListItems();
-
+        Task<int> Count();
     }
 }
