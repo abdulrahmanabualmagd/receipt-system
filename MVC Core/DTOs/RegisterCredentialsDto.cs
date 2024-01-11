@@ -1,6 +1,6 @@
 ﻿namespace MVC_Core.DTOs
 {
-    public class RegisterCredentialsDto
+    public class RegisterCredentialsDTO
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

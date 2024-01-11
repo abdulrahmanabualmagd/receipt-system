@@ -1,1 +1,43 @@
-﻿
+﻿@model LoginCredentialsDTO
+
+<div>
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            
+            <form class="col-xl-9" asp-controller="Account" asp-action="Login" Method="Post">
+                <h1 class="text-white">Register</h1>
+                <div class="card-body">
+
+                    @*  ------------ Email ---------------- *@
+                    <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Email address</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="email" class="form-control form-control-lg" asp-for="Email">
+                        </div>
+                    </div>
+
+                    <br />
+                    
+                    @*  ------------ Password ---------------- *@
+                    <div class="row align-items-center py-1">
+                        <div class="col-md-3 ps-5">
+                            <h6 class="mb-0">Password</h6>
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <input type="password" class="form-control form-control-lg" asp-for="Password">
+                        </div>
+                    </div>
+                    <hr class="mx-n3">
+
+                    <div class="px-5 py-4">
+                        <button type="submit" class="btn btn-primary btn-lg py-4 px-2">Login</button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
