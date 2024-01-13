@@ -1,3 +1,9 @@
+/*
+ * Look for specification Pattern
+ * Look for mapper to map dto with original classes like User and User Credentials
+ * 
+ */
+
 using Microsoft.EntityFrameworkCore;
 using MVC_Core.Data;
 using MVC_Core.IRepositories;
