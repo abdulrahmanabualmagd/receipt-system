@@ -11,7 +11,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Core.Models;
 
-namespace MVC_Core.IRepositories
+namespace MVC_Core.Repositories
 {
     public interface IRepository<T>
     {

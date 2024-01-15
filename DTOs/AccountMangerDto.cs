@@ -1,6 +1,6 @@
 ﻿namespace MVC_Core.DTOs
 {
-    public record AccountMangerDto
+    public class AccountMangerDto
     {
         public string? Message { get; set; }
         public bool IsAuthenticated { get; set; } = false;

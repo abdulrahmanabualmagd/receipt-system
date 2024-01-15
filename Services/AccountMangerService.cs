@@ -4,13 +4,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using MVC_Core.DTOs;
-using MVC_Core.IRepositories;
 using MVC_Core.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace MVC_Core.Repositories
+namespace MVC_Core.Services
 {
     public class AccountMangerService : IAccountMangerService
     {
@@ -22,8 +21,8 @@ namespace MVC_Core.Repositories
         private readonly IMapper _autoMapper;
 
         public AccountMangerService(
-            UserManager<User> userManger, 
-            RoleManager<IdentityRole> roleManger, 
+            UserManager<User> userManger,
+            RoleManager<IdentityRole> roleManger,
             IConfiguration configuration,
             IMapper autoMapper
             )
@@ -64,7 +63,7 @@ namespace MVC_Core.Repositories
             #region Assign Roles 
 
             #region Check for Admin Role Existance
-            if (!(await _roleManger.RoleExistsAsync("Admin")))
+            if (!await _roleManger.RoleExistsAsync("Admin"))
             {
                 // Create new role for admin
                 var adminRole = new IdentityRole("Admin");
@@ -76,7 +75,7 @@ namespace MVC_Core.Repositories
                 var adminRoleCreation = await _roleManger.CreateAsync(adminRole);
 
                 // Check the addition result
-                if (!(adminRoleCreation.Succeeded))
+                if (!adminRoleCreation.Succeeded)
                 {
                     return new AccountMangerDto { Message = "Unable to create Admin Role" };
                 }
@@ -84,7 +83,7 @@ namespace MVC_Core.Repositories
             #endregion
 
             #region Check For User Role Existance 
-            if (!(await _roleManger.RoleExistsAsync("User")))
+            if (!await _roleManger.RoleExistsAsync("User"))
             {
                 // Create new role for user
                 var UserRole = new IdentityRole("User");
@@ -114,7 +113,7 @@ namespace MVC_Core.Repositories
 
             #region Generate Token
             var TokenGenerationResult = await GenerateJWT(user);
-            var token = TokenGenerationResult.Token; 
+            var token = TokenGenerationResult.Token;
             #endregion
 
             return new AccountMangerDto
@@ -123,7 +122,7 @@ namespace MVC_Core.Repositories
                 Token = token,
                 IsAuthenticated = true
             };
-        } 
+        }
         #endregion
 
         #region LoginAsync
@@ -131,7 +130,7 @@ namespace MVC_Core.Repositories
         {
             #region Check Password and Email
             var user = await _userManger.FindByEmailAsync(loginCredentialsDTO.Email);
-            if (user is null || ! await _userManger.CheckPasswordAsync(user, loginCredentialsDTO.Password))
+            if (user is null || !await _userManger.CheckPasswordAsync(user, loginCredentialsDTO.Password))
             {
                 return new AccountMangerDto { Message = "Wrong Email or Password" };
             }
@@ -197,7 +196,7 @@ namespace MVC_Core.Repositories
             return new AccountMangerDto
             {
                 Message = "Token Generated Successfully!",
-                Token = token, 
+                Token = token,
                 IsAuthenticated = true
             };
         }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Core.IRepositories;
 using MVC_Core.Models;
+using MVC_Core.Repositories;
 
 namespace MVC_Core.Controllers
 {

@@ -1,15 +1,10 @@
 /*
+ * Use Extension methods with the http pipline
+ * 
  * Migration Seed used to initial the database with default data that is needed to run the application
  * Look for specification Pattern
  */
-
 using Microsoft.EntityFrameworkCore;
-using MVC_Core.Data;
-using MVC_Core.IRepositories;
-using MVC_Core.Models;
-using MVC_Core.Repositories;
-using Microsoft.AspNetCore.Identity;
-using MVC_Core.Mappings;
 using MVC_Core.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

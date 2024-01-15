@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using MVC_Core.Data;
-using MVC_Core.IRepositories;
 using MVC_Core.Models;
 
 namespace MVC_Core.Repositories
