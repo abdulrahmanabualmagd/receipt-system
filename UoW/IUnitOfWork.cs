@@ -1,12 +1,13 @@
-﻿using MVC_Core.Models;
-using MVC_Core.Repositories;
+﻿using MVC_Core.IRepositories;
+using MVC_Core.Models;
 
 namespace MVC_Core.UoW
 {
     public interface IUnitOfWork : IAsyncDisposable
     {
-        IRepository<School> Schools { get; }
-        IRepository<Student> Students { get; }
+        ISchoolRepository Schools { get; }
+        IStudentRepository Students { get; }
+
         Task<int> CompleteAsync();
     }
 }

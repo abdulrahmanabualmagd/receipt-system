@@ -11,9 +11,9 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
 
-namespace MVC_Core.Repositories
+namespace MVC_Core.IRepositories
 {
-    public interface IRepository<T> where T  : class    // Classes Only Constraint
+    public interface IRepository<T> where T : class    // Classes Only Constraint
     {
         Task<IEnumerable<T>> GetAll(string[]? include = null);
         Task<IEnumerable<T>> GetPage(int pageIndex, int pageSize, string[]? include = null);
@@ -27,6 +27,5 @@ namespace MVC_Core.Repositories
 
         Task<int> Count();
 
-        Task<IEnumerable<SelectListItem>> GetListItems(Expression<Func<T, SelectListItem>> match, string[]? include = null);
     }
 }

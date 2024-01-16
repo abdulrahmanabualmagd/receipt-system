@@ -1,21 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MVC_Core.Data;
-using MVC_Core.Models;
+using MVC_Core.IRepositories;
 using System.Linq.Expressions;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace MVC_Core.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class // Constrain, T must be a Class
+    public class Repository<T> : IRepository<T> where T : class 
     {
         #region Dependency Injection
-        private readonly ApplicationDbContext _context;
+        protected readonly ApplicationDbContext _context;  
 
-        /*
-         * This Constructor is Injected using ASP.NET Core Dependency Injection system (Built-in Feature in ASP.NET)
-         * builder.Services.AddScooped(typeof(IRepository<T>, typeof(SchoolRepository))); => Register Injection of type generic
-         */
         public Repository(ApplicationDbContext context)
         {
             _context = context;
@@ -150,17 +144,5 @@ namespace MVC_Core.Repositories
         }
         #endregion
 
-        #region GetListItems
-        public async Task<IEnumerable<SelectListItem>> GetListItems(Expression<Func<T, SelectListItem>> match, string[]? include = null)
-        {
-            IQueryable<T> query = _context.Set<T>();
-
-            if (include != null)
-                foreach (var item in include)
-                    query = query.Include(item);
-
-            return await query.Select(match).Distinct().ToListAsync();      // Bug. I wrote distinct to aviod repeated results 
-        }
-        #endregion
     }
 }

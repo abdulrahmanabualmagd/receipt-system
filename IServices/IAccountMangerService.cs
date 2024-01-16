@@ -2,7 +2,7 @@
 using MVC_Core.DTOs;
 using MVC_Core.Models;
 
-namespace MVC_Core.Services
+namespace MVC_Core.IServices
 {
     public interface IAccountMangerService
     {

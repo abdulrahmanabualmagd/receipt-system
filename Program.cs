@@ -1,8 +1,8 @@
 /*
- * Fix List of items 
  * Look for specification Pattern
- * how to use unit of work and what is complete and dispose methods and how to use each one 
- * what is the generic repository and what is the base repository
+ * Services
+ * modify the repo don't make it save the data, 
+ * try to use services to include the logic and _unitOfWork.Complete() metod
  */
 using Microsoft.EntityFrameworkCore;
 using MVC_Core.Extensions;

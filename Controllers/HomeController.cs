@@ -4,8 +4,9 @@
  */
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
+using MVC_Core.IRepositories;
 using MVC_Core.Models;
-using MVC_Core.Repositories;
+using MVC_Core.UoW;
 using MVC_Core.ViewModels;
 
 namespace MVC_Core.Controllers
@@ -17,13 +18,11 @@ namespace MVC_Core.Controllers
          * Make sure you registered the dependency injection for the following repositories in the bulder.Services
          * To be able to use the Student Repository and School Repository
          */
-        private readonly IRepository<Student> _studentRepository;
-        private readonly IRepository<School> _schoolRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(IRepository<Student> studentRepository, IRepository<School> schoolRepository)
+        public HomeController(IUnitOfWork unitOfWork)
         {
-            _studentRepository = studentRepository;
-            _schoolRepository = schoolRepository;
+            _unitOfWork = unitOfWork;
         }
         #endregion
 
@@ -39,8 +38,8 @@ namespace MVC_Core.Controllers
 
             #region Get School And Studnet Counts
             // We use await here to not freeze the Control while waiting for data 
-            int StudentCount = await _studentRepository.Count();
-            int SchoolCount = await _schoolRepository.Count();
+            int StudentCount = await _unitOfWork.Students.Count();
+            int SchoolCount = await _unitOfWork.Schools.Count();
             #endregion
 
             StudentSchoolCounter studentSchoolCounter = new StudentSchoolCounter(StudentCount, SchoolCount);
@@ -53,8 +52,8 @@ namespace MVC_Core.Controllers
         public async Task<IActionResult> GetDetails()
         {
             #region Get Counts for Students and Schools
-            int SchoolCount = await _schoolRepository.Count();
-            int StudentCount = await _studentRepository.Count();
+            int SchoolCount = await _unitOfWork.Schools.Count();
+            int StudentCount = await _unitOfWork.Students.Count();
             #endregion
 
             return Json(new { schoolCount = SchoolCount, studentCount = StudentCount });
@@ -71,7 +70,7 @@ namespace MVC_Core.Controllers
             }
             #endregion
 
-            IEnumerable<Student> students = await _studentRepository.GetPage(page, 5, ["School"]);
+            IEnumerable<Student> students = await _unitOfWork.Students.GetPage(page, 5, ["School"]);
             ViewData["Page"] = page;
             return View(students);
         } 

@@ -57,7 +57,7 @@ namespace MVC_Core.Controllers
         {
             var student = await _unitOfWork.Students.Find(s=> s.Id == id, ["School"]);
 
-            ViewData["Items"] = await _unitOfWork.Students.GetListItems(s => new SelectListItem { Value = s.School.Id.ToString(), Text = s.School.Name }, ["School"]);
+            ViewData["Items"] = await _unitOfWork.Schools.GetListItems();
 
             return View(student);
         }
@@ -98,7 +98,7 @@ namespace MVC_Core.Controllers
         // Get Http
         public async Task<IActionResult> Add()
         {
-            ViewData["Items"] = await _unitOfWork.Students.GetListItems(s => new SelectListItem { Value = s.School.Id.ToString(), Text = s.School.Name }, ["School"]);
+            ViewData["Items"] = await _unitOfWork.Schools.GetListItems();
 
             return View(new Student());
         }
