@@ -17,12 +17,16 @@ namespace MVC_Core.Repositories
     {
         Task<IEnumerable<T>> GetAll(string[]? include = null);
         Task<IEnumerable<T>> GetPage(int pageIndex, int pageSize, string[]? include = null);
+
         Task<T> GetById(int id);
         Task<T> Find(Expression<Func<T, bool>> match, string[]? include = null);
+
         Task<bool> Add(T entity);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
+
         Task<int> Count();
+
         Task<IEnumerable<SelectListItem>> GetListItems(Expression<Func<T, SelectListItem>> match, string[]? include = null);
     }
 }

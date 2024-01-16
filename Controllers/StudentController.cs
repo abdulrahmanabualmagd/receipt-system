@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using MVC_Core.Data;
 using MVC_Core.Models;
 using MVC_Core.Repositories;
+using MVC_Core.UoW;
 using MVC_Core.ViewModels;
 
 namespace MVC_Core.Controllers
@@ -11,22 +12,18 @@ namespace MVC_Core.Controllers
     public class StudentController : Controller
     {
         #region Repository Injection
-        private readonly IRepository<Student> _studentRepository;
-        private readonly IRepository<School> _schoolRepository;
 
-        private readonly IRepository<Student> _repository;
-        public StudentController(IRepository<Student> studentRepository, IRepository<School> schoolRepository, IRepository<Student> repository)
+        private readonly IUnitOfWork _unitOfWork;
+        public StudentController(IUnitOfWork unitOfWork)
         {
-            _studentRepository = studentRepository;
-            _schoolRepository = schoolRepository;
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
         #endregion
 
         #region Student Get All
         public async Task<IActionResult> GetAll()
         {
-            IEnumerable<Student> StudentList = await _repository.GetAll(["School"]);
+            IEnumerable<Student> StudentList = await _unitOfWork.Students.GetAll(["School"]);
 
             return View(StudentList);
         } 
@@ -39,7 +36,7 @@ namespace MVC_Core.Controllers
             }
             #endregion
 
-            IEnumerable<Student> StudentList = await _repository.GetPage(page, 5, ["School"]);
+            IEnumerable<Student> StudentList = await _unitOfWork.Students.GetPage(page, 5, ["School"]);
 
             return View("GetAll", StudentList);
         } 
@@ -48,7 +45,7 @@ namespace MVC_Core.Controllers
         #region Student Details
         public async Task<IActionResult> Details(int id)
         {
-            var student = await _repository.Find(s => s.Id == id, ["School"]);
+            var student = await _unitOfWork.Students.Find(s => s.Id == id, ["School"]);
 
             return View(student);
         }
@@ -58,9 +55,9 @@ namespace MVC_Core.Controllers
         // Get by Default
         public async Task<IActionResult> Edit(int id)
         {
-            var student = await _repository.Find(s=> s.Id == id, ["School"]);
+            var student = await _unitOfWork.Students.Find(s=> s.Id == id, ["School"]);
 
-            ViewData["Items"] = await _repository.GetListItems(s => new SelectListItem { Value = s.School.Id.ToString(), Text = s.School.Name }, ["School"]);
+            ViewData["Items"] = await _unitOfWork.Students.GetListItems(s => new SelectListItem { Value = s.School.Id.ToString(), Text = s.School.Name }, ["School"]);
 
             return View(student);
         }
@@ -69,7 +66,7 @@ namespace MVC_Core.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Student student)
         {
-            bool check = await _repository.Update(student);
+            bool check = await _unitOfWork.Students.Update(student);
             if (check)
             {
                 TempData["Message"] = $"Student {student.Name} Have beed Modified Successfully!";
@@ -86,8 +83,8 @@ namespace MVC_Core.Controllers
         #region Student Delete
         public async Task<IActionResult> Delete(int id)
         {
-            Student student = await _repository.GetById(id);
-            bool check = await _repository.Delete(student);
+            Student student = await _unitOfWork.Students.GetById(id);
+            bool check = await _unitOfWork.Students.Delete(student);
 
             if (check)
             {
@@ -101,7 +98,7 @@ namespace MVC_Core.Controllers
         // Get Http
         public async Task<IActionResult> Add()
         {
-            ViewData["Items"] = await _repository.GetListItems(s => new SelectListItem { Value = s.School.Id.ToString(), Text = s.School.Name }, ["School"]);
+            ViewData["Items"] = await _unitOfWork.Students.GetListItems(s => new SelectListItem { Value = s.School.Id.ToString(), Text = s.School.Name }, ["School"]);
 
             return View(new Student());
         }
@@ -110,7 +107,7 @@ namespace MVC_Core.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Student student)
         {
-            bool check = await _repository.Add(student);
+            bool check = await _unitOfWork.Students.Add(student);
             if (check)
             {
                 TempData["Message"] = $"Student {student.Name} Added Successfully!";
