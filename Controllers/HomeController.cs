@@ -71,7 +71,7 @@ namespace MVC_Core.Controllers
             }
             #endregion
 
-            IEnumerable<Student> students = await _studentRepository.GetPage(page, 5);
+            IEnumerable<Student> students = await _studentRepository.GetPage(page, 5, ["School"]);
             ViewData["Page"] = page;
             return View(students);
         } 

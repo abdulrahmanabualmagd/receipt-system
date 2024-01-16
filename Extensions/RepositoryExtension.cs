@@ -8,9 +8,8 @@ namespace MVC_Core.Extensions
     {
         public static void ConfigureRepositories(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IRepository<Student>), typeof(StudentRepository));
-            services.AddScoped(typeof(IRepository<School>), typeof(SchoolRepository));
             services.AddScoped(typeof(IAccountMangerService), typeof(AccountMangerService));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }

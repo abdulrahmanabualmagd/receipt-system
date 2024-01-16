@@ -1,8 +1,8 @@
 /*
- * Use Extension methods with the http pipline
- * 
- * Migration Seed used to initial the database with default data that is needed to run the application
+ * Fix List of items 
  * Look for specification Pattern
+ * how to use unit of work and what is complete and dispose methods and how to use each one 
+ * what is the generic repository and what is the base repository
  */
 using Microsoft.EntityFrameworkCore;
 using MVC_Core.Extensions;
@@ -25,6 +25,7 @@ builder.Services.ConfigureRepositories();
 builder.Services.ConfigureAutoMapper(); 
 #endregion
 
+// Build Application
 var app = builder.Build();
 
 
@@ -34,17 +35,14 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
-} 
+}
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
 
-app.UseRouting();
+// Use Default Middleware
+app.UseDefaultMiddleware();
 
-app.UseAuthorization();
+// Use Routes
+app.UseRoutes();
 
-app.MapControllerRoute(
-name: "default",
-pattern: "{controller=Home}/{action=Home}/{id?}"); 
-
+// Run Application
 app.Run();

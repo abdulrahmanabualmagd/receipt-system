@@ -9,19 +9,20 @@
  *      We are using bool return as a feedback to know if the operation is completed successfully or not
  */
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MVC_Core.Models;
+using System.Linq.Expressions;
 
 namespace MVC_Core.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T  : class    // Classes Only Constraint
     {
+        Task<IEnumerable<T>> GetAll(string[]? include = null);
+        Task<IEnumerable<T>> GetPage(int pageIndex, int pageSize, string[]? include = null);
         Task<T> GetById(int id);
-        Task<IEnumerable<T>> GetAll();
-        Task<IEnumerable<T>> GetPage(int pageIndex, int pageSize);
+        Task<T> Find(Expression<Func<T, bool>> match, string[]? include = null);
         Task<bool> Add(T entity);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
-        Task<IEnumerable<SelectListItem>> GetListItems();
         Task<int> Count();
+        Task<IEnumerable<SelectListItem>> GetListItems(Expression<Func<T, SelectListItem>> match, string[]? include = null);
     }
 }

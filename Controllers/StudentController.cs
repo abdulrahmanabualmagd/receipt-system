@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using MVC_Core.Data;
 using MVC_Core.Models;
 using MVC_Core.Repositories;
@@ -10,19 +11,22 @@ namespace MVC_Core.Controllers
     public class StudentController : Controller
     {
         #region Repository Injection
-            private readonly IRepository<Student> _studentRepository;
-            private readonly IRepository<School> _schoolRepository;
-            public StudentController(IRepository<Student> studentRepository, IRepository<School> schoolRepository)
-            {
-                _studentRepository = studentRepository;
-                _schoolRepository = schoolRepository;
-            }
+        private readonly IRepository<Student> _studentRepository;
+        private readonly IRepository<School> _schoolRepository;
+
+        private readonly IRepository<Student> _repository;
+        public StudentController(IRepository<Student> studentRepository, IRepository<School> schoolRepository, IRepository<Student> repository)
+        {
+            _studentRepository = studentRepository;
+            _schoolRepository = schoolRepository;
+            _repository = repository;
+        }
         #endregion
 
         #region Student Get All
         public async Task<IActionResult> GetAll()
         {
-            IEnumerable<Student> StudentList = await _studentRepository.GetAll();
+            IEnumerable<Student> StudentList = await _repository.GetAll(["School"]);
 
             return View(StudentList);
         } 
@@ -35,7 +39,7 @@ namespace MVC_Core.Controllers
             }
             #endregion
 
-            IEnumerable<Student> StudentList = await _studentRepository.GetPage(page, 5);
+            IEnumerable<Student> StudentList = await _repository.GetPage(page, 5, ["School"]);
 
             return View("GetAll", StudentList);
         } 
@@ -44,7 +48,7 @@ namespace MVC_Core.Controllers
         #region Student Details
         public async Task<IActionResult> Details(int id)
         {
-            var student = await _studentRepository.GetById(id);
+            var student = await _repository.Find(s => s.Id == id, ["School"]);
 
             return View(student);
         }
@@ -54,11 +58,9 @@ namespace MVC_Core.Controllers
         // Get by Default
         public async Task<IActionResult> Edit(int id)
         {
-            var student = await _studentRepository.GetById(id);
+            var student = await _repository.Find(s=> s.Id == id, ["School"]);
 
-            IEnumerable<SelectListItem> schools = await _schoolRepository.GetListItems();
-
-            ViewData["Items"] = schools;
+            ViewData["Items"] = await _repository.GetListItems(s => new SelectListItem { Value = s.School.Id.ToString(), Text = s.School.Name }, ["School"]);
 
             return View(student);
         }
@@ -67,7 +69,7 @@ namespace MVC_Core.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Student student)
         {
-            bool check = await _studentRepository.Update(student);
+            bool check = await _repository.Update(student);
             if (check)
             {
                 TempData["Message"] = $"Student {student.Name} Have beed Modified Successfully!";
@@ -84,8 +86,8 @@ namespace MVC_Core.Controllers
         #region Student Delete
         public async Task<IActionResult> Delete(int id)
         {
-            Student student = await _studentRepository.GetById(id);
-            bool check = await _studentRepository.Delete(student);
+            Student student = await _repository.GetById(id);
+            bool check = await _repository.Delete(student);
 
             if (check)
             {
@@ -99,7 +101,7 @@ namespace MVC_Core.Controllers
         // Get Http
         public async Task<IActionResult> Add()
         {
-            ViewData["Items"] = await _schoolRepository.GetListItems();
+            ViewData["Items"] = await _repository.GetListItems(s => new SelectListItem { Value = s.School.Id.ToString(), Text = s.School.Name }, ["School"]);
 
             return View(new Student());
         }
@@ -108,7 +110,7 @@ namespace MVC_Core.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Student student)
         {
-            bool check = await _studentRepository.Add(student);
+            bool check = await _repository.Add(student);
             if (check)
             {
                 TempData["Message"] = $"Student {student.Name} Added Successfully!";
