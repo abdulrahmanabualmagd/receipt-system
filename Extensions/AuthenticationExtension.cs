@@ -10,18 +10,19 @@ namespace MVC_Core.Extensions
             services.AddAuthentication(options =>
                 {
                     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
                 })
                 .AddCookie()
                 .AddGoogle(GoogleDefaults.AuthenticationScheme ,options =>
                 {
-                    options.ClientId = configuration["Authentication:Google:ClientId"] ?? "N/A";
-                    options.ClientSecret = configuration["Authentication:Google:ClientSecret"] ?? "N/A";
+                    options.ClientId = configuration["ClientId"];
+                    options.ClientSecret = configuration["ClientSecret"];
                     options.CallbackPath = new PathString("/signin-google");
-                    options.Scope.Add("openid");
-                    options.Scope.Add("profile");
-                    options.Scope.Add("email");
-                    options.Scope.Add("https://www.googleapis.com/auth/userinfo.profile");
+                    #region Scopes
+                    //options.Scope.Add("openid");
+                    //options.Scope.Add("profile");
+                    //options.Scope.Add("email");
+                    //options.Scope.Add("https://www.googleapis.com/auth/userinfo.profile"); 
+                    #endregion
                 })
 
                 //.AddOAuth("github", options =>
