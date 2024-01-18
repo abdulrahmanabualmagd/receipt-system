@@ -1,15 +1,21 @@
 /*
- * Look for specification Pattern
  * Services
- * modify the repo don't make it save the data, 
- * try to use services to include the logic and _unitOfWork.Complete() metod
+ * Look for specification Pattern
+ * 
+ * external authentication providers
+ * external login 
+ * email vertification code 
+ * number vertification code 
+ * cookie and cache 
  */
 using Microsoft.EntityFrameworkCore;
 using MVC_Core.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-#region Serivces Registration
+#region Serivces Container
+
+// Configure Controllers with Views
 builder.Services.AddControllersWithViews();
 
 // Configure DbContext
@@ -22,7 +28,10 @@ builder.Services.ConfigureIdentity();
 builder.Services.ConfigureRepositories();
 
 // Configure AutoMapper
-builder.Services.ConfigureAutoMapper(); 
+builder.Services.ConfigureAutoMapper();
+
+builder.Services.ConfigureAuthentication(builder.Configuration);
+
 #endregion
 
 // Build Application
@@ -43,6 +52,9 @@ app.UseDefaultMiddleware();
 
 // Use Routes
 app.UseRoutes();
+
+// Use Map Get
+app.UseMapGet();
 
 // Run Application
 app.Run();

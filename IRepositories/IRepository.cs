@@ -9,23 +9,27 @@
  *      We are using bool return as a feedback to know if the operation is completed successfully or not
  */
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.IdentityModel.Tokens;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 
 namespace MVC_Core.IRepositories
 {
     public interface IRepository<T> where T : class    // Classes Only Constraint
     {
-        Task<IEnumerable<T>> GetAll(string[]? include = null);
-        Task<IEnumerable<T>> GetPage(int pageIndex, int pageSize, string[]? include = null);
-
-        Task<T> GetById(int id);
-        Task<T> Find(Expression<Func<T, bool>> match, string[]? include = null);
-
-        Task<bool> Add(T entity);
-        Task<bool> Update(T entity);
-        Task<bool> Delete(T entity);
-
-        Task<int> Count();
-
+        Task<bool> AddAsync(T entity);
+        bool Update(T entity);
+        bool Delete(T entity);
+        Task<T> GetByIdAsync(int id);
+        Task<IEnumerable<T>> GetAllAsync(string[]? include = null);
+        Task<IEnumerable<T>> GetPageAsync(int pageIndex, int pageSize, string[]? include = null);
+        Task<T> FindAsync(Expression<Func<T, bool>> predicate, string[]? include = null);
+        Task<int> CountAsync();
+        Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
+        Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate);
+        Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
+        void Attach(T entity);
+        void Detach(T entity);
+        Task<IEnumerable<SelectListItem>> GetListItems(Expression<Func<T, SelectListItem>> predicate);
     }
 }

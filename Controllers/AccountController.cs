@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ActionConstraints;
-using Microsoft.Identity.Client;
-using Microsoft.IdentityModel.Tokens;
 using MVC_Core.DTOs;
 using MVC_Core.IServices;
-using MVC_Core.Models;
-using NuGet.Packaging;
-using System.Data;
-using System.IdentityModel.Tokens.Jwt;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 using System.Security.Claims;
-using System.Text;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.DotNet.Scaffolding.Shared;
 
 namespace MVC_Core.Controllers
 {
@@ -66,7 +64,6 @@ namespace MVC_Core.Controllers
             /*
              * we have to use signinmanger.passwordsigninasync
              * and check if it succeed, require Two Factor, or locked
-             * 
              */
 
             var LoginResult = await _accountMangerService.LoginAsync(data);
@@ -74,5 +71,44 @@ namespace MVC_Core.Controllers
             return Json(LoginResult);
         }
         #endregion
+
+
+        public async Task ExternalLogin()
+        {
+            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
+                new AuthenticationProperties
+                {
+                    RedirectUri = Url.Action("ExternalLoginCallback")
+                });
+        }
+
+        public async Task<IActionResult> ExternalLoginCallback()
+        {
+
+            var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
+
+
+            var allClaims = result.Principal?.Claims.ToList();
+
+            var profilePictureUrl = result.Principal.FindFirstValue("picture");
+
+
+            var emailClaim  = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            var nameClaim   = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            var givenname    = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
+            var surname    = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
+
+
+            var responseData = new
+            {
+                Name = nameClaim,
+                Email = emailClaim,
+                Givenname = givenname,
+                Surname = surname,
+            };
+
+            return Json(responseData);
+        }
+
     }
 }

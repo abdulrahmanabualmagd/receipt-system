@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MVC_Core.Data;
 using MVC_Core.IRepositories;
+using System;
 using System.Linq.Expressions;
 
 namespace MVC_Core.Repositories
@@ -16,8 +18,28 @@ namespace MVC_Core.Repositories
         }
         #endregion
 
-        #region GetAll
-        public async Task<IEnumerable<T>> GetAll(string[]? include = null)
+        #region AddAsync
+        public async Task<bool> AddAsync(T entity)
+            => (await _context.Set<T>().AddAsync(entity)).State == EntityState.Added; 
+        #endregion
+
+        #region Update
+        public bool Update(T entity)
+            => (_context.Set<T>().Update(entity)).State == EntityState.Modified;
+        #endregion
+
+        #region Delete
+        public bool Delete(T entity)
+            => (_context.Set<T>().Remove(entity)).State == EntityState.Deleted;
+        #endregion
+
+        #region GetByIdAsync
+        public async Task<T> GetByIdAsync(int id)
+            => await _context.Set<T>().FindAsync(id);
+        #endregion
+
+        #region GetAllAsync
+        public async Task<IEnumerable<T>> GetAllAsync(string[]? include = null)
         {
             IQueryable<T> query = _context.Set<T>();
 
@@ -29,8 +51,8 @@ namespace MVC_Core.Repositories
         }
         #endregion
 
-        #region GetPage
-        public async Task<IEnumerable<T>> GetPage(int pageIndex, int pageSize, string[]? include = null)
+        #region GetPageAsync
+        public async Task<IEnumerable<T>> GetPageAsync(int pageIndex, int pageSize, string[]? include = null)
         {
             IQueryable<T> query = _context.Set<T>();
 
@@ -42,15 +64,8 @@ namespace MVC_Core.Repositories
         }
         #endregion
 
-        #region GetById
-        public async Task<T> GetById(int id)
-        {
-            return await _context.Set<T>().FindAsync(id);
-        }
-        #endregion
-
-        #region Find
-        public async Task<T> Find(Expression<Func<T, bool>> match, string[]? include = null)
+        #region FindAsync
+        public async Task<T> FindAsync(Expression<Func<T, bool>> predicate, string[]? include = null)
         {
             IQueryable<T> query = _context.Set<T>();
 
@@ -58,91 +73,43 @@ namespace MVC_Core.Repositories
                 foreach (var item in include)
                     query = query.Include(item);
 
-            return await query.FirstOrDefaultAsync(match);
+            return await query.FirstOrDefaultAsync(predicate);
         }
         #endregion
 
-        #region Add
-        public async Task<bool> Add(T entity)
-        {
-            #region Null Exception
-            if (entity == null)
-            {
-                return false;
-            }
-            #endregion
-
-            #region Check if data Added Successfully
-            try
-            {
-                await _context.Set<T>().AddAsync(entity);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-            #endregion
-        }
+        #region CountAsync
+        public async Task<int> CountAsync()
+            => await _context.Set<T>().CountAsync();
         #endregion
 
-        #region Delete
-        public async Task<bool> Delete(T entity)
-        {
-            #region Null Exception
-            if (entity == null)
-            {
-                return false;
-            }
-            #endregion
-
-            #region Check if data deleted successfully
-            try
-            {
-                _context.Set<T>().Remove(entity);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-            #endregion
-        }
+        #region FirstOrDefaultAsync
+        public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
+            => await _context.Set<T>().FirstOrDefaultAsync(predicate);
         #endregion
 
-        #region Update
-        public async Task<bool> Update(T entity)
-        {
-            #region Null Exception
-            if (entity == null)
-            {
-                return false;
-            }
-            #endregion
-
-            #region Check if data updated successfully
-            try
-            {
-                _context.Set<T>().Update(entity);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-            #endregion
-        }
+        #region SingleOrDefaultAsync
+        public async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
+            => await _context.Set<T>().SingleOrDefaultAsync(predicate);
         #endregion
 
-        #region Count
-        public async Task<int> Count()
-        {
-            return await _context.Set<T>().CountAsync();
-        }
+        #region AnyAsync
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
+           => await _context.Set<T>().AnyAsync(predicate);
         #endregion
 
+        #region Attach 
+        public void Attach(T entity)
+            => _context.Set<T>().Attach(entity);
+        #endregion
+
+        #region Detach
+        public void Detach(T entity)
+            => (_context.Entry(entity)).State = EntityState.Detached;
+        #endregion
+
+        #region GetListItems
+        public async Task<IEnumerable<SelectListItem>> GetListItems(Expression<Func<T, SelectListItem>> predicate)
+            => await _context.Set<T>().Select(predicate).ToListAsync();
+        #endregion
     }
 }

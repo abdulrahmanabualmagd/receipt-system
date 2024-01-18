@@ -1,11 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using MVC_Core.Data;
+using MVC_Core.IServices;
 using MVC_Core.Models;
-using MVC_Core.Repositories;
-using MVC_Core.UoW;
-using MVC_Core.ViewModels;
 
 namespace MVC_Core.Controllers
 {
@@ -13,41 +8,30 @@ namespace MVC_Core.Controllers
     {
         #region Repository Injection
 
-        private readonly IUnitOfWork _unitOfWork;
-        public StudentController(IUnitOfWork unitOfWork)
+        private readonly IStudentService _studentService;
+        private readonly ISchoolService _schoolService;
+        public StudentController(IStudentService studentService, ISchoolService schoolService)
         {
-            _unitOfWork = unitOfWork;
+            _studentService = studentService;
+            _schoolService = schoolService;
         }
         #endregion
 
         #region Student Get All
         public async Task<IActionResult> GetAll()
         {
-            IEnumerable<Student> StudentList = await _unitOfWork.Students.GetAll(["School"]);
-
-            return View(StudentList);
+            return View(await _studentService.GetAll());
         } 
-        public async Task<IActionResult> GetPage(int page)
+        public async Task<IActionResult> GetPage(int page = 1)
         {
-            #region Null Exception
-            if (page == null || page < 1)
-            {
-                page = 1;
-            }
-            #endregion
-
-            IEnumerable<Student> StudentList = await _unitOfWork.Students.GetPage(page, 5, ["School"]);
-
-            return View("GetAll", StudentList);
+            return View("GetAll", await _studentService.GetPage(page, 5));
         } 
         #endregion
 
         #region Student Details
         public async Task<IActionResult> Details(int id)
         {
-            var student = await _unitOfWork.Students.Find(s => s.Id == id, ["School"]);
-
-            return View(student);
+            return View(await _studentService.Find(s => s.Id == id));
         }
         #endregion
 
@@ -55,18 +39,19 @@ namespace MVC_Core.Controllers
         // Get by Default
         public async Task<IActionResult> Edit(int id)
         {
-            var student = await _unitOfWork.Students.Find(s=> s.Id == id, ["School"]);
+            if (!ModelState.IsValid)
+                return BadRequest();
 
-            ViewData["Items"] = await _unitOfWork.Schools.GetListItems();
+            ViewData["Items"] = await _schoolService.GetListItems();
 
-            return View(student);
+            return View(await _studentService.Find(s => s.Id == id));
         }
 
         // Post Http
         [HttpPost]
         public async Task<IActionResult> Edit(Student student)
         {
-            bool check = await _unitOfWork.Students.Update(student);
+            bool check = await _studentService.Update(student);
             if (check)
             {
                 TempData["Message"] = $"Student {student.Name} Have beed Modified Successfully!";
@@ -75,7 +60,7 @@ namespace MVC_Core.Controllers
             }
             else
             {
-            return BadRequest();
+                return BadRequest();
             }
         }
         #endregion
@@ -83,12 +68,16 @@ namespace MVC_Core.Controllers
         #region Student Delete
         public async Task<IActionResult> Delete(int id)
         {
-            Student student = await _unitOfWork.Students.GetById(id);
-            bool check = await _unitOfWork.Students.Delete(student);
+            Student student = await _studentService.GetById(id);
+            bool check = await _studentService.Delete(student);
 
             if (check)
             {
                 TempData["Message"] = $"Student {student.Name} Deleted Successfully!";
+            }
+            else
+            {
+                TempData["Message"] = $"Unable to Delete Student {student.Name}!";
             }
             return Redirect("/Home/Crud");
         }
@@ -98,8 +87,7 @@ namespace MVC_Core.Controllers
         // Get Http
         public async Task<IActionResult> Add()
         {
-            ViewData["Items"] = await _unitOfWork.Schools.GetListItems();
-
+            ViewData["Items"] = await _studentService.GetListItems();
             return View(new Student());
         }
 
@@ -107,7 +95,11 @@ namespace MVC_Core.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Student student)
         {
-            bool check = await _unitOfWork.Students.Add(student);
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            bool check = await _studentService.Add(student);
+
             if (check)
             {
                 TempData["Message"] = $"Student {student.Name} Added Successfully!";
