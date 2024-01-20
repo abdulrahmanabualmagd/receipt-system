@@ -1,26 +1,25 @@
 ﻿@model StudentSchoolCounter
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
     <div class="col-md-6 p-lg-5 mx-auto my-5">
-        <h1 class="display-3 fw-bold">Designed for engineers</h1>
-        <h3 class="fw-normal text-muted mb-3">Build anything you want with Aperture</h3>
-        <div class="d-flex gap-3 justify-content-center lead fw-normal">
+        <h1 class="display-3 fw-bold">MVC Core Porject</h1>
+        <div class="d-flex flex-column justify-content-center my-4">
 
-            <a class="icon-link btn btn-primary py-4 px-4 fs-4" href="/Student/GetAll" id="student-count">
-                Students @Model.StudentCount 
+            <a class="btn btn-light py-4 px-4 fs-4 text-center" href="/Student/GetAll" id="student-count">
+                Students @Model.StudentCount
             </a>
 
-            <a class="icon-link btn btn-primary py-4 px-4 fs-4" href="/School/GetAll" id="school-count">
-                Schools @Model.SchoolCount 
+            <a class="btn btn-light py-4 px-4 fs-4 text-center my-1" href="/School/GetAll" id="school-count">
+                Schools @Model.SchoolCount
             </a>
 
-        </div>
-        <hr />
-        <div class="mt-5">
-            <button class="btn btn-primary fs-4 px-2 py-2" id="ajax-call-button">
+            <a class="btn btn-light py-4 px-4 fs-4 text-center" id="ajax-call-button">
                 Ajax Call
-            </button>
+            </a>
+
         </div>
+        <h3 class="fw-normal text-muted mb-3">Advanced Project with Advanced Topics</h3>
     </div>
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -28,5 +27,4 @@
 
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-@* File is created in the js directory inside the wwwroot directory which contain all the client side files *@
 <script src="~/js/HomeAjaxCall.js"></script>
