@@ -413,7 +413,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Ignore Libraries because its exist in libman
-wwwroot/lib/
+lib/
 
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
