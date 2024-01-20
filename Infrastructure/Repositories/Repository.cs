@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Web.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MVC_Core.Data;
-using MVC_Core.IRepositories;
-using System;
+using Infrastructure.Data;
 using System.Linq.Expressions;
+using Infrastructure.IRepositories;
 
-namespace MVC_Core.Repositories
+namespace Infrastructure.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class 
     {

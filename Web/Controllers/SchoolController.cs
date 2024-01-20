@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Core.IServices;
-using MVC_Core.Models;
-using MVC_Core.Repositories;
-using MVC_Core.UoW;
+using Infrastructure.IServices;
 
-namespace MVC_Core.Controllers
+namespace Web.Controllers
 {
     public class SchoolController : Controller
     {

@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
-using MVC_Core.Models;
+using Infrastructure.Models;
 
-namespace MVC_Core.Data
+namespace Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {

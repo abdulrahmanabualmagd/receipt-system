@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Web.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MVC_Core.Data;
-using MVC_Core.IRepositories;
-using MVC_Core.Models;
+using Infrastructure.Data;
+using Infrastructure.IRepositories;
+using Infrastructure.Models;
 
-namespace MVC_Core.Repositories
+namespace Infrastructure.Repositories
 {
     public class SchoolRepository : Repository<School>, ISchoolRepository
     {

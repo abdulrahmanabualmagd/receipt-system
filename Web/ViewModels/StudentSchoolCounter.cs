@@ -1,4 +1,4 @@
-﻿namespace MVC_Core.ViewModels
+﻿namespace Web.ViewModels
 {
     public class StudentSchoolCounter
     {

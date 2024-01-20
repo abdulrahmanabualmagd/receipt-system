@@ -9,7 +9,7 @@
  * cookie and cache 
  */
 using Microsoft.EntityFrameworkCore;
-using MVC_Core.Extensions;
+using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

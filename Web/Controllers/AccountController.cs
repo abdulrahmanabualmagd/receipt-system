@@ -2,15 +2,15 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
-using MVC_Core.DTOs;
-using MVC_Core.IServices;
+using Infrastructure.DTOs;
+using Infrastructure.IServices;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.DotNet.Scaffolding.Shared;
 
-namespace MVC_Core.Controllers
+namespace Web.Controllers
 {
     public class AccountController : Controller
     {

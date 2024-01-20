@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC_Core.IServices;
-using MVC_Core.Models;
+using Infrastructure.IServices;
+using Infrastructure.Models;
 
-namespace MVC_Core.Controllers
+namespace Web.Controllers
 {
     public class StudentController : Controller
     {

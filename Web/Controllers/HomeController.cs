@@ -11,11 +11,11 @@
  * To be able to use the Student Repository and School Repository
  */
 using Microsoft.AspNetCore.Mvc;
-using MVC_Core.IServices;
-using MVC_Core.Models;
-using MVC_Core.ViewModels;
+using Infrastructure.IServices;
+using Infrastructure.Models;
+using Web.ViewModels;
 
-namespace MVC_Core.Controllers
+namespace Web.Controllers
 {
     public class HomeController : Controller
     {

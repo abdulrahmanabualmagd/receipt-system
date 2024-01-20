@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="DTOs\**" />
-    <EmbeddedResource Remove="DTOs\**" />
-    <None Remove="DTOs\**" />
+    <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
-	
+
 </Project>

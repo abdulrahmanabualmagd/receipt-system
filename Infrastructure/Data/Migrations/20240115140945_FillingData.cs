@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MVC_Core.Data.Migrations
+namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
     public partial class FillingData : Migration

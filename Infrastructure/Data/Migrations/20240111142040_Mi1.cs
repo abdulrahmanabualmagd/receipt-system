@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MVC_Core.Data.Migrations
+namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Mi1 : Migration

@@ -1,9 +1,9 @@
-﻿using MVC_Core.Data;
-using MVC_Core.IRepositories;
-using MVC_Core.Models;
-using MVC_Core.Repositories;
+﻿using Infrastructure.Data;
+using Infrastructure.IRepositories;
+using Infrastructure.Repositories;
+using Infrastructure.UoW;
 
-namespace MVC_Core.UoW
+namespace Infrastructure.UoW
 {
     public class UnitOfWork : IUnitOfWork
     {
