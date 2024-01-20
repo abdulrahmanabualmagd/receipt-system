@@ -2,7 +2,7 @@
 using Core.DTOs;
 using Core.Models;
 
-namespace Core.Mappings
+namespace Services
 {
     public class MappingProfile : Profile
     {

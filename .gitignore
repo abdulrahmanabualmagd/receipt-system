@@ -412,6 +412,9 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+# Ignore Libraries because its exist in libman
+wwwroot/lib/
+
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 

@@ -1,7 +1,7 @@
-﻿using Infrastructure.Data;
-using Infrastructure.IRepositories;
+﻿using Core.IRepositories;
+using Core.IUoW;
+using Infrastructure.Data;
 using Infrastructure.Repositories;
-using Infrastructure.UoW;
 
 namespace Infrastructure.UoW
 {

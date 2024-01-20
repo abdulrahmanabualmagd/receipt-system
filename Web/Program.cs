@@ -8,7 +8,6 @@
  * number vertification code 
  * cookie and cache 
  */
-using Microsoft.EntityFrameworkCore;
 using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

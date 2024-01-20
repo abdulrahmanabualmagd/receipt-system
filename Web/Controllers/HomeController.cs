@@ -10,9 +10,9 @@
  * Make sure you registered the dependency injection for the following repositories in the bulder.Services
  * To be able to use the Student Repository and School Repository
  */
+using Core.SchoolServcie;
+using Core.StudentService;
 using Microsoft.AspNetCore.Mvc;
-using Infrastructure.IServices;
-using Infrastructure.Models;
 using Web.ViewModels;
 
 namespace Web.Controllers

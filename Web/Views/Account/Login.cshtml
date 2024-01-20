@@ -1,46 +1,135 @@
 ﻿@model LoginCredentialsDTO
 
+
+
 <div>
     <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            
-            <form class="col-xl-9" asp-controller="Account" asp-action="Login" Method="Post">
-                <h1 class="text-white">Register</h1>
-                <div class="card-body">
+        <div class="d-flex justify-content-center align-items-center h-100">
 
-                    @*  ------------ Email ---------------- *@
-                    <div class="row align-items-center py-3">
-                        <div class="col-md-3 ps-5">
-                            <h6 class="mb-0">Email address</h6>
-                        </div>
-                        <div class="col-md-9 pe-5">
-                            <input type="email" class="form-control form-control-lg" asp-for="Email">
-                        </div>
-                    </div>
+            <form style="max-width: 25rem;"
+                  class="d-flex flex-column align-content-center justify-content-between shadow py-2 px-4 rounded w-100"
+                  asp-controller="Account" asp-action="Login" Method="Post">
 
-                    <br />
-                    
-                    @*  ------------ Password ---------------- *@
-                    <div class="row align-items-center py-1">
-                        <div class="col-md-3 ps-5">
-                            <h6 class="mb-0">Password</h6>
-                        </div>
-                        <div class="col-md-9 pe-5">
-                            <input type="password" class="form-control form-control-lg" asp-for="Password">
-                        </div>
-                    </div>
-                    <hr class="mx-n3">
+                <h1 class="display-3 text-center mb-3 bg-light-subtle">Login</h1>
 
-                    <div class="px-5 py-4">
-                        <button type="submit" class="btn btn-primary btn-lg py-4 px-2">Login</button>
-                    </div>
-
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput"
+                           placeholder="name@example.com" asp-for="Email">
+                    <label for="floatingInput">Email address</label>
                 </div>
+
+                <span class="my-2"></span>
+
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                           asp-for="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+
+                <button class="btn btn-light d-flex justify-content-center mx-2 mt-3" type="submit">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             width="32px" version="1.1" id="_x36_" viewBox="0 0 512 512"
+                             xml:space="preserve">
+                        <g>
+                        <polygon style="fill:#C0874A;"
+                                 points="511.401,173.663 502.513,179.269 458.244,207.066 268.606,326.073 266.213,327.652    265.699,327.968 256.043,334.048 255.701,334.207 247.753,329.232 246.299,328.284 66.659,215.516 54.439,207.856 0.598,174.057    0,173.663 54.439,139.469 249.548,16.988 261.854,16.988 458.244,140.258 464.74,144.365  " />
+                        <path style="fill:#69B25F;"
+                              d="M467.859,16.065v383.862c0,8.807-7.88,15.985-17.641,15.985H62.29   c-9.671,0-17.551-7.178-17.551-15.985V16.065C44.739,7.176,52.619,0,62.29,0h387.928C459.978,0,467.859,7.176,467.859,16.065z" />
+                        <g>
+                        <g>
+                        <rect x="110.787" y="75.101" style="fill:#A2CC86;" width="190.508"
+                              height="25.378" />
+                        <rect x="110.787" y="71.093" style="fill:#53A654;" width="190.508"
+                              height="25.378" />
+                                                </g>
+                        <g>
+                        <rect x="110.787" y="214.682" style="fill:#A2CC86;" width="289.501"
+                              height="25.378" />
+                        <rect x="110.787" y="210.675" style="fill:#53A654;" width="289.501"
+                              height="25.378" />
+                                                </g>
+                        <g>
+                        <rect x="110.787" y="284.473" style="fill:#A2CC86;" width="289.501"
+                              height="25.378" />
+                        <rect x="110.787" y="280.466" style="fill:#53A654;" width="289.501"
+                              height="25.378" />
+                                                </g>
+                        <g>
+                        <rect x="110.787" y="144.891" style="fill:#A2CC86;" width="289.501"
+                              height="25.378" />
+                        <rect x="110.787" y="140.884" style="fill:#53A654;" width="289.501"
+                              height="25.378" />
+                                                </g>
+                                            </g>
+                        <polygon style="fill:#F0BA7D;"
+                                 points="256.299,322.118 253.308,323.881 195.45,357.662 188.356,361.847 12.392,464.583    0.598,471.413 0.598,172.824 71.446,214.169 246.642,316.464 248.009,317.272 256.043,321.971  " />
+                        <g>
+                        <path style="fill:#E5A864;"
+                              d="M510.236,167.293c0.97-0.567,1.764-0.111,1.764,1.013v294.576c0,1.124-0.019,2.027-0.043,2.006    s-0.139-0.103-0.257-0.184c-0.118-0.081-0.291-0.197-0.385-0.257c-0.094-0.061-0.19-0.11-0.214-0.11    c-0.024,0-0.837-0.464-1.807-1.03L265.498,320.993c-0.97-0.566-2.556-1.497-3.524-2.068l-0.839-0.495    c-0.968-0.571-2.452-1.451-3.298-1.956c-0.846-0.505-0.743-1.379,0.229-1.944l6.209-3.604c0.972-0.564,1.825-1.059,1.895-1.099    c0.071-0.04,0.186-0.107,0.257-0.147c0.071-0.04,0.923-0.535,1.895-1.1l5.44-3.161c0.972-0.564,2.56-1.49,3.531-2.057    L510.236,167.293z" />
+                                            </g>
+                        <circle style="opacity:0.68;fill:#EEF3CA;" cx="377.142" cy="75.101"
+                                r="38.186" />
+                        <path style="fill:#C0874A;"
+                              d="M512,425.251v45.808h-0.513l-7.35,0.342H27.689l-0.341-7.094   c8.632-5.896,20.082-13.845,27.518-18.887l1.025-0.684l24.956-17.178l38.97-26.92l11.28-7.777l118.365-81.615l7.947-5.556   c1.88-1.195,4.017-2.222,6.324-2.904c2.735-0.941,5.726-1.539,8.717-1.795c1.025-0.086,1.965-0.171,2.991-0.086   c1.025-0.171,2.052-0.171,3.077-0.171c2.735-0.085,5.385,0.171,7.948,0.683c2.734,0.513,5.213,1.369,7.435,2.564l89.735,49.91   l44.354,24.697l11.538,6.41l41.79,23.245l27.518,15.298c0.77,0.428,1.624,0.855,2.479,1.368   C511.487,424.995,511.743,425.166,512,425.251z" />
+                        <path style="fill:#ECB168;"
+                              d="M512,441.404v29.997H0.598v-29.997c8.974-5.471,20.768-12.905,28.459-17.52l1.025-0.684   l25.724-15.98l40.252-24.955l11.623-7.264l122.125-75.805l8.204-5.127c4.273-2.564,9.828-3.846,15.298-3.932   c1.025-0.086,1.965-0.086,2.991,0c1.026-0.086,2.051-0.086,3.077,0c2.393,0,4.701,0.257,6.923,0.769   c3.077,0.599,5.896,1.71,8.29,3.163l11.879,7.349l75.377,46.834l43.073,26.75l11.196,7.007l40.68,25.212l26.748,16.665   c0.77,0.428,1.539,0.854,2.393,1.367c5.47,3.505,12.477,7.864,19.058,11.88C507.385,438.669,509.778,440.122,512,441.404z" />
+                        <path style="opacity:0.2;fill:#BADB9E;"
+                              d="M467.816,16.066v4.273c0-8.887-7.863-16.066-17.605-16.066H62.301   c-9.656,0-17.604,7.178-17.604,16.066v-4.273C44.696,7.178,52.645,0,62.301,0h387.911C459.953,0,467.816,7.178,467.816,16.066z" />
+                                        </g>
+                                    </svg>
+                    </div>
+                    <span class="mx-3"></span>
+                    <div class="fs-5">
+                        Login With Email
+                    </div>
+                </button>
+
+                <hr>
+
+                <a class="btn btn-light d-flex justify-content-center mx-2 my-1" asp-controller="Account"
+                   asp-action="ExternalLogin">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33px" viewBox="-3 0 262 262"
+                             preserveAspectRatio="xMidYMid">
+                            <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"
+                                  fill="#4285F4" />
+                            <path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"
+                                  fill="#34A853" />
+                            <path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"
+                                  fill="#FBBC05" />
+                            <path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"
+                                  fill="#EB4335" />
+                        </svg>
+                    </div>
+                    <span class="mx-2"></span>
+                    <div class="fs-5">
+                        Login With Google
+                    </div>
+                </a>
+
+                <a class="btn btn-light d-flex justify-content-center mx-2 my-1" asp-controller="Account"
+                   asp-action="ExternalLogin">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35px" viewBox="0 0 16 16"
+                             fill="none">
+                            <path fill="#1877F2"
+                                  d="M15 8a7 7 0 00-7-7 7 7 0 00-1.094 13.915v-4.892H5.13V8h1.777V6.458c0-1.754 1.045-2.724 2.644-2.724.766 0 1.567.137 1.567.137v1.723h-.883c-.87 0-1.14.54-1.14 1.093V8h1.941l-.31 2.023H9.094v4.892A7.001 7.001 0 0015 8z" />
+                            <path fill="#ffffff"
+                                  d="M10.725 10.023L11.035 8H9.094V6.687c0-.553.27-1.093 1.14-1.093h.883V3.87s-.801-.137-1.567-.137c-1.6 0-2.644.97-2.644 2.724V8H5.13v2.023h1.777v4.892a7.037 7.037 0 002.188 0v-4.892h1.63z" />
+                        </svg>
+                    </div>
+                    <span class="mx-1"></span>
+                    <div class="fs-5">
+                        Login With Facebook
+                    </div>
+                </a>
+
+                <span class="my-3"></span>
             </form>
 
-            <a class="btn btn-danger" asp-controller="Account" asp-action="ExternalLogin">
-                Login With Google
-            </a>
+
+
 
         </div>
     </div>

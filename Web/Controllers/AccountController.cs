@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Core.AccountManger;
+using Core.DTOs;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
-using Infrastructure.DTOs;
-using Infrastructure.IServices;
-using System.Text.Json.Serialization;
-using System.Text.Json;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.DotNet.Scaffolding.Shared;
 
 namespace Web.Controllers
 {

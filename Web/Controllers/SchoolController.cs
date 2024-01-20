@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Infrastructure.IServices;
+using Core.SchoolServcie;
 
 namespace Web.Controllers
 {

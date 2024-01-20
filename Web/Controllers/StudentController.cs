@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Infrastructure.IServices;
-using Infrastructure.Models;
-
+﻿using Core.Models;
+using Core.SchoolServcie;
+using Core.StudentService;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Web.Controllers
 {
     public class StudentController : Controller
@@ -87,7 +88,7 @@ namespace Web.Controllers
         // Get Http
         public async Task<IActionResult> Add()
         {
-            ViewData["Items"] = await _studentService.GetListItems();
+            ViewData["Items"] = await _schoolService.GetListItems();
             return View(new Student());
         }
 

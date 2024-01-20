@@ -1,8 +1,8 @@
-﻿using System.Web.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data;
-using Infrastructure.IRepositories;
-using Infrastructure.Models;
+using Core.Models;
+using Core.IRepositories;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Infrastructure.Repositories
 {
