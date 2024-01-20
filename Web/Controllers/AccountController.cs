@@ -2,6 +2,7 @@
 using Core.DTOs;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -69,17 +70,24 @@ namespace Web.Controllers
         #endregion
 
 
-        public async Task ExternalLogin()
+        public async Task ExternalLogin(string provider)
         {
-            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme,
+
+            if (string.IsNullOrEmpty(provider))
+                return;
+
+            await HttpContext.ChallengeAsync(provider,
                 new AuthenticationProperties
                 {
-                    RedirectUri = Url.Action("ExternalLoginCallback")
+                    RedirectUri = Url.Action("ExternalLoginCallback", new { provider = provider})
                 });
         }
 
-        public async Task<IActionResult> ExternalLoginCallback()
+        public async Task<IActionResult> ExternalLoginCallback(string provider)
         {
+
+            if (string.IsNullOrEmpty(provider))
+                return BadRequest("There is no provider sent");
 
             var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
 
