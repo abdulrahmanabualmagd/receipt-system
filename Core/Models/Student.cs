@@ -2,7 +2,7 @@
 
 namespace Core.Models
 {
-    public class Student
+    public class Student : Entity
     {
         #region Properties
         public int Id { get; set; }

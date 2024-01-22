@@ -1,12 +1,11 @@
 /*
- * Services
- * Look for specification Pattern
+ * Specifications Pattern
  * 
- * external authentication providers
- * external login 
  * email vertification code 
  * number vertification code 
  * cookie and cache 
+ * what are the helpers 
+ * what is the meaining of from query
  */
 using Web.Extensions;
 
@@ -36,7 +35,6 @@ builder.Services.ConfigureAuthentication(builder.Configuration);
 // Build Application
 var app = builder.Build();
 
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -44,7 +42,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
 
 // Use Default Middleware
 app.UseDefaultMiddleware();
