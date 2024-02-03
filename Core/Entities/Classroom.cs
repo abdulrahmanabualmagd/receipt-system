@@ -12,8 +12,7 @@ namespace Core.Entities
     {
 
         #region Courses
-        public int CourseId { get; set; }
-        public virtual ICollection<Course> Courses { get; set; } = new HashSet<Course>();
+        //public virtual ICollection<Course> Courses { get; set; } = new HashSet<Course>();
         #endregion
 
     }

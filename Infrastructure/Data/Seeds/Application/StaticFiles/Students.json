@@ -1,0 +1,602 @@
+[
+  {
+    "Name": "Alice Johnson",
+    "GPA": 3.5,
+    "DepartmentId": 1
+  },
+  {
+    "Name": "Bob Smith",
+    "GPA": 2.8,
+    "DepartmentId": 2
+  },
+  {
+    "Name": "Charlie Davis",
+    "GPA": 3.2,
+    "DepartmentId": 3
+  },
+  {
+    "Name": "David Miller",
+    "GPA": 3.9,
+    "DepartmentId": 4
+  },
+  {
+    "Name": "Emily Wilson",
+    "GPA": 3.7,
+    "DepartmentId": 5
+  },
+  {
+    "Name": "Frank Brown",
+    "GPA": 2.5,
+    "DepartmentId": 6
+  },
+  {
+    "Name": "Grace Taylor",
+    "GPA": 3.1,
+    "DepartmentId": 7
+  },
+  {
+    "Name": "Henry Martinez",
+    "GPA": 3.8,
+    "DepartmentId": 8
+  },
+  {
+    "Name": "Isabella Anderson",
+    "GPA": 2.9,
+    "DepartmentId": 9
+  },
+  {
+    "Name": "Jack Robinson",
+    "GPA": 3.3,
+    "DepartmentId": 10
+  },
+  {
+    "Name": "Katherine White",
+    "GPA": 3.6,
+    "DepartmentId": 11
+  },
+  {
+    "Name": "Liam Lee",
+    "GPA": 2.7,
+    "DepartmentId": 12
+  },
+  {
+    "Name": "Mia Turner",
+    "GPA": 3.4,
+    "DepartmentId": 13
+  },
+  {
+    "Name": "Noah Garcia",
+    "GPA": 3.0,
+    "DepartmentId": 14
+  },
+  {
+    "Name": "Olivia Hall",
+    "GPA": 3.9,
+    "DepartmentId": 15
+  },
+  {
+    "Name": "Patrick Harris",
+    "GPA": 2.6,
+    "DepartmentId": 16
+  },
+  {
+    "Name": "Quinn Adams",
+    "GPA": 3.2,
+    "DepartmentId": 17
+  },
+  {
+    "Name": "Ryan Foster",
+    "GPA": 3.7,
+    "DepartmentId": 18
+  },
+  {
+    "Name": "Sophia Reed",
+    "GPA": 2.8,
+    "DepartmentId": 19
+  },
+  {
+    "Name": "Tyler Cooper",
+    "GPA": 3.5,
+    "DepartmentId": 20
+  },
+  {
+    "Name": "Uma Patel",
+    "GPA": 3.1,
+    "DepartmentId": 21
+  },
+  {
+    "Name": "Victor Nguyen",
+    "GPA": 3.6,
+    "DepartmentId": 22
+  },
+  {
+    "Name": "Wendy Kim",
+    "GPA": 2.9,
+    "DepartmentId": 23
+  },
+  {
+    "Name": "Xander Brown",
+    "GPA": 3.4,
+    "DepartmentId": 24
+  },
+  {
+    "Name": "Yara Gonzalez",
+    "GPA": 3.0,
+    "DepartmentId": 25
+  },
+  {
+    "Name": "Zachary Baker",
+    "GPA": 3.8,
+    "DepartmentId": 26
+  },
+  {
+    "Name": "Ava Taylor",
+    "GPA": 2.7,
+    "DepartmentId": 27
+  },
+  {
+    "Name": "Benjamin Lopez",
+    "GPA": 3.5,
+    "DepartmentId": 28
+  },
+  {
+    "Name": "Chloe Davis",
+    "GPA": 3.2,
+    "DepartmentId": 29
+  },
+  {
+    "Name": "Daniel Smith",
+    "GPA": 3.9,
+    "DepartmentId": 30
+  },
+  {
+    "Name": "Emma Wilson",
+    "GPA": 3.7,
+    "DepartmentId": 31
+  },
+  {
+    "Name": "Finn Brown",
+    "GPA": 2.5,
+    "DepartmentId": 32
+  },
+  {
+    "Name": "Grace Martin",
+    "GPA": 3.1,
+    "DepartmentId": 33
+  },
+  {
+    "Name": "Henry Johnson",
+    "GPA": 3.8,
+    "DepartmentId": 34
+  },
+  {
+    "Name": "Isaac Turner",
+    "GPA": 2.9,
+    "DepartmentId": 35
+  },
+  {
+    "Name": "Julia Hall",
+    "GPA": 3.4,
+    "DepartmentId": 36
+  },
+  {
+    "Name": "Kai Harris",
+    "GPA": 3.0,
+    "DepartmentId": 37
+  },
+  {
+    "Name": "Lily Adams",
+    "GPA": 3.7,
+    "DepartmentId": 38
+  },
+  {
+    "Name": "Mason Foster",
+    "GPA": 2.8,
+    "DepartmentId": 39
+  },
+  {
+    "Name": "Nora Reed",
+    "GPA": 3.5,
+    "DepartmentId": 40
+  },
+  {
+    "Name": "Oscar Turner",
+    "GPA": 2.7,
+    "DepartmentId": 1
+  },
+  {
+    "Name": "Penelope Adams",
+    "GPA": 3.3,
+    "DepartmentId": 2
+  },
+  {
+    "Name": "Quincy Robinson",
+    "GPA": 3.8,
+    "DepartmentId": 3
+  },
+  {
+    "Name": "Rebecca Harris",
+    "GPA": 2.5,
+    "DepartmentId": 4
+  },
+  {
+    "Name": "Samuel Baker",
+    "GPA": 3.2,
+    "DepartmentId": 5
+  },
+  {
+    "Name": "Tara Lee",
+    "GPA": 3.9,
+    "DepartmentId": 6
+  },
+  {
+    "Name": "Ulysses Martin",
+    "GPA": 3.0,
+    "DepartmentId": 7
+  },
+  {
+    "Name": "Victoria Lopez",
+    "GPA": 3.6,
+    "DepartmentId": 8
+  },
+  {
+    "Name": "William Gonzalez",
+    "GPA": 2.8,
+    "DepartmentId": 9
+  },
+  {
+    "Name": "Xena White",
+    "GPA": 3.4,
+    "DepartmentId": 10
+  },
+  {
+    "Name": "Yasmine Davis",
+    "GPA": 3.7,
+    "DepartmentId": 11
+  },
+  {
+    "Name": "Zane Smith",
+    "GPA": 2.9,
+    "DepartmentId": 12
+  },
+  {
+    "Name": "Abigail Turner",
+    "GPA": 3.5,
+    "DepartmentId": 13
+  },
+  {
+    "Name": "Bryan Reed",
+    "GPA": 2.6,
+    "DepartmentId": 14
+  },
+  {
+    "Name": "Cassandra Taylor",
+    "GPA": 3.1,
+    "DepartmentId": 15
+  },
+  {
+    "Name": "Dylan Wilson",
+    "GPA": 3.8,
+    "DepartmentId": 16
+  },
+  {
+    "Name": "Ella Brown",
+    "GPA": 2.9,
+    "DepartmentId": 17
+  },
+  {
+    "Name": "Felix Anderson",
+    "GPA": 3.6,
+    "DepartmentId": 18
+  },
+  {
+    "Name": "Giselle Taylor",
+    "GPA": 2.7,
+    "DepartmentId": 19
+  },
+  {
+    "Name": "Henry Hall",
+    "GPA": 3.5,
+    "DepartmentId": 20
+  },
+  {
+    "Name": "Ivy Cooper",
+    "GPA": 3.2,
+    "DepartmentId": 21
+  },
+  {
+    "Name": "Jaxon Nguyen",
+    "GPA": 3.9,
+    "DepartmentId": 22
+  },
+  {
+    "Name": "Kylie Kim",
+    "GPA": 2.9,
+    "DepartmentId": 23
+  },
+  {
+    "Name": "Landon Brown",
+    "GPA": 3.4,
+    "DepartmentId": 24
+  },
+  {
+    "Name": "Morgan Gonzalez",
+    "GPA": 3.0,
+    "DepartmentId": 25
+  },
+  {
+    "Name": "Nathan Baker",
+    "GPA": 3.8,
+    "DepartmentId": 26
+  },
+  {
+    "Name": "Olivia Taylor",
+    "GPA": 2.7,
+    "DepartmentId": 27
+  },
+  {
+    "Name": "Preston Lopez",
+    "GPA": 3.5,
+    "DepartmentId": 28
+  },
+  {
+    "Name": "Quinn Davis",
+    "GPA": 3.2,
+    "DepartmentId": 29
+  },
+  {
+    "Name": "Riley Smith",
+    "GPA": 3.9,
+    "DepartmentId": 30
+  },
+  {
+    "Name": "Sophie Wilson",
+    "GPA": 3.7,
+    "DepartmentId": 31
+  },
+  {
+    "Name": "Tucker Brown",
+    "GPA": 2.5,
+    "DepartmentId": 32
+  },
+  {
+    "Name": "Ursula Martin",
+    "GPA": 3.1,
+    "DepartmentId": 33
+  },
+  {
+    "Name": "Vincent Johnson",
+    "GPA": 3.8,
+    "DepartmentId": 34
+  },
+  {
+    "Name": "Wendy Turner",
+    "GPA": 2.9,
+    "DepartmentId": 35
+  },
+  {
+    "Name": "Xander Hall",
+    "GPA": 3.4,
+    "DepartmentId": 36
+  },
+  {
+    "Name": "Yasmine Taylor",
+    "GPA": 3.0,
+    "DepartmentId": 37
+  },
+  {
+    "Name": "Zachary Adams",
+    "GPA": 3.7,
+    "DepartmentId": 38
+  },
+  {
+    "Name": "Avery Foster",
+    "GPA": 2.8,
+    "DepartmentId": 39
+  },
+  {
+    "Name": "Bella Reed",
+    "GPA": 3.5,
+    "DepartmentId": 40
+  },
+  {
+    "Name": "Caleb Baker",
+    "GPA": 2.8,
+    "DepartmentId": 1
+  },
+  {
+    "Name": "Daisy Harris",
+    "GPA": 3.5,
+    "DepartmentId": 2
+  },
+  {
+    "Name": "Elijah Turner",
+    "GPA": 3.0,
+    "DepartmentId": 3
+  },
+  {
+    "Name": "Fiona Martin",
+    "GPA": 2.9,
+    "DepartmentId": 4
+  },
+  {
+    "Name": "Gabriel Davis",
+    "GPA": 3.6,
+    "DepartmentId": 5
+  },
+  {
+    "Name": "Hazel Taylor",
+    "GPA": 3.2,
+    "DepartmentId": 6
+  },
+  {
+    "Name": "Isaiah White",
+    "GPA": 3.7,
+    "DepartmentId": 7
+  },
+  {
+    "Name": "Jade Robinson",
+    "GPA": 2.6,
+    "DepartmentId": 8
+  },
+  {
+    "Name": "Kyle Adams",
+    "GPA": 3.4,
+    "DepartmentId": 9
+  },
+  {
+    "Name": "Lila Turner",
+    "GPA": 3.8,
+    "DepartmentId": 10
+  },
+  {
+    "Name": "Mason Hall",
+    "GPA": 2.7,
+    "DepartmentId": 11
+  },
+  {
+    "Name": "Natalie Baker",
+    "GPA": 3.3,
+    "DepartmentId": 12
+  },
+  {
+    "Name": "Owen Harris",
+    "GPA": 3.9,
+    "DepartmentId": 13
+  },
+  {
+    "Name": "Penelope Turner",
+    "GPA": 2.5,
+    "DepartmentId": 14
+  },
+  {
+    "Name": "Quinn Martin",
+    "GPA": 3.1,
+    "DepartmentId": 15
+  },
+  {
+    "Name": "Riley Taylor",
+    "GPA": 3.6,
+    "DepartmentId": 16
+  },
+  {
+    "Name": "Sofia Robinson",
+    "GPA": 2.8,
+    "DepartmentId": 17
+  },
+  {
+    "Name": "Tyler Adams",
+    "GPA": 3.5,
+    "DepartmentId": 18
+  },
+  {
+    "Name": "Ulysses Turner",
+    "GPA": 3.2,
+    "DepartmentId": 19
+  },
+  {
+    "Name": "Vivian Harris",
+    "GPA": 3.7,
+    "DepartmentId": 20
+  },
+  {
+    "Name": "Wyatt Davis",
+    "GPA": 2.9,
+    "DepartmentId": 21
+  },
+  {
+    "Name": "Xena White",
+    "GPA": 3.4,
+    "DepartmentId": 22
+  },
+  {
+    "Name": "Yasmine Robinson",
+    "GPA": 3.0,
+    "DepartmentId": 23
+  },
+  {
+    "Name": "Zane Taylor",
+    "GPA": 3.8,
+    "DepartmentId": 24
+  },
+  {
+    "Name": "Aria Davis",
+    "GPA": 2.7,
+    "DepartmentId": 25
+  },
+  {
+    "Name": "Benjamin Adams",
+    "GPA": 3.5,
+    "DepartmentId": 26
+  },
+  {
+    "Name": "Charlotte Turner",
+    "GPA": 3.2,
+    "DepartmentId": 27
+  },
+  {
+    "Name": "Daniel Harris",
+    "GPA": 3.9,
+    "DepartmentId": 28
+  },
+  {
+    "Name": "Emma Baker",
+    "GPA": 3.7,
+    "DepartmentId": 29
+  },
+  {
+    "Name": "Finn Robinson",
+    "GPA": 2.5,
+    "DepartmentId": 30
+  },
+  {
+    "Name": "Gabriella Martin",
+    "GPA": 3.1,
+    "DepartmentId": 31
+  },
+  {
+    "Name": "Henry Taylor",
+    "GPA": 3.8,
+    "DepartmentId": 32
+  },
+  {
+    "Name": "Isabella Adams",
+    "GPA": 2.9,
+    "DepartmentId": 33
+  },
+  {
+    "Name": "Jack Martin",
+    "GPA": 3.4,
+    "DepartmentId": 34
+  },
+  {
+    "Name": "Kylie Turner",
+    "GPA": 3.0,
+    "DepartmentId": 35
+  },
+  {
+    "Name": "Liam Harris",
+    "GPA": 3.7,
+    "DepartmentId": 36
+  },
+  {
+    "Name": "Mia Robinson",
+    "GPA": 2.8,
+    "DepartmentId": 37
+  },
+  {
+    "Name": "Noah Adams",
+    "GPA": 3.5,
+    "DepartmentId": 38
+  },
+  {
+    "Name": "Olivia Turner",
+    "GPA": 3.2,
+    "DepartmentId": 39
+  },
+  {
+    "Name": "Parker Harris",
+    "GPA": 3.9,
+    "DepartmentId": 40
+  }
+]

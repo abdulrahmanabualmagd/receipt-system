@@ -17,7 +17,6 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CourseId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -31,9 +30,6 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false),
-                    ClassroomId = table.Column<int>(type: "int", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -47,7 +43,7 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -61,8 +57,7 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -74,12 +69,12 @@ namespace Infrastructure.Data.Migrations.Application
                 name: "Courses_Classrooms",
                 columns: table => new
                 {
-                    ClassroomId = table.Column<int>(type: "int", nullable: false),
-                    CourseId = table.Column<int>(type: "int", nullable: false)
+                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    ClassroomId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses_Classrooms", x => new { x.ClassroomId, x.CourseId });
+                    table.PrimaryKey("PK_Courses_Classrooms", x => new { x.CourseId, x.ClassroomId });
                     table.ForeignKey(
                         name: "FK_Courses_Classrooms_Classrooms_ClassroomId",
                         column: x => x.ClassroomId,
@@ -101,7 +96,6 @@ namespace Infrastructure.Data.Migrations.Application
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SchoolId = table.Column<int>(type: "int", nullable: false),
-                    CourseId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -170,7 +164,7 @@ namespace Infrastructure.Data.Migrations.Application
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GPA = table.Column<double>(type: "float", nullable: false),
-                    UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -186,9 +180,9 @@ namespace Infrastructure.Data.Migrations.Application
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_Classrooms_CourseId",
+                name: "IX_Courses_Classrooms_ClassroomId",
                 table: "Courses_Classrooms",
-                column: "CourseId");
+                column: "ClassroomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Courses_Departments_DepartmentId",

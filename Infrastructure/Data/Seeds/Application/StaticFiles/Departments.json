@@ -1,0 +1,162 @@
+[
+  {
+    "Name": "Mathematics Department",
+    "SchoolId": 1
+  },
+  {
+    "Name": "Science Department",
+    "SchoolId": 2
+  },
+  {
+    "Name": "English Department",
+    "SchoolId": 3
+  },
+  {
+    "Name": "History Department",
+    "SchoolId": 4
+  },
+  {
+    "Name": "Computer Science Department",
+    "SchoolId": 5
+  },
+  {
+    "Name": "Art Department",
+    "SchoolId": 6
+  },
+  {
+    "Name": "Physical Education Department",
+    "SchoolId": 7
+  },
+  {
+    "Name": "Music Department",
+    "SchoolId": 8
+  },
+  {
+    "Name": "Foreign Languages Department",
+    "SchoolId": 9
+  },
+  {
+    "Name": "Social Studies Department",
+    "SchoolId": 10
+  },
+  {
+    "Name": "Business Department",
+    "SchoolId": 11
+  },
+  {
+    "Name": "Health Sciences Department",
+    "SchoolId": 1
+  },
+  {
+    "Name": "Engineering Department",
+    "SchoolId": 2
+  },
+  {
+    "Name": "Psychology Department",
+    "SchoolId": 3
+  },
+  {
+    "Name": "Environmental Studies Department",
+    "SchoolId": 4
+  },
+  {
+    "Name": "Drama Department",
+    "SchoolId": 5
+  },
+  {
+    "Name": "Economics Department",
+    "SchoolId": 6
+  },
+  {
+    "Name": "Sociology Department",
+    "SchoolId": 7
+  },
+  {
+    "Name": "Anthropology Department",
+    "SchoolId": 8
+  },
+  {
+    "Name": "Philosophy Department",
+    "SchoolId": 9
+  },
+  {
+    "Name": "Political Science Department",
+    "SchoolId": 10
+  },
+  {
+    "Name": "Chemistry Department",
+    "SchoolId": 11
+  },
+  {
+    "Name": "Public Health Department",
+    "SchoolId": 1
+  },
+  {
+    "Name": "Philology Department",
+    "SchoolId": 2
+  },
+  {
+    "Name": "Statistics Department",
+    "SchoolId": 3
+  },
+  {
+    "Name": "Fine Arts Department",
+    "SchoolId": 4
+  },
+  {
+    "Name": "Communication Studies Department",
+    "SchoolId": 5
+  },
+  {
+    "Name": "Geography Department",
+    "SchoolId": 6
+  },
+  {
+    "Name": "Information Technology Department",
+    "SchoolId": 7
+  },
+  {
+    "Name": "Nutrition Sciences Department",
+    "SchoolId": 8
+  },
+  {
+    "Name": "Urban Planning Department",
+    "SchoolId": 9
+  },
+  {
+    "Name": "Astronomy Department",
+    "SchoolId": 10
+  },
+  {
+    "Name": "Graphic Design Department",
+    "SchoolId": 11
+  },
+  {
+    "Name": "Criminal Justice Department",
+    "SchoolId": 1
+  },
+  {
+    "Name": "Linguistics Department",
+    "SchoolId": 2
+  },
+  {
+    "Name": "Entrepreneurship Department",
+    "SchoolId": 3
+  },
+  {
+    "Name": "Dance Department",
+    "SchoolId": 4
+  },
+  {
+    "Name": "Library Science Department",
+    "SchoolId": 5
+  },
+  {
+    "Name": "Meteorology Department",
+    "SchoolId": 6
+  },
+  {
+    "Name": "Veterinary Medicine Department",
+    "SchoolId": 7
+  }
+]

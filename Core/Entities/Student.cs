@@ -7,7 +7,7 @@ namespace Core.Entities
     public class Student : Entity
     {
         public double GPA { get; set; }
-        public Guid UserIdentifier { get; set; }
+        public Guid? UserIdentifier { get; set; }
 
         #region Department
         public int DepartmentId { get; set; }               // Foreign Key

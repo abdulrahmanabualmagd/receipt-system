@@ -1,0 +1,362 @@
+[
+  {
+    "Name": "Introduction to Computer Science"
+  },
+  {
+    "Name": "Calculus I"
+  },
+  {
+    "Name": "English Composition"
+  },
+  {
+    "Name": "World History"
+  },
+  {
+    "Name": "Data Structures and Algorithms"
+  },
+  {
+    "Name": "Art History"
+  },
+  {
+    "Name": "Physical Education"
+  },
+  {
+    "Name": "Music Theory"
+  },
+  {
+    "Name": "French Language"
+  },
+  {
+    "Name": "Psychology 101"
+  },
+  {
+    "Name": "Business Ethics"
+  },
+  {
+    "Name": "Anatomy and Physiology"
+  },
+  {
+    "Name": "Introduction to Engineering"
+  },
+  {
+    "Name": "Statistics for Social Sciences"
+  },
+  {
+    "Name": "Drama Workshop"
+  },
+  {
+    "Name": "Macroeconomics"
+  },
+  {
+    "Name": "Sociology of Gender"
+  },
+  {
+    "Name": "Cultural Anthropology"
+  },
+  {
+    "Name": "Philosophy of Mind"
+  },
+  {
+    "Name": "Introduction to Political Science"
+  },
+  {
+    "Name": "Chemistry Lab"
+  },
+  {
+    "Name": "Public Health Fundamentals"
+  },
+  {
+    "Name": "Linguistics and Language"
+  },
+  {
+    "Name": "Digital Marketing Strategies"
+  },
+  {
+    "Name": "Environmental Sustainability"
+  },
+  {
+    "Name": "Introduction to Astrophysics"
+  },
+  {
+    "Name": "Graphic Design Principles"
+  },
+  {
+    "Name": "Criminal Justice Systems"
+  },
+  {
+    "Name": "Entrepreneurship and Innovation"
+  },
+  {
+    "Name": "Contemporary Dance"
+  },
+  {
+    "Name": "Library and Information Science"
+  },
+  {
+    "Name": "Meteorology and Climate Science"
+  },
+  {
+    "Name": "Veterinary Medicine Basics"
+  },
+  {
+    "Name": "Political Philosophy"
+  },
+  {
+    "Name": "Chemical Engineering Fundamentals"
+  },
+  {
+    "Name": "Public Relations and Communication"
+  },
+  {
+    "Name": "Advanced Machine Learning"
+  },
+  {
+    "Name": "Modern Art Movements"
+  },
+  {
+    "Name": "Financial Accounting Principles"
+  },
+  {
+    "Name": "Biomedical Ethics"
+  },
+  {
+    "Name": "Introduction to Artificial Intelligence"
+  },
+  {
+    "Name": "Linear Algebra"
+  },
+  {
+    "Name": "Creative Writing Workshop"
+  },
+  {
+    "Name": "Ancient Civilizations"
+  },
+  {
+    "Name": "Database Management Systems"
+  },
+  {
+    "Name": "Contemporary Art History"
+  },
+  {
+    "Name": "Yoga and Meditation"
+  },
+  {
+    "Name": "Film Scoring Techniques"
+  },
+  {
+    "Name": "Spanish Language and Culture"
+  },
+  {
+    "Name": "Cognitive Psychology"
+  },
+  {
+    "Name": "Corporate Finance"
+  },
+  {
+    "Name": "Human Anatomy Lab"
+  },
+  {
+    "Name": "Robotics and Automation"
+  },
+  {
+    "Name": "Microeconomics"
+  },
+  {
+    "Name": "Theater Production"
+  },
+  {
+    "Name": "International Relations"
+  },
+  {
+    "Name": "Social Psychology"
+  },
+  {
+    "Name": "Archaeology of Human Origins"
+  },
+  {
+    "Name": "Philosophy of Science"
+  },
+  {
+    "Name": "American Government"
+  },
+  {
+    "Name": "Organic Chemistry Lab"
+  },
+  {
+    "Name": "Epidemiology and Public Health"
+  },
+  {
+    "Name": "Computational Linguistics"
+  },
+  {
+    "Name": "Digital Advertising Strategies"
+  },
+  {
+    "Name": "Renewable Energy Systems"
+  },
+  {
+    "Name": "Introduction to Quantum Physics"
+  },
+  {
+    "Name": "Web Design Principles"
+  },
+  {
+    "Name": "Criminology and Penology"
+  },
+  {
+    "Name": "Innovation Management"
+  },
+  {
+    "Name": "Ballet Techniques"
+  },
+  {
+    "Name": "Information Retrieval"
+  },
+  {
+    "Name": "Climate Change Science"
+  },
+  {
+    "Name": "Animal Behavior Studies"
+  },
+  {
+    "Name": "Global Political Economy"
+  },
+  {
+    "Name": "Chemical Process Engineering"
+  },
+  {
+    "Name": "Media and Public Relations"
+  },
+  {
+    "Name": "Deep Learning Applications"
+  },
+  {
+    "Name": "Renaissance Art"
+  },
+  {
+    "Name": "Managerial Accounting"
+  },
+  {
+    "Name": "Medical Ethics"
+  },
+  {
+    "Name": "Cybersecurity Fundamentals"
+  },
+  {
+    "Name": "Multivariable Calculus"
+  },
+  {
+    "Name": "Journalism and Reporting"
+  },
+  {
+    "Name": "Medieval History"
+  },
+  {
+    "Name": "Software Engineering Principles"
+  },
+  {
+    "Name": "Modern Sculpture"
+  },
+  {
+    "Name": "Pilates and Wellness"
+  },
+  {
+    "Name": "Film Editing Techniques"
+  },
+  {
+    "Name": "Italian Language and Literature"
+  },
+  {
+    "Name": "Counseling Psychology"
+  },
+  {
+    "Name": "Strategic Management"
+  },
+  {
+    "Name": "Genetics and Genomics"
+  },
+  {
+    "Name": "Machine Vision and Image Processing"
+  },
+  {
+    "Name": "Macroeconomic Theory"
+  },
+  {
+    "Name": "Playwriting Workshop"
+  },
+  {
+    "Name": "Comparative Politics"
+  },
+  {
+    "Name": "Consumer Behavior"
+  },
+  {
+    "Name": "Paleontology"
+  },
+  {
+    "Name": "Ethics in Technology"
+  },
+  {
+    "Name": "World Religions"
+  },
+  {
+    "Name": "Inorganic Chemistry Lab"
+  },
+  {
+    "Name": "Global Health Challenges"
+  },
+  {
+    "Name": "Computer Vision"
+  },
+  {
+    "Name": "Social Media Marketing"
+  },
+  {
+    "Name": "Renewable Energy Policies"
+  },
+  {
+    "Name": "Astrophysical Concepts"
+  },
+  {
+    "Name": "User Experience Design"
+  },
+  {
+    "Name": "Forensic Psychology"
+  },
+  {
+    "Name": "Leadership and Organizational Behavior"
+  },
+  {
+    "Name": "Tap Dance Techniques"
+  },
+  {
+    "Name": "Big Data Analytics"
+  },
+  {
+    "Name": "Oceanography"
+  },
+  {
+    "Name": "Wildlife Conservation"
+  },
+  {
+    "Name": "International Law and Diplomacy"
+  },
+  {
+    "Name": "Chemical Reaction Engineering"
+  },
+  {
+    "Name": "Digital Journalism"
+  },
+  {
+    "Name": "Artificial Intelligence Ethics"
+  },
+  {
+    "Name": "Baroque Art"
+  },
+  {
+    "Name": "Financial Management"
+  },
+  {
+    "Name": "Bioethics"
+  }
+]

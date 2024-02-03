@@ -11,18 +11,15 @@ namespace Core.Entities
     {
 
         #region Departments
-        public int DepartmentId { get; set; }   
-        public virtual ICollection<Department> Departments { get; set; } = new HashSet<Department>();
+        //public virtual ICollection<Department> Departments { get; set; } = new HashSet<Department>();
         #endregion
 
         #region Classrooms
-        public int ClassroomId { get; set; }
-        public virtual ICollection<Classroom> Classrooms { get; set; } = new HashSet<Classroom>();
+        //public virtual ICollection<Classroom> Classrooms { get; set; } = new HashSet<Classroom>();
         #endregion
 
         #region Teachers
-        public int TeacherId { get; set; }
-        public virtual ICollection<Teacher> Teachers { get; set; } = new HashSet<Teacher>();
+        //public virtual ICollection<Teacher> Teachers { get; set; } = new HashSet<Teacher>();
         #endregion
     }
 }

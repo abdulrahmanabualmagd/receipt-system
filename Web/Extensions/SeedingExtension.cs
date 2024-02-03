@@ -21,7 +21,7 @@ namespace Web.Extensions
                 await identityDbContext.Database.MigrateAsync();
 
 
-                 await IdentitySeed.SeedIdentityAsync(identityDbContext);
+                 //await IdentitySeed.SeedIdentityAsync(identityDbContext);
                  await ApplicationSeed.SeedApplicationAsync(applicationDbContext);
             }
             catch (Exception ex) 

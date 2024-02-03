@@ -1,4 +1,9 @@
-﻿using Core.Entities;
+﻿/*
+ * Upcoming Modification 
+ *  - Simplify the methods make a generic method and use Set<T>() like in Generic repository
+ */
+using Core.Entities;
+using Core.Entities.ManytoMany;
 using Infrastructure.Data.Contexts.Application;
 using Newtonsoft.Json;
 
@@ -8,12 +13,16 @@ namespace Infrastructure.Data.Seeds.Application
     {
         public static async Task SeedApplicationAsync(ApplicationDbContext context)
         {
-            await SeedCoursesDataAsync(context);
-            await SeedStudentsDataAsync(context);
-            await SeedDepartmentsDataAsync(context);
-            await SeedTeachersDataAsync(context);
             await SeedSchoolsDataAsync(context);
+            await SeedDepartmentsDataAsync(context);
+            await SeedStudentsDataAsync(context);
+            await SeedTeachersDataAsync(context);
+            await SeedCoursesDataAsync(context);
             await SeedClassroomDataAsync(context);
+
+            await SeedCoursesClassroomsDataAsync(context);
+            await SeedCoursesDepartmentsDataAsync(context);
+            await SeedCoursesTeachersDataAsync(context);
         }
 
         #region SeedCoursesDataAsync
@@ -96,6 +105,48 @@ namespace Infrastructure.Data.Seeds.Application
             var data = JsonConvert.DeserializeObject<List<Classroom>>(jsonData);
 
             context.Classrooms.AddRange(data);
+            await context.SaveChangesAsync();
+        }
+        #endregion
+
+        #region SeedCoursesDepartmentsDataAsync
+        public static async Task SeedCoursesDepartmentsDataAsync(ApplicationDbContext context)
+        {
+            if (context.Courses_Departments.Any())
+                return;
+
+            var jsonData = await File.ReadAllTextAsync("../Infrastructure/Data/Seeds/Application/StaticFiles/Courses_Departments.json");
+            var data = JsonConvert.DeserializeObject<List<Courses_Departments>>(jsonData);
+
+            context.Courses_Departments.AddRange(data);
+            await context.SaveChangesAsync();
+        }
+        #endregion
+
+        #region SeedCoursesTeachersDataAsync
+        public static async Task SeedCoursesTeachersDataAsync(ApplicationDbContext context)
+        {
+            if (context.Courses_Teachers.Any())
+                return;
+
+            var jsonData = await File.ReadAllTextAsync("../Infrastructure/Data/Seeds/Application/StaticFiles/Courses_Teachers.json");
+            var data = JsonConvert.DeserializeObject<List<Courses_Teachers>>(jsonData);
+
+            context.Courses_Teachers.AddRange(data);
+            await context.SaveChangesAsync();
+        }
+        #endregion
+
+        #region SeedCoursesClassroomsDataAsync
+        public static async Task SeedCoursesClassroomsDataAsync(ApplicationDbContext context)
+        {
+            if (context.Courses_Classrooms.Any())
+                return;
+
+            var jsonData = await File.ReadAllTextAsync("../Infrastructure/Data/Seeds/Application/StaticFiles/Courses_Classrooms.json");
+            var data = JsonConvert.DeserializeObject<List<Courses_Classrooms>>(jsonData);
+
+            context.Courses_Classrooms.AddRange(data);
             await context.SaveChangesAsync();
         }
         #endregion
