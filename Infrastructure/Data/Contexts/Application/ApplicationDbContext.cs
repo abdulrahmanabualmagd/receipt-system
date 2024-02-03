@@ -32,8 +32,8 @@ namespace Infrastructure.Data.Contexts.Application
             .HasMany(course => course.Teachers)
             .WithMany(teacher => teacher.Courses)
             .UsingEntity(
-                l => l.HasOne(typeof(Teacher)).WithMany().HasForeignKey("CourseId"),
-                r => r.HasOne(typeof(Course)).WithMany().HasForeignKey("TeacherId")
+                l => l.HasOne(typeof(Teacher)).WithMany().HasForeignKey("TeacherId"),
+                r => r.HasOne(typeof(Course)).WithMany().HasForeignKey("CourseId")
             ).ToTable("Courses_Teachers");
             #endregion
 
@@ -42,7 +42,7 @@ namespace Infrastructure.Data.Contexts.Application
                 .HasMany(course => course.Classrooms)
                 .WithMany(department => department.Courses)
                 .UsingEntity(
-                    l => l.HasOne(typeof(Classroom)).WithMany().HasForeignKey("DepartmentId"),
+                    l => l.HasOne(typeof(Classroom)).WithMany().HasForeignKey("ClassroomId"),
                     r => r.HasOne(typeof(Course)).WithMany().HasForeignKey("CourseId")
                 ).ToTable("Courses_Classrooms");
             #endregion
@@ -52,8 +52,8 @@ namespace Infrastructure.Data.Contexts.Application
                 .HasMany(course => course.Departments)
                 .WithMany(department => department.Courses)
                 .UsingEntity(
-                    l => l.HasOne(typeof(Department)).WithMany().HasForeignKey("CourseId"),
-                    r => r.HasOne(typeof(Course)).WithMany().HasForeignKey("DepartmentId")
+                    l => l.HasOne(typeof(Department)).WithMany().HasForeignKey("DepartmentId"),
+                    r => r.HasOne(typeof(Course)).WithMany().HasForeignKey("CourseId")
                 ).ToTable("Courses_Departments");
             #endregion
 

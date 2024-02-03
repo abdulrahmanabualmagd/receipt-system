@@ -24,15 +24,15 @@ namespace Infrastructure.Data.Migrations.Application
 
             modelBuilder.Entity("ClassroomCourse", b =>
                 {
+                    b.Property<int>("ClassroomId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DepartmentId")
-                        .HasColumnType("int");
+                    b.HasKey("ClassroomId", "CourseId");
 
-                    b.HasKey("CourseId", "DepartmentId");
-
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("CourseId");
 
                     b.ToTable("Courses_Classrooms", (string)null);
                 });
@@ -116,15 +116,7 @@ namespace Infrastructure.Data.Migrations.Application
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Adress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -144,10 +136,6 @@ namespace Infrastructure.Data.Migrations.Application
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Adress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
@@ -155,10 +143,6 @@ namespace Infrastructure.Data.Migrations.Application
                         .HasColumnType("float");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -180,18 +164,10 @@ namespace Infrastructure.Data.Migrations.Application
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -235,15 +211,15 @@ namespace Infrastructure.Data.Migrations.Application
 
             modelBuilder.Entity("ClassroomCourse", b =>
                 {
-                    b.HasOne("Core.Entities.Course", null)
+                    b.HasOne("Core.Entities.Classroom", null)
                         .WithMany()
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("ClassroomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.Classroom", null)
+                    b.HasOne("Core.Entities.Course", null)
                         .WithMany()
-                        .HasForeignKey("DepartmentId")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -272,13 +248,13 @@ namespace Infrastructure.Data.Migrations.Application
 
             modelBuilder.Entity("CourseDepartment", b =>
                 {
-                    b.HasOne("Core.Entities.Department", null)
+                    b.HasOne("Core.Entities.Course", null)
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.Course", null)
+                    b.HasOne("Core.Entities.Department", null)
                         .WithMany()
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -287,13 +263,13 @@ namespace Infrastructure.Data.Migrations.Application
 
             modelBuilder.Entity("CourseTeacher", b =>
                 {
-                    b.HasOne("Core.Entities.Teacher", null)
+                    b.HasOne("Core.Entities.Course", null)
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Core.Entities.Course", null)
+                    b.HasOne("Core.Entities.Teacher", null)
                         .WithMany()
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)

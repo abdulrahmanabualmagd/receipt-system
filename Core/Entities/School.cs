@@ -5,8 +5,6 @@ namespace Core.Entities
 {
     public class School : Entity
     {
-        public string Adress { get; set; }
-        public string Phone { get; set; }
         public Guid UserIdentifier { get; set; }
 
         #region Department

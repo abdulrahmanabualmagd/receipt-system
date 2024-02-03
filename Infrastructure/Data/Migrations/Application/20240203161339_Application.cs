@@ -47,8 +47,6 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -63,8 +61,6 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CourseId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -78,15 +74,15 @@ namespace Infrastructure.Data.Migrations.Application
                 name: "Courses_Classrooms",
                 columns: table => new
                 {
-                    CourseId = table.Column<int>(type: "int", nullable: false),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false)
+                    ClassroomId = table.Column<int>(type: "int", nullable: false),
+                    CourseId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses_Classrooms", x => new { x.CourseId, x.DepartmentId });
+                    table.PrimaryKey("PK_Courses_Classrooms", x => new { x.ClassroomId, x.CourseId });
                     table.ForeignKey(
-                        name: "FK_Courses_Classrooms_Classrooms_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Courses_Classrooms_Classrooms_ClassroomId",
+                        column: x => x.ClassroomId,
                         principalTable: "Classrooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -130,14 +126,14 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     table.PrimaryKey("PK_Courses_Teachers", x => new { x.CourseId, x.TeacherId });
                     table.ForeignKey(
-                        name: "FK_Courses_Teachers_Courses_TeacherId",
-                        column: x => x.TeacherId,
+                        name: "FK_Courses_Teachers_Courses_CourseId",
+                        column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Courses_Teachers_Teachers_CourseId",
-                        column: x => x.CourseId,
+                        name: "FK_Courses_Teachers_Teachers_TeacherId",
+                        column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -154,14 +150,14 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     table.PrimaryKey("PK_Courses_Departments", x => new { x.CourseId, x.DepartmentId });
                     table.ForeignKey(
-                        name: "FK_Courses_Departments_Courses_DepartmentId",
-                        column: x => x.DepartmentId,
+                        name: "FK_Courses_Departments_Courses_CourseId",
+                        column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Courses_Departments_Departments_CourseId",
-                        column: x => x.CourseId,
+                        name: "FK_Courses_Departments_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -173,8 +169,6 @@ namespace Infrastructure.Data.Migrations.Application
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GPA = table.Column<double>(type: "float", nullable: false),
                     UserIdentifier = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
@@ -192,9 +186,9 @@ namespace Infrastructure.Data.Migrations.Application
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_Classrooms_DepartmentId",
+                name: "IX_Courses_Classrooms_CourseId",
                 table: "Courses_Classrooms",
-                column: "DepartmentId");
+                column: "CourseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Courses_Departments_DepartmentId",

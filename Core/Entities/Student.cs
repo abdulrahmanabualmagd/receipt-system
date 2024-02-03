@@ -6,8 +6,6 @@ namespace Core.Entities
 {
     public class Student : Entity
     {
-        public string Adress { get; set; }
-        public string Phone { get; set; }
         public double GPA { get; set; }
         public Guid UserIdentifier { get; set; }
 

@@ -10,16 +10,12 @@ namespace Core.Entities
 {
     public class Teacher : Entity
     {
-        public string Address { get; set; }
-        public string Phone { get; set; }
         public Guid UserIdentifier { get; set; }
-
 
         #region Courses
         public int CourseId { get; set; }
         public virtual ICollection<Course> Courses { get; set; }
         #endregion
-
     }
 
 }
