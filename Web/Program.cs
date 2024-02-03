@@ -1,5 +1,5 @@
 /*
- * Continue Seeds in Data -> infrastructure
+ * Continue Seeds in Data -> infrastructure     $$
  * Specifications Pattern
  * email vertification code 
  * number vertification code 
@@ -8,6 +8,7 @@
  * redis
  * what is the meaining of from query
  */
+using Infrastructure.Data.Seeds;
 using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,9 @@ builder.Services.ConfigureAuthentication(builder.Configuration);
 
 // Build Application
 var app = builder.Build();
+
+// Seeding Identity Tables
+// app.Services.SeedAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

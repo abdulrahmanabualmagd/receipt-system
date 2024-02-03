@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1a234b56-c789-1d23-4e56-78901f234567",
+    "Name": "Student",
+    "NormalizedName": "STUDENT",
+    "ConcurrencyStamp": "4d567e89-f012-4g51-7h89-01234i567890"
+  },
+  {
+    "Id": "2b345c67-d890-2e34-5f67-89012g345678",
+    "Name": "Teacher",
+    "NormalizedName": "TEACHER",
+    "ConcurrencyStamp": "4d567e89-f012-4g16-7h89-01234i567890"
+  },
+  {
+    "Id": "3c456d78-e901-3f45-6g78-90123h456789",
+    "Name": "School",
+    "NormalizedName": "SCHOOL",
+    "ConcurrencyStamp": "4d567e89-f012-4a46-7h89-01234i567890"
+  },
+  {
+    "Id": "4d567e89-f012-4g56-7h89-01234i567890",
+    "Name": "Admin",
+    "NormalizedName": "ADMIN",
+    "ConcurrencyStamp": "4d567e89-f012-4g58-7h89-01234i567890"
+  }
+]
