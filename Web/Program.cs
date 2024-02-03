@@ -6,7 +6,9 @@
  * what are the helpers 
  * redis
  * what is the meaining of from query
- */
+ * Modify the include in repo use aggregate method
+ * also how to hit the data only in case there are changes
+*/
 using Infrastructure.Data.Seeds;
 using Web.Extensions;
 

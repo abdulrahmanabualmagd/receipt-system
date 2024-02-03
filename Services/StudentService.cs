@@ -21,7 +21,7 @@ namespace Services
         #region GetAll
         public async Task<IEnumerable<Student>> GetAll()
         {
-            var list = await _unitOfWork.Students.GetAllAsync(["School"]);
+            var list = await _unitOfWork.Students.GetAllAsync(["Department", "Department.School"]);
 
             return list;
         }
@@ -30,7 +30,7 @@ namespace Services
         #region GetPage
         public async Task<IEnumerable<Student>> GetPage(int pageIndex, int pageSize)
         {
-            return await _unitOfWork.Students.GetPageAsync(pageIndex, pageSize, ["School"]);
+            return await _unitOfWork.Students.GetPageAsync(pageIndex, pageSize, ["Department", "Department.School"]);
         }
         #endregion
 
@@ -45,7 +45,7 @@ namespace Services
         #region Find
         public async Task<Student> Find(Expression<Func<Student, bool>> predicate)
         {
-            return await _unitOfWork.Students.FindAsync(predicate, ["School"]);
+            return await _unitOfWork.Students.FindAsync(predicate, ["Department", "Department.School"]);
         }
         #endregion
 
@@ -120,8 +120,8 @@ namespace Services
         #region GetListItems
         public async Task<IEnumerable<SelectListItem>> GetListItems()
         {
-            return await _unitOfWork.Students.GetListItems();
-        }
+            return await _unitOfWork.Students.GetListItems(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name });
+        }        
         #endregion
     }
 }

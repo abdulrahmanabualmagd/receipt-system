@@ -10,9 +10,6 @@ namespace Web.Controllers
     public class AccountController : Controller
     {
         #region Dependency Injection
-        /*
-         * We have to Register Identity to the application Services in Program.cs file 
-         */
         private readonly IAccountMangerService _accountMangerService;
 
         public AccountController ( IAccountMangerService accountMangerService)
@@ -67,6 +64,7 @@ namespace Web.Controllers
         }
         #endregion
 
+        #region External Login
         public async Task ExternalLogin(string provider)
         {
 
@@ -76,10 +74,12 @@ namespace Web.Controllers
             await HttpContext.ChallengeAsync(provider,
                 new AuthenticationProperties
                 {
-                    RedirectUri = Url.Action("ExternalLoginCallback", new { provider = provider})
+                    RedirectUri = Url.Action("ExternalLoginCallback", new { provider = provider })
                 });
         }
+        #endregion
 
+        #region External Login Call Back
         public async Task<IActionResult> ExternalLoginCallback(string provider)
         {
 
@@ -94,10 +94,10 @@ namespace Web.Controllers
             var profilePictureUrl = result.Principal.FindFirstValue("picture");
 
 
-            var emailClaim  = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            var nameClaim   = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-            var givenname    = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
-            var surname    = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
+            var emailClaim = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            var nameClaim = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            var givenname = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
+            var surname = allClaims?.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
 
 
             var responseData = new
@@ -109,7 +109,8 @@ namespace Web.Controllers
             };
 
             return Json(responseData);
-        }
+        } 
+        #endregion
 
     }
 }

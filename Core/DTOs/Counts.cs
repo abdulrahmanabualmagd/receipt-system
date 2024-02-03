@@ -1,6 +1,6 @@
 ﻿namespace Web.ViewModels
 {
-    public class StudentSchoolCounter
+    public class Counts
     {
         #region Private
         private int _studentCount;
@@ -39,9 +39,9 @@
         #endregion
 
         #region Ctor
-        public StudentSchoolCounter(): this(0, 0, 0, 0, 0, 0) { }
+        public Counts(): this(0, 0, 0, 0, 0, 0) { }
 
-        public StudentSchoolCounter(int stNo, int scNo, int depNo, int coNo, int teNo, int clNo)
+        public Counts(int stNo, int scNo, int depNo, int coNo, int teNo, int clNo)
         {
             _studentCount = stNo;
             _schoolCount = scNo;

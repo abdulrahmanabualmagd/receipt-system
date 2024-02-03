@@ -1,10 +1,11 @@
-﻿@model StudentSchoolCounter
+﻿@model Counts
 
 
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
     <div class="col-md-6 p-lg-5 mx-auto my-5">
         <h1 class="display-3 fw-bold">MVC Core Porject</h1>
-        <div class="d-flex flex-column justify-content-center my-4">
+
+        <div class="d-flex flex-wrap justify-content-center">
 
             <a class="btn btn-light py-4 px-4 fs-4 text-center" href="/Student/GetAll" id="student-count">
                 Students @Model.StudentCount
@@ -14,7 +15,20 @@
                 Schools @Model.SchoolCount
             </a>
 
-            <a class="btn btn-light py-4 px-4 fs-4 text-center" id="ajax-call-button">
+            <a class="btn btn-light py-4 px-4 fs-4 text-center my-1" href="/School/GetAll" id="school-count">
+                Departments @Model.DepartmentCount
+            </a>
+            <a class="btn btn-light py-4 px-4 fs-4 text-center my-1" href="/School/GetAll" id="school-count">
+                Courses @Model.CourseCount
+            </a>
+            <a class="btn btn-light py-4 px-4 fs-4 text-center my-1" href="/School/GetAll" id="school-count">
+                Classrooms @Model.ClassroomCount
+            </a>
+            <a class="btn btn-light py-4 px-4 fs-4 text-center my-1" href="/School/GetAll" id="school-count">
+                Teachers @Model.TeacherCount
+            </a>
+
+            <a class="btn btn-light py-4 px-4 fs-4 text-center flex-grow-1" id="ajax-call-button">
                 Ajax Call
             </a>
 

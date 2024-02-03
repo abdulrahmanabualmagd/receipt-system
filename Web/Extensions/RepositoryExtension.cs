@@ -1,4 +1,5 @@
 ﻿using Core.AccountManger;
+using Core.IServices;
 using Core.IUoW;
 using Core.SchoolServcie;
 using Core.StudentService;
@@ -12,12 +13,13 @@ namespace Web.Extensions
     {
         public static void ConfigureRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IAccountMangerService, AccountMangerService>();
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             
+            services.AddScoped<IAccountMangerService, AccountMangerService>();
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ISchoolService, SchoolService>();
+            services.AddScoped<ICountsSerivce, CountsService >();
 
         }
     }

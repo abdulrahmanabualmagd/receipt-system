@@ -21,7 +21,7 @@ namespace Services
         #region GetAll
         public async Task<IEnumerable<School>> GetAll()
         {
-            var list = await _unitOfWork.Schools.GetAllAsync(["Students"]);
+            var list = await _unitOfWork.Schools.GetAllAsync(["Departments"]);
 
             return list;
         }
@@ -120,7 +120,7 @@ namespace Services
         #region GetListItems
         public async Task<IEnumerable<SelectListItem>> GetListItems()
         {
-            return await _unitOfWork.Schools.GetListItems();
+            return await _unitOfWork.Schools.GetListItems(s => new SelectListItem { Value = s.Id.ToString(), Text = s.Name });
         }
         #endregion
     }
