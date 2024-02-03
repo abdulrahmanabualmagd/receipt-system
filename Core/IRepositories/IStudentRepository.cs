@@ -1,4 +1,4 @@
-﻿using Core.Models;
+﻿using Core.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Core.IRepositories

@@ -1,4 +1,4 @@
-﻿using Core.Models;
+﻿using Core.Entities.BaseEntity;
 using Core.Specifications.BaseSpecifications;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using System.Security.Claims;
 using System.Text;
-using Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Core.DTOs;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Core.AccountManger;
+using Core.Entities.UserIdentity;
 
 namespace Services
 {

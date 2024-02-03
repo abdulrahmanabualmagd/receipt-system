@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Core.Models;
 using Infrastructure.Data.Contexts.Application;
+using Core.Entities.UserIdentity;
 
 namespace Web.Extensions
 {

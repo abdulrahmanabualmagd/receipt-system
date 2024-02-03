@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Core.DTOs;
-using Core.Models;
+using Core.Entities.UserIdentity;
 
 namespace Core.Mappings
 {

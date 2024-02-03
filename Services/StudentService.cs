@@ -1,5 +1,5 @@
 ﻿using Core.IUoW;
-using Core.Models;
+using Core.Entities;
 using Core.StudentService;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc.Rendering;

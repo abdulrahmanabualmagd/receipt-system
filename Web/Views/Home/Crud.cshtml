@@ -56,7 +56,7 @@
                     <tr>
                         <th class="w-25" scope="row">@item.Id</th>
                         <td class="w-25">@item.Name</td>
-                        <td class="w-25">@item.School?.Name</td>
+                        <td class="w-25">@item.Department?.Name</td>
                         <td class="w-25">
                             <a asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary by-1 m-1">
                                 Delete

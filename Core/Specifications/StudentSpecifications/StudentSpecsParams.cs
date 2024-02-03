@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Specifications.StudentSpecifications
 {
-    internal class StudentSpecsParams
+    public class StudentSpecsParams
     {
         public string? Sort { get; set; }
         public int? TypeId { get; set; }

@@ -1,4 +1,4 @@
-﻿using Core.Models;
+﻿using Core.Entities;
 using Core.SchoolServcie;
 using Core.StudentService;
 using Microsoft.AspNetCore.Mvc;

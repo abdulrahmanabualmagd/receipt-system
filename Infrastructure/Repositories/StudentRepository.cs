@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Core.Models;
+using Core.Entities;
 using Core.IRepositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Infrastructure.Data.Contexts.Application;

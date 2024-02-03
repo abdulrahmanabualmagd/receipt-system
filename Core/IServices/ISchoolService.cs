@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
-using Core.Models;
+using Core.Entities;
 
 namespace Core.SchoolServcie
 {

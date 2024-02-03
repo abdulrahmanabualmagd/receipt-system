@@ -1,4 +1,4 @@
-﻿using Core.Models;
+﻿using Core.Entities.BaseEntity;
 using System.Linq.Expressions;
 
 namespace Core.Specifications.BaseSpecifications
