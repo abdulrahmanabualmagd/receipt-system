@@ -7,6 +7,6 @@ namespace Core.AccountManger
     {
         Task<AccountMangerDto> RegisterAsync(RegisterCredentialsDTO registerCredentialsDTO);
         Task<AccountMangerDto> LoginAsync(LoginCredentialsDTO loginCredentialsDTO);
-        Task<AccountMangerDto> GenerateJWT(User user);
+        Task<AccountMangerDto> GenerateJWT(ApplicationUser user);
     }
 }

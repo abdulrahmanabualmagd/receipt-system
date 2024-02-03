@@ -1,11 +1,8 @@
 ﻿namespace Core.Models
 {
-    public class School
+    public class School : Entity
     {
-        #region Properties
-        public int Id { get; set; }
-        public string? Name { get; set; } 
-        #endregion
+        public int StudentCount { get; set; } 
 
         #region Navigation Property
         public virtual ICollection<Student>? Students { get; set; } 

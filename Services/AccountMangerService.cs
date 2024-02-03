@@ -15,13 +15,13 @@ namespace Services
     {
 
         #region Dependency Injection
-        private readonly UserManager<User> _userManger;
+        private readonly UserManager<ApplicationUser> _userManger;
         private readonly RoleManager<IdentityRole> _roleManger;
         private readonly IConfiguration _configuration;
         private readonly IMapper _autoMapper;
 
         public AccountMangerService(
-            UserManager<User> userManger,
+            UserManager<ApplicationUser> userManger,
             RoleManager<IdentityRole> roleManger,
             IConfiguration configuration,
             IMapper autoMapper
@@ -50,7 +50,7 @@ namespace Services
             #endregion
 
             #region Map User Inputs
-            User user = _autoMapper.Map<RegisterCredentialsDTO, User>(registerCredentialsDTO);
+            ApplicationUser user = _autoMapper.Map<RegisterCredentialsDTO, ApplicationUser>(registerCredentialsDTO);
             #endregion
 
             #region Create User
@@ -151,7 +151,7 @@ namespace Services
         #endregion
 
         #region Generate JWT Token
-        public async Task<AccountMangerDto> GenerateJWT(User user)
+        public async Task<AccountMangerDto> GenerateJWT(ApplicationUser user)
         {
 
             #region Assign Claims

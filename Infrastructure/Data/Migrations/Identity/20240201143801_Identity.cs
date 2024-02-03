@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Infrastructure.Data.Migrations
+namespace Infrastructure.Data.Migrations.Identity
 {
     /// <inheritdoc />
-    public partial class Mi1 : Migration
+    public partial class Identity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,19 +23,6 @@ namespace Infrastructure.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Roles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Schools",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Schools", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,26 +70,6 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_RoleClaims_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Students",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SchoolId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Students", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Students_Schools_SchoolId",
-                        column: x => x.SchoolId,
-                        principalTable: "Schools",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -205,11 +172,6 @@ namespace Infrastructure.Data.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Students_SchoolId",
-                table: "Students",
-                column: "SchoolId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
                 table: "UserClaims",
                 column: "UserId");
@@ -244,9 +206,6 @@ namespace Infrastructure.Data.Migrations
                 name: "RoleClaims");
 
             migrationBuilder.DropTable(
-                name: "Students");
-
-            migrationBuilder.DropTable(
                 name: "UserClaims");
 
             migrationBuilder.DropTable(
@@ -257,9 +216,6 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserTokens");
-
-            migrationBuilder.DropTable(
-                name: "Schools");
 
             migrationBuilder.DropTable(
                 name: "Roles");

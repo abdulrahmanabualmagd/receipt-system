@@ -1,6 +1,6 @@
 ﻿using Core.IRepositories;
 using Core.IUoW;
-using Infrastructure.Data;
+using Infrastructure.Data.Contexts.Application;
 using Infrastructure.Repositories;
 
 namespace Infrastructure.UoW

@@ -8,7 +8,7 @@ namespace Services
     {
         public MappingProfile()
         {
-            CreateMap<RegisterCredentialsDTO, User>();
+            CreateMap<RegisterCredentialsDTO, ApplicationUser>();
         }
     }
 }

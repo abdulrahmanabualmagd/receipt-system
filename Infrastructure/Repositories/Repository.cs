@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Infrastructure.Data;
 using System.Linq.Expressions;
 using Core.IRepositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Infrastructure.Data.Contexts.Application;
 
 namespace Infrastructure.Repositories
 {

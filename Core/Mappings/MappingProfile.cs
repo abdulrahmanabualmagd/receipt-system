@@ -8,7 +8,7 @@ namespace Core.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<RegisterCredentialsDTO, User>();
+            CreateMap<RegisterCredentialsDTO, ApplicationUser>();
         }
     }
 }

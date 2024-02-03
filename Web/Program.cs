@@ -1,10 +1,11 @@
 /*
+ * Continue Seeds in Data -> infrastructure
  * Specifications Pattern
- * 
  * email vertification code 
  * number vertification code 
  * cookie and cache 
  * what are the helpers 
+ * redis
  * what is the meaining of from query
  */
 using Web.Extensions;
@@ -17,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Configure DbContext
-builder.Services.ConfigureDbContext(builder.Configuration.GetConnectionString("Connection"));
+builder.Services.ConfigureDbContext(builder.Configuration);
 
 // Configure Identity
 builder.Services.ConfigureIdentity();

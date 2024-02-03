@@ -4,10 +4,7 @@ namespace Core.Models
 {
     public class Student : Entity
     {
-        #region Properties
-        public int Id { get; set; }
-        public string? Name { get; set; } 
-        #endregion
+        public double GPA { get; set; } 
 
         #region Navigation Property
         public int SchoolId { get; set; }
