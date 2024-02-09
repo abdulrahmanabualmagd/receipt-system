@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Entities.BaseEntity;
+﻿using Core.Entities.BaseEntity;
 
 namespace Core.Entities
 {
     public class Course : Entity
     {
-
         #region Departments
         //public virtual ICollection<Department> Departments { get; set; } = new HashSet<Department>();
         #endregion

@@ -12,12 +12,14 @@ $(document).ready(function () {
             type: "GET",
             dataType: "json",
             success: function (data) {
-
-                // In case the request is completed successfully we get the dom element in the page
-                // and update its inner text 
-                console.log("Successfully Got Data!");
+                console.log(data);
                 $("#student-count").text("Students " + data.studentCount);
                 $("#school-count").text("Schools " + data.schoolCount);
+                $("#teacher-count").text("Teachers " + data.teacherCount);
+                $("#deparment-count").text("Departments " + data.departmentCount);
+                $("#classroom-count").text("Classrooms " + data.classroomCount);
+                $("#course-count").text("Courses " + data.courseCount);
+                console.log("Successfully Got Data!");
             },
             error: function (e) {
                 console.log("Error Happened!", e);

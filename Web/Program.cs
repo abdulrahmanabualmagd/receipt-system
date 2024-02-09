@@ -8,8 +8,9 @@
  * what is the meaining of from query
  * Modify the include in repo use aggregate method
  * also how to hit the data only in case there are changes
+ * unit of work use hashtable and modify the services
 */
-using Infrastructure.Data.Seeds;
+
 using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
