@@ -16,7 +16,6 @@ using Web.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 #region Serivces Container
-
 // Configure Controllers with Views
 builder.Services.AddControllersWithViews();
 
@@ -26,8 +25,8 @@ builder.Services.ConfigureDbContext(builder.Configuration);
 // Configure Identity
 builder.Services.ConfigureIdentity();
 
-// Configure Repositories
-builder.Services.ConfigureRepositories();
+// Configure Servcies
+builder.Services.ConfigureServices();
 
 // Configure AutoMapper
 builder.Services.ConfigureAutoMapper();
