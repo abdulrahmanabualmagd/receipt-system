@@ -16,18 +16,21 @@ namespace Services
 
         #region Dependency Injection
         private readonly UserManager<ApplicationUser> _userManger;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManger;
         private readonly IConfiguration _configuration;
         private readonly IMapper _autoMapper;
 
         public AccountMangerService(
             UserManager<ApplicationUser> userManger,
+            SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManger,
             IConfiguration configuration,
             IMapper autoMapper
             )
         {
             _userManger = userManger;
+            _signInManager = signInManager;
             _roleManger = roleManger;
             _configuration = configuration;
             _autoMapper = autoMapper;
@@ -138,7 +141,13 @@ namespace Services
 
             #region Generate Token
             var TokenGenerationResult = await GenerateJWT(user);
+            if (!TokenGenerationResult.Success)
+                return (new AccountMangerDto {Message = "Failed to generate Token" });
             var token = TokenGenerationResult.Token;
+            #endregion
+
+            #region SignIn
+            await _signInManager.PasswordSignInAsync(user, loginCredentialsDTO.Password, true, false);
             #endregion
 
             return new AccountMangerDto
@@ -153,7 +162,6 @@ namespace Services
         #region Generate JWT Token
         public async Task<AccountMangerDto> GenerateJWT(ApplicationUser user)
         {
-
             #region Assign Claims
             var userClaims = new List<Claim>
             {
@@ -197,7 +205,8 @@ namespace Services
             {
                 Message = "Token Generated Successfully!",
                 Token = token,
-                IsAuthenticated = true
+                IsAuthenticated = true,
+                Success = true,
             };
         }
         #endregion

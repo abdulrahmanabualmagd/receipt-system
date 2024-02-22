@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>@ViewData["Title"] - WebApplication1</title>
+    <title>@ViewData["Application"] - WebApplication1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
@@ -23,7 +23,6 @@
                         <li><a asp-controller="Student" asp-action="GetAll" class="btn btn-dark mx-1 nav-link px-2 text-white">Students </a></li>
                         <li><a asp-controller="School" asp-action="GetAll" class="btn btn-dark mx-1 nav-link px-2 text-white">Schools  </a></li>
                         <li><a asp-controller="Home" asp-action="Crud" class="btn btn-dark mx-1 nav-link px-2 text-white">Crud     </a></li>
-
                     </ul>
 
                         @Html.Partial("_LoginPartial.cshtml")
@@ -60,6 +59,10 @@
  
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @* load jquery validation libraries *@
+    @Html.Partial("_PartialView.cshtml");
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
