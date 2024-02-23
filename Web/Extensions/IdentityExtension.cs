@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Infrastructure.Data.Contexts.Application;
 using Core.Entities.UserIdentity;
+using Infrastructure.Data.Contexts.Identity;
 
 namespace Web.Extensions
 {
@@ -9,7 +9,7 @@ namespace Web.Extensions
         public static void ConfigureIdentity(this IServiceCollection services)
         {
             services.AddIdentity<ApplicationUser, IdentityRole>()
-               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddEntityFrameworkStores<AppIdentityDbContext>()
                .AddDefaultTokenProviders();
         }
     }

@@ -41,27 +41,38 @@ namespace Web.Controllers
         #endregion
 
         #region Login
-
         #region GET
         // Get Http
         public IActionResult Login()
         {
             return View(new LoginCredentialsDTO());
-        } 
+        }
         #endregion
 
+        #region POST
         [HttpPost]
         public async Task<IActionResult> Login(LoginCredentialsDTO data)
         {
-            /*
-             * we have to use signinmanger.passwordsigninasync
-             * and check if it succeed, require Two Factor, or locked
-             */
+            if(!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
 
             var LoginResult = await _accountMangerService.LoginAsync(data);
 
-            return Json(LoginResult);
-        }
+            return RedirectToAction("Home", "Home");
+        } 
+        #endregion
+        #endregion
+
+        #region Logout
+        #region GET
+        public async Task<IActionResult> Logout()
+        {
+            await _accountMangerService.LogoutAsync();
+            return RedirectToAction("Login", "Account");
+        } 
+        #endregion
         #endregion
 
         #region External Login
