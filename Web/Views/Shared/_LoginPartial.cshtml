@@ -6,32 +6,35 @@
 <div class="d-flex">
     @if (SignInManager.IsSignedIn(User))
     {
-        <div class="dropdown text-end">
-            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small" style="">
+        <!-- Logged In -->
+        <div class="d-flex justify-content-between mx-3 btn-dark btn">
+            <!-- Image -->
+            <div class="d-flex align-items-center mx-2">
+                <img class="img-fluid rounded-5" src="https://www.picsum.photos/200/200" alt="ProfilePic"
+                     width="35px" height="35px">
+            </div>
+            <!-- Name -->
+            <div class="d-flex align-items-center">
+                Abdulrahman
+            </div>
+        </div>
 
-
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-
-            </ul>
+        <!-- Logout -->
+        <div class="d-flex align-items-center p-2">
+            <a asp-action="Logout" asp-controller="Account"
+               class="btn btn-dark mx-1 nav-link text-white p-2">Logout</a>
         </div>
     }
     else
     {
         <!-- Unlogged -->
-        <div>
+        <div class="d-flex align-items-center p-2">
             <a asp-action="Register" asp-controller="Account"
-               class="btn btn-dark mx-1 nav-link px-2 text-white">Register </a>
+               class="btn btn-dark mx-1 nav-link text-white p-2">Register </a>
         </div>
-        <div>
+        <div class="d-flex align-items-center p-2">
             <a asp-action="Login" asp-controller="Account"
-               class="btn btn-dark mx-1 nav-link px-2 text-white">Login </a>
+               class="btn btn-dark mx-1 nav-link text-white p-2">Login </a>
         </div>
     }
-
 </div>

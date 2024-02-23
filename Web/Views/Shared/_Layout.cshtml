@@ -14,7 +14,8 @@
 
     <div class="d-flex flex-column min-vh-100">
 
-        <header class="p-3 mb-3 border-bottom bg-dark text-white">
+
+        <header class="mb-3 border-bottom bg-dark text-white py-3">
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
@@ -22,7 +23,7 @@
                         <li><a asp-action="Home" asp-controller="Home" class="btn btn-dark mx-1 nav-link px-2 text-white">Home     </a></li>
                         <li><a asp-controller="Student" asp-action="GetAll" class="btn btn-dark mx-1 nav-link px-2 text-white">Students </a></li>
                         <li><a asp-controller="School" asp-action="GetAll" class="btn btn-dark mx-1 nav-link px-2 text-white">Schools  </a></li>
-                        <li><a asp-controller="Home" asp-action="Crud" class="btn btn-dark mx-1 nav-link px-2 text-white">Crud     </a></li>
+                        <li><a asp-controller="Home" asp-action="Home" class="btn btn-dark mx-1 nav-link px-2 text-white">Crud     </a></li>
                     </ul>
 
                         @Html.Partial("_LoginPartial.cshtml")
@@ -61,7 +62,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @* load jquery validation libraries *@
-    @Html.Partial("_PartialView.cshtml");
+    @Html.Partial("_PartialView.cshtml")
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
