@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Core.AccountManger;
 using Core.Entities.UserIdentity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Services
 {
@@ -142,7 +143,7 @@ namespace Services
             #region Generate Token
             var TokenGenerationResult = await GenerateJWT(user);
             if (!TokenGenerationResult.Success)
-                return (new AccountMangerDto {Message = "Failed to generate Token" });
+                return (new AccountMangerDto { Message = "Failed to generate Token" });
             var token = TokenGenerationResult.Token;
             #endregion
 
@@ -156,6 +157,13 @@ namespace Services
                 IsAuthenticated = true,
                 Token = token
             };
+        }
+        #endregion
+
+        #region LogoutAsync
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();        
         }
         #endregion
 
