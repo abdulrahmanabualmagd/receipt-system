@@ -8,7 +8,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Core.AccountManger;
 using Core.Entities.UserIdentity;
-using Microsoft.AspNetCore.Mvc;
+using Core.Entities.Application;
+using Core.IUoW;
 
 namespace Services
 {
@@ -16,41 +17,40 @@ namespace Services
     {
 
         #region Dependency Injection
-        private readonly UserManager<ApplicationUser> _userManger;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManger;
         private readonly IConfiguration _configuration;
         private readonly IMapper _autoMapper;
+        private readonly IUnitOfWork _unitOfWork;
 
         public AccountMangerService(
             UserManager<ApplicationUser> userManger,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManger,
             IConfiguration configuration,
-            IMapper autoMapper
+            IMapper autoMapper,
+            IUnitOfWork unitOfWork
             )
         {
-            _userManger = userManger;
+            _userManager = userManger;
             _signInManager = signInManager;
             _roleManger = roleManger;
             _configuration = configuration;
             _autoMapper = autoMapper;
+            _unitOfWork = unitOfWork;
         }
         #endregion
 
         #region Register Async
-        public async Task<AccountMangerDto> RegisterAsync(RegisterCredentialsDTO registerCredentialsDTO)
+        public async Task<bool> RegisterAsync(RegisterCredentialsDTO registerCredentialsDTO)
         {
             #region Check if Username of Password is repeated
-            if (await _userManger.FindByEmailAsync(registerCredentialsDTO.Email) is not null)
-            {
-                return new AccountMangerDto { Message = "Email is used before!" };
-            }
+            if (await _userManager.FindByEmailAsync(registerCredentialsDTO.Email) is not null)
+                return false;
 
-            if (await _userManger.FindByNameAsync(registerCredentialsDTO.UserName) is not null)
-            {
-                return new AccountMangerDto { Message = "Username is used before!" };
-            }
+            if (await _userManager.FindByNameAsync(registerCredentialsDTO.UserName) is not null)
+                return false;
             #endregion
 
             #region Map User Inputs
@@ -58,10 +58,8 @@ namespace Services
             #endregion
 
             #region Create User
-            if (!(await _userManger.CreateAsync(user, registerCredentialsDTO.Password)).Succeeded)
-            {
-                return new AccountMangerDto { Message = "Unable to Create User" };
-            }
+            if (!(await _userManager.CreateAsync(user, registerCredentialsDTO.Password)).Succeeded)
+                return false;
             #endregion
 
             #region Assign Roles 
@@ -80,9 +78,7 @@ namespace Services
 
                 // Check the addition result
                 if (!adminRoleCreation.Succeeded)
-                {
-                    return new AccountMangerDto { Message = "Unable to create Admin Role" };
-                }
+                    return false;
             }
             #endregion
 
@@ -100,63 +96,75 @@ namespace Services
 
                 // Check the addition result 
                 if (!CheckRoleCreation.Succeeded)
-                {
-                    return new AccountMangerDto { Message = "Unabel to create User Role" };
-                }
+                    return false;
             }
             #endregion
 
             #region Assign Role to User
-            if (!(await _userManger.AddToRoleAsync(user, "User")).Succeeded)
+            if (!(await _userManager.AddToRoleAsync(user, "User")).Succeeded)
             {
-                return new AccountMangerDto { Message = "Unable to Assign Role to User" };
+                return false;
             }
             #endregion
 
             #endregion
 
-            #region Generate Token
-            var TokenGenerationResult = await GenerateJWT(user);
-            var token = TokenGenerationResult.Token;
+            #region Add Claims to user
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.NameIdentifier, user.Id));
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Name, registerCredentialsDTO.FirstName + " " + registerCredentialsDTO.LastName));
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.MobilePhone, registerCredentialsDTO.PhoneNumber));
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Email, registerCredentialsDTO.Email));
             #endregion
 
-            return new AccountMangerDto
+            #region RegisterCustomer
+            if (!(await RegisterCustomerAsync(user)))
+                return false; 
+            #endregion
+
+            return true;
+        }
+        #endregion
+
+        #region AddCustomer
+        public async Task<bool> RegisterCustomerAsync(ApplicationUser user)
+        {
+            Customer customer = new Customer
             {
-                Message = "Account Created Successfully",
-                Token = token,
-                IsAuthenticated = true
+                UserId =  user.Id,
+                Name = user.FirstName + " " + user.LastName,
+                Phone = user.PhoneNumber,
+                Balance = 100000,
             };
+
+            try
+            {
+                await _unitOfWork.Repository<Customer>().AddAsync(customer);
+                await _unitOfWork.CompleteAsync();
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
         #endregion
 
         #region LoginAsync
-        public async Task<AccountMangerDto> LoginAsync(LoginCredentialsDTO loginCredentialsDTO)
+        public async Task<bool> LoginAsync(LoginCredentialsDTO loginCredentialsDTO)
         {
             #region Check Password and Email
-            var user = await _userManger.FindByEmailAsync(loginCredentialsDTO.Email);
-            if (user is null || !await _userManger.CheckPasswordAsync(user, loginCredentialsDTO.Password))
-            {
-                return new AccountMangerDto { Message = "Wrong Email or Password" };
-            }
-            #endregion
-
-            #region Generate Token
-            var TokenGenerationResult = await GenerateJWT(user);
-            if (!TokenGenerationResult.Success)
-                return (new AccountMangerDto { Message = "Failed to generate Token" });
-            var token = TokenGenerationResult.Token;
+            var user = await _userManager.FindByEmailAsync(loginCredentialsDTO.Email);
+            if (user is null || !await _userManager.CheckPasswordAsync(user, loginCredentialsDTO.Password))
+                return false;
             #endregion
 
             #region SignIn
-            await _signInManager.PasswordSignInAsync(user, loginCredentialsDTO.Password, true, false);
+            if (!(await _signInManager.PasswordSignInAsync(user, loginCredentialsDTO.Password, true, false)).Succeeded)
+                return false;
             #endregion
 
-            return new AccountMangerDto
-            {
-                Message = "Loggedin Successsfully!",
-                IsAuthenticated = true,
-                Token = token
-            };
+            return true;
         }
         #endregion
 
@@ -179,7 +187,7 @@ namespace Services
                 new Claim(ClaimTypes.Role, "User")
             };
 
-            if (!(await _userManger.AddClaimsAsync(user, userClaims)).Succeeded)
+            if (!(await _userManager.AddClaimsAsync(user, userClaims)).Succeeded)
             {
                 return new AccountMangerDto { Message = "Unable To Add Claims" };
             }
@@ -218,6 +226,5 @@ namespace Services
             };
         }
         #endregion
-
     }
 }
