@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Item>
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex flex-wrap p-2">
+            @foreach (var item in Model)
+            {
+                <div class="card m-1" style="width: 18rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-title">Category: @item.Category.Name</h5>
+                        <h6 class="card-title">Stock: @item.StockAmount Pieces</h6>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Price : @item.Price$</h6>
+                        <a asp-controller="Item" asp-action="AddItem" asp-route-itemId="@item.Id" class="card-link">Add To Receipt</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
