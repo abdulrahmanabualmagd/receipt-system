@@ -1,0 +1,87 @@
+﻿@model List<Item>
+
+    @{
+        decimal Total = 0;
+    }
+<div class="container">
+    <form asp-action="NewReceipt" asp-controller="Receipt" method="post">
+
+        <div class="row">
+            <!-- Left -->
+            <div class="col-8">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    Total += Model[i].Price;
+                    <div class="card mb-3 card-body">
+                        <div class="col d-flex justify-content-between">
+                            <div class="overflow-hidden flex-nowrap">
+                                <h6 class="mb-1">@Model[i].Name</h6>
+                                <div class="d-flex">
+                                    <small>Quantity</small>
+                                    <!-- Use correct naming for model binding -->
+                                    <input type="number" asp-for="@Model[i].Quantity"
+                                           id="quantity-input" style="font-size: 0.8rem; width: 5rem;"
+                                           class="mx-1" min="1" max="@Model[i].StockAmount">
+
+                                    <small>
+                                        Pieces <span class="fw-bold"
+                                                     id="remaining-stock">@(Model[i].StockAmount - Model[i].Quantity)</span>
+                                        remaining in Stock
+                                    </small>
+                                </div>
+                                <small class="me-2">
+                                    Price: <span class="fw-bold"
+                                                 id="item-total-price">
+                                        $@(Model[i].Price *
+                                           Model[i].Quantity)
+                                    </span>
+                                </small>
+                            </div>
+
+                            <input hidden asp-for="@Model[i].Price">
+                            <input hidden asp-for="@Model[i].Name">
+                            <input hidden asp-for="@Model[i].Id">
+                            <input hidden asp-for="@Model[i].CategoryId">
+                            <input hidden asp-for="@Model[i].StockAmount">
+                            <a asp-controller="Item" asp-action="DeleteItem"
+                               asp-route-itemId="@Model[i].Id"
+                               class="d-flex align-items-center btn btn-link">X</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <!-- Right -->
+            <div class="col-lg-3">
+                <div class="card position-sticky top-0">
+                    <div class="p-3 bg-light bg-opacity-10">
+                        <h6 class="card-title mb-3">Receipt Summary</h6>
+                        <div class="d-flex justify-content-between mb-1 small">
+                            <span>Total Amount</span> <span class="fw-bold"
+                                                            id="total-price">$@Total</span>
+                        </div>
+                        <hr>
+
+                        @if (Model.Count > 0)
+                        {
+                            <button type="submit" class="btn btn-success w-100 mt-2">
+                                Create Receipt
+                            </button>
+                        }
+                        else
+                        {
+                            <a asp-action="Index" asp-controller="Item" class="btn btn-success w-100 mt-2">
+                                Add Items
+                            </a>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/newReceipt.js"></script>

@@ -6,18 +6,14 @@ namespace Web.Controllers
     public class HomeController : Controller
     {
         #region Dependency Injection
-        private readonly ICountsSerivce _countsService;
-
-        public HomeController(ICountsSerivce countsSerivce)
+        private readonly IHomeService _homeService;
+        public HomeController(IHomeService homeService) 
         {
-            _countsService = countsSerivce;
+            _homeService = homeService;
         }
         #endregion
 
-        public async Task<IActionResult> Home()
-            => View(await _countsService.GetCountsAsync());
-        
-        public async Task<IActionResult> GetDetails()
-            => Json( await _countsService.GetCountsAsync());
+        public  async Task<IActionResult> Index()
+            => View( await _homeService.GetCountsAsync());
     }
 }

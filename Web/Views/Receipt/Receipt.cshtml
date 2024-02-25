@@ -1,0 +1,57 @@
+﻿@model Receipt
+
+<div class="container">
+    <div class="row">
+
+        <!-- Left -->
+        <div class="col-8">
+            @foreach(var item in Model.Items)
+            {
+                <div class="card mb-3 card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="overflow-hidden flex-nowrap">
+                                <h6 class="mb-1">
+                                    <a href="#!" class="text-reset">@item.Name</a>
+                                </h6>
+                                <span class="text-muted d-block mb-2 small">
+                                    @item.Category
+                                </span>
+                                <div class="row align-items-center">
+                                    <div class="col-12">
+                                        <div class="row align-items-center g-0">
+                                            <div class="col-auto">
+                                                <small class="me-2">Price: @item.Price</small>
+                                            </div>
+                                            <div class="col">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Right -->
+        <div class="col-lg-3">
+            <div class="card position-sticky top-0">
+                <div class="p-3 bg-light bg-opacity-10">
+                    <h6 class="card-title mb-3">Receipt Summary</h6>
+                    <div class="d-flex justify-content-between mb-1 small">
+                        <span>Total Amount</span> <span>$@Model.TotalAmount</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-4 small">
+                        <span>TOTAL</span> <strong class="text-dark">$@Model.TotalAmount</strong>
+                    </div>
+                    <button class="btn btn-success w-100 mt-2">Add Receipt</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
