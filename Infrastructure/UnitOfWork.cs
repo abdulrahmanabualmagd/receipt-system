@@ -1,8 +1,8 @@
-﻿using Core.Entities;
-using Core.IRepositories;
+﻿using Core.IRepositories;
 using Core.IUoW;
 using Infrastructure.Data.Contexts.Application;
 using Infrastructure.Repositories;
+using System.Collections;
 
 namespace Infrastructure.UoW
 {
@@ -10,23 +10,12 @@ namespace Infrastructure.UoW
     {
         #region Injection
         private readonly ApplicationDbContext _context;
-        public IRepository<School> Schools { get; private set; }
-        public IRepository<Student> Students { get; private set; }  
-        public IRepository<Department> Departments { get; private set; }
-        public IRepository<Teacher> Teachers { get; private set; }
-        public IRepository<Course> Courses { get; private set; }
-        public IRepository<Classroom> Classrooms { get; private set; }
+        private Hashtable _repositories;
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-
-            Schools = new Repository<School>(_context);
-            Students = new Repository<Student>(_context);
-            Departments = new Repository<Department>(_context);
-            Teachers = new Repository<Teacher>(_context);
-            Courses = new Repository<Course>(_context);
-            Classrooms = new Repository<Classroom>(_context);
+            _repositories = new Hashtable();
         }
         #endregion
 
@@ -36,6 +25,21 @@ namespace Infrastructure.UoW
 
         #region Dispose
         public ValueTask DisposeAsync() => _context.DisposeAsync();
+        #endregion
+
+        #region Repository Factory
+        public IRepository<T> Repository<T>() where T : class
+        {
+            var type = typeof(T).Name;
+            if(!_repositories.ContainsKey(type))
+            {
+                // Create new repo 
+                var repo = new Repository<T>(_context);
+                // Add reopsitory to the hashtable repositories
+                _repositories.Add(type, repo);
+            }
+            return (IRepository<T>) _repositories[type];
+        }
         #endregion
     }
 }

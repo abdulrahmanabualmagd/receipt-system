@@ -23,6 +23,7 @@ namespace Core.IRepositories
         Task<IEnumerable<T>> GetAllAsync(string[]? include = null);
         Task<IEnumerable<T>> GetPageAsync(int pageIndex, int pageSize, string[]? include = null);
         Task<T> FindAsync(Expression<Func<T, bool>> predicate, string[]? include = null);
+        Task<List<T>> FindAllAsync(Expression<Func<T, bool>> predicate, string[]? include = null);
         Task<int> CountAsync();
         Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
         Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate);

@@ -76,6 +76,19 @@ namespace Infrastructure.Repositories
         }
         #endregion
 
+        #region FindAsync
+        public async Task<List<T>> FindAllAsync(Expression<Func<T, bool>> predicate, string[]? include = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (include != null)
+                foreach (var item in include)
+                    query = query.Include(item);
+
+            return await query.Where(predicate).ToListAsync();
+        }
+        #endregion
+
         #region CountAsync
         public async Task<int> CountAsync()
             => await _context.Set<T>().CountAsync();
