@@ -1,13 +1,14 @@
 ﻿using Infrastructure.Data.Contexts.Application;
 using Infrastructure.Data.Contexts.Identity;
 using Infrastructure.Data.Seeds.Application;
+using Infrastructure.Data.Seeds.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Web.Extensions
 {
     public static class SeedingExtension
     {
-        public static async void SeedAsync(this IServiceProvider serviceProvider)
+        public static async Task SeedAsync(this IServiceProvider serviceProvider)
         {
             var scope = serviceProvider.CreateScope();
             var services = scope.ServiceProvider;
@@ -19,10 +20,11 @@ namespace Web.Extensions
             try
             {
                 await identityDbContext.Database.MigrateAsync();
-                //await IdentitySeed.SeedIdentityAsync(identityDbContext);
-                await ApplicationSeed.SeedApplicationAsync(applicationDbContext);
+
+                await IdentitySeed.SeedIdentityAsync(identityDbContext);
+                await ApplicationSeed.SeedEntityAsync(applicationDbContext);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 var logger = LoggerFactory.CreateLogger<Program>();
                 logger.LogError(ex, "An error happened while trying to migrate stored static files");

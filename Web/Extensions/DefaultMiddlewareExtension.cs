@@ -4,7 +4,7 @@
     {
         public static void UseDefaultMiddleware(this IApplicationBuilder app)
         {
-            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
             app.UseRouting();
 

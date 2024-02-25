@@ -1,9 +1,8 @@
 ﻿using Core.AccountManger;
+using Core.Entities.Application;
 using Core.Entities.UserIdentity;
 using Core.IServices;
 using Core.IUoW;
-using Core.SchoolServcie;
-using Core.StudentService;
 using Infrastructure.UoW;
 using Microsoft.AspNetCore.Identity;
 using Services;
@@ -15,16 +14,23 @@ namespace Web.Extensions
     {
         public static void ConfigureServices(this IServiceCollection services)
         {
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            // Authentication & Authorization
             services.AddScoped<IAccountMangerService, AccountMangerService>();
             services.AddScoped<SignInManager<ApplicationUser>>();
             services.AddScoped<UserManager<ApplicationUser>>();
 
-            services.AddScoped<IStudentService, StudentService>();
-            services.AddScoped<ISchoolService, SchoolService>();
-            services.AddScoped<ICountsSerivce, CountsService >();
+            // UOW
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            // Special Services
+            services.AddScoped<IHomeService, HomeService>();
+            services.AddScoped<IProfileService, ProfileService>();
+
+            // Entities Services
+            services.AddScoped<IItemService, ItemService>();
+            services.AddScoped<IReceiptService, ReceiptService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IPaymentService, PaymentService>();
         }
     }
 }

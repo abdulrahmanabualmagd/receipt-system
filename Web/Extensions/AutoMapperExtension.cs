@@ -1,4 +1,5 @@
-﻿using Services;
+﻿using Core.Mappings;
+using Services;
 
 namespace Web.Extensions
 {
