@@ -1,0 +1,99 @@
+﻿@model ProfileDto
+
+<div class="container">
+    <div class="main-body">
+        <div class="row h-auto p-1">
+
+            <!-- Left Side Profile -->
+            <div class="col-lg-4 d-flex align-items-center p-1">
+                <div class="card w-100 h-100">
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <div class="d-flex flex-column align-items-center text-center w-100">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                 class="rounded-circle" width="150">
+                            <h4>@Model.Name</h4>
+                            <div>
+                                <a asp-action="Logout" asp-controller="Account"
+                                   class="btn btn-outline-dark w-100">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-8 d-flex flex-column p-1">
+
+                <!-- Right Side Information -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="@Model.Name">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="@Model.Email">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Phone</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="@Model.Phone">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" value="@Model.Address">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Lower  -->
+        <div class="row h-auto p-1">
+            <h3>My Receipts</h3>
+            <div class="d-flex flex-wrap justify-content-start p-2 border rounded-2">
+
+                @foreach (var item in Model.Receipts)
+                {
+                    @if (item.TotalAmount != 0)
+                    {
+                    <div class="card m-2 rounded-3 shadow-sm border-dark">
+                        <div class="card-header py-3 text-bg-Dark border-dark">
+                                <h4 class="text-center">Released</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="text-center"> $@(item.TotalAmount - item.PaidAmount)</h1>
+                            <ul class="list-unstyled mt-2 mb-2">
+                                <li>Total Amount: $@item.TotalAmount</li>
+                                <li>Released: @item.ReleasedDate</li>
+                            </ul>
+                            <a type="button" class="w-100 btn btn-lg btn-dark">Details</a>
+                            <a type="button" class="w-100 btn btn-lg btn-success mt-1">Pay</a>
+                        </div>
+                    </div>
+                    }
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
