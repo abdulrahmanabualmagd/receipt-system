@@ -34,7 +34,6 @@ namespace Web.Controllers
 
             var RegisterationResult = await _accountMangerService.RegisterAsync(data);
 
-            TempData["Message"] = RegisterationResult.Message;
             return Redirect("/Account/Login");
 
         }
@@ -60,7 +59,7 @@ namespace Web.Controllers
 
             var LoginResult = await _accountMangerService.LoginAsync(data);
 
-            return RedirectToAction("Home", "Home");
+            return RedirectToAction("Index", "Home");
         } 
         #endregion
         #endregion

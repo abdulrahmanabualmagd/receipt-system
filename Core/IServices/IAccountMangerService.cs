@@ -5,8 +5,9 @@ namespace Core.AccountManger
 {
     public interface IAccountMangerService
     {
-        Task<AccountMangerDto> RegisterAsync(RegisterCredentialsDTO registerCredentialsDTO);
-        Task<AccountMangerDto> LoginAsync(LoginCredentialsDTO loginCredentialsDTO);
+        Task<bool> RegisterAsync(RegisterCredentialsDTO registerCredentialsDTO);
+        Task<bool> RegisterCustomerAsync(ApplicationUser user);
+        Task<bool> LoginAsync(LoginCredentialsDTO loginCredentialsDTO);
         Task LogoutAsync();
         Task<AccountMangerDto> GenerateJWT(ApplicationUser user);
     }
