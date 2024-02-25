@@ -3,52 +3,28 @@
     public class Counts
     {
         #region Private
-        private int _studentCount;
-        private int _schoolCount;
-        private int _departmentcount;
-        private int _courseCount;
-        private int _teacherCount;
-        private int _classroomCount;
+        private int _categoryCount;
+        private int _itemCount;
         #endregion
         
         #region Properties
-        public int StudentCount
+        public int CategoryCount
         {
-            get { return _studentCount; }
+            get { return _categoryCount; }
         }
-        public int SchoolCount
+        public int ItemCount
         {
-            get { return _schoolCount; }
-        }
-        public int DepartmentCount
-        {
-            get { return _departmentcount; }
-        }
-        public int TeacherCount
-        {
-            get { return _teacherCount; }
-        }
-        public int CourseCount
-        {
-            get { return _courseCount; }
-        }
-        public int ClassroomCount
-        {
-            get { return _classroomCount; }
+            get { return _itemCount; }
         }
         #endregion
 
         #region Ctor
-        public Counts(): this(0, 0, 0, 0, 0, 0) { }
+        public Counts(): this(0, 0) { }
 
-        public Counts(int stNo, int scNo, int depNo, int coNo, int teNo, int clNo)
+        public Counts(int cNo, int iNo)
         {
-            _studentCount = stNo;
-            _schoolCount = scNo;
-            _departmentcount = depNo;
-            _courseCount = coNo;
-            _teacherCount = teNo;
-            _classroomCount = clNo;
+            _categoryCount = cNo;
+            _itemCount = iNo;
         }
         #endregion
     }
