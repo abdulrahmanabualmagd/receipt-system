@@ -1,9 +1,9 @@
-﻿using Core.Entities.BaseEntity;
+﻿using Core.Entities.Application;
 using System.Linq.Expressions;
 
 namespace Core.Specifications.BaseSpecifications
 {
-    public interface ISpecifications<T> where T : Entity
+    public interface ISpecifications<T> where T : class
     {
         Expression<Func<T, bool>> Criteria { get; }
         List<Expression<Func<T, object>>> IncludeExpressions { get; }

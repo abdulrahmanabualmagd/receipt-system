@@ -6,18 +6,23 @@
 <div class="d-flex">
     @if (SignInManager.IsSignedIn(User))
     {
+
+        <a asp-action="NewReceipt" asp-controller="Receipt" class="d-flex justify-content-between mx-1 btn btn-dark">
+            <div class="d-flex align-items-center mx-2">Receipt</div>
+        </a>
+
         <!-- Logged In -->
-        <div class="d-flex justify-content-between mx-3 btn-dark btn">
             <!-- Image -->
+        <a asp-controller="Profile" asp-action="Index" class="d-flex justify-content-between mr-2 btn btn-dark">
             <div class="d-flex align-items-center mx-2">
-                <img class="img-fluid rounded-5" src="https://www.picsum.photos/200/200" alt="ProfilePic"
+                <img class="img-fluid rounded-5" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="ProfilePic"
                      width="35px" height="35px">
             </div>
             <!-- Name -->
             <div class="d-flex align-items-center">
                 Abdulrahman
             </div>
-        </div>
+        </a>
 
         <!-- Logout -->
         <div class="d-flex align-items-center p-2">

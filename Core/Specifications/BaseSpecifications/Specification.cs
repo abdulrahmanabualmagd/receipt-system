@@ -1,9 +1,9 @@
-﻿using Core.Entities.BaseEntity;
+﻿using Core.Entities.Application;
 using System.Linq.Expressions;
 
 namespace Core.Specifications.BaseSpecifications
 {
-    public class Specifications<T> : ISpecifications<T> where T : Entity
+    public class Specifications<T> : ISpecifications<T> where T : class
     {
         #region Ctor and Criteria Setter
         public Specifications() { }
