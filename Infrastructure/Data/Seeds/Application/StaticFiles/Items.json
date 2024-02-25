@@ -1,0 +1,272 @@
+[
+  {
+    "Name": "Smartphone",
+    "Price": 799.99,
+    "StockAmount": 10,
+    "CategoryId": 1
+  },
+  {
+    "Name": "Laptop",
+    "Price": 1099.99,
+    "StockAmount": 8,
+    "CategoryId": 1
+  },
+  {
+    "Name": "Tablet",
+    "Price": 349.99,
+    "StockAmount": 12,
+    "CategoryId": 1
+  },
+  {
+    "Name": "Camera",
+    "Price": 499.99,
+    "StockAmount": 6,
+    "CategoryId": 1
+  },
+  {
+    "Name": "Headphones",
+    "Price": 149.99,
+    "StockAmount": 5,
+    "CategoryId": 1
+  },
+  {
+    "Name": "Smartwatch",
+    "Price": 249.99,
+    "StockAmount": 7,
+    "CategoryId": 1
+  },
+  {
+    "Name": "Gaming Console",
+    "Price": 399.99,
+    "StockAmount": 9,
+    "CategoryId": 1
+  },
+  {
+    "Name": "Dress",
+    "Price": 59.99,
+    "StockAmount": 11,
+    "CategoryId": 2
+  },
+  {
+    "Name": "Shoes",
+    "Price": 79.99,
+    "StockAmount": 14,
+    "CategoryId": 2
+  },
+  {
+    "Name": "Jacket",
+    "Price": 89.99,
+    "StockAmount": 5,
+    "CategoryId": 2
+  },
+  {
+    "Name": "Jeans",
+    "Price": 49.99,
+    "StockAmount": 10,
+    "CategoryId": 2
+  },
+  {
+    "Name": "Hat",
+    "Price": 19.99,
+    "StockAmount": 6,
+    "CategoryId": 2
+  },
+  {
+    "Name": "Handbag",
+    "Price": 69.99,
+    "StockAmount": 8,
+    "CategoryId": 2
+  },
+  {
+    "Name": "Necklace",
+    "Price": 39.99,
+    "StockAmount": 12,
+    "CategoryId": 2
+  },
+  {
+    "Name": "Sofa",
+    "Price": 499.99,
+    "StockAmount": 7,
+    "CategoryId": 3
+  },
+  {
+    "Name": "Curtains",
+    "Price": 29.99,
+    "StockAmount": 11,
+    "CategoryId": 3
+  },
+  {
+    "Name": "Cookware Set",
+    "Price": 99.99,
+    "StockAmount": 6,
+    "CategoryId": 3
+  },
+  {
+    "Name": "Lamp",
+    "Price": 39.99,
+    "StockAmount": 8,
+    "CategoryId": 3
+  },
+  {
+    "Name": "Garden Tools",
+    "Price": 79.99,
+    "StockAmount": 10,
+    "CategoryId": 3
+  },
+  {
+    "Name": "Bedding Set",
+    "Price": 79.99,
+    "StockAmount": 9,
+    "CategoryId": 3
+  },
+  {
+    "Name": "Facial Cream",
+    "Price": 29.99,
+    "StockAmount": 12,
+    "CategoryId": 4
+  },
+  {
+    "Name": "Shampoo",
+    "Price": 14.99,
+    "StockAmount": 5,
+    "CategoryId": 4
+  },
+  {
+    "Name": "Makeup Kit",
+    "Price": 49.99,
+    "StockAmount": 14,
+    "CategoryId": 4
+  },
+  {
+    "Name": "Fitness Tracker",
+    "Price": 99.99,
+    "StockAmount": 8,
+    "CategoryId": 4
+  },
+  {
+    "Name": "Vitamins",
+    "Price": 19.99,
+    "StockAmount": 11,
+    "CategoryId": 4
+  },
+  {
+    "Name": "Yoga Mat",
+    "Price": 29.99,
+    "StockAmount": 10,
+    "CategoryId": 4
+  },
+  {
+    "Name": "Novel",
+    "Price": 12.99,
+    "StockAmount": 7,
+    "CategoryId": 5
+  },
+  {
+    "Name": "Cookbook",
+    "Price": 19.99,
+    "StockAmount": 9,
+    "CategoryId": 5
+  },
+  {
+    "Name": "Self-Help Book",
+    "Price": 15.99,
+    "StockAmount": 6,
+    "CategoryId": 5
+  },
+  {
+    "Name": "Children's Book",
+    "Price": 9.99,
+    "StockAmount": 8,
+    "CategoryId": 5
+  },
+  {
+    "Name": "Art Book",
+    "Price": 24.99,
+    "StockAmount": 12,
+    "CategoryId": 5
+  },
+  {
+    "Name": "Travel Guide",
+    "Price": 29.99,
+    "StockAmount": 11,
+    "CategoryId": 5
+  },
+  {
+    "Name": "Football",
+    "Price": 29.99,
+    "StockAmount": 10,
+    "CategoryId": 6
+  },
+  {
+    "Name": "Basketball",
+    "Price": 24.99,
+    "StockAmount": 13,
+    "CategoryId": 6
+  },
+  {
+    "Name": "Tennis Racket",
+    "Price": 59.99,
+    "StockAmount": 8,
+    "CategoryId": 6
+  },
+  {
+    "Name": "Yoga Mat",
+    "Price": 19.99,
+    "StockAmount": 7,
+    "CategoryId": 6
+  },
+  {
+    "Name": "Golf Clubs",
+    "Price": 199.99,
+    "StockAmount": 15,
+    "CategoryId": 6
+  },
+  {
+    "Name": "Boxing Gloves",
+    "Price": 49.99,
+    "StockAmount": 9,
+    "CategoryId": 6
+  },
+  {
+    "Name": "Action Figure",
+    "Price": 9.99,
+    "StockAmount": 11,
+    "CategoryId": 7
+  },
+  {
+    "Name": "Doll",
+    "Price": 14.99,
+    "StockAmount": 6,
+    "CategoryId": 7
+  },
+  {
+    "Name": "Remote Control Car",
+    "Price": 39.99,
+    "StockAmount": 8,
+    "CategoryId": 7
+  },
+  {
+    "Name": "Board Game",
+    "Price": 24.99,
+    "StockAmount": 10,
+    "CategoryId": 7
+  },
+  {
+    "Name": "LEGO Set",
+    "Price": 49.99,
+    "StockAmount": 12,
+    "CategoryId": 7
+  },
+  {
+    "Name": "Puzzle",
+    "Price": 9.99,
+    "StockAmount": 14,
+    "CategoryId": 7
+  },
+  {
+    "Name": "Soft Toy",
+    "Price": 19.99,
+    "StockAmount": 13,
+    "CategoryId": 7
+  }
+]
