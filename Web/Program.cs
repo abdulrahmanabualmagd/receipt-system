@@ -1,4 +1,4 @@
-/*
+/*  ------------ [ To Do ] -----------------
  * Specifications Pattern
  * email vertification code 
  * number vertification code 
@@ -41,7 +41,7 @@ builder.Services.ConfigureAuthentication(builder.Configuration);
 var app = builder.Build();
 
 // Seeding Identity Tables
- app.Services.SeedAsync();
+ await app.Services.SeedAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
