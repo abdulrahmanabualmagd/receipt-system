@@ -59,7 +59,14 @@ namespace Web.Controllers
 
             var LoginResult = await _accountMangerService.LoginAsync(data);
 
-            return RedirectToAction("Index", "Home");
+            if (LoginResult)
+                return RedirectToAction("Index", "Home");
+
+            else
+                TempData["Message"] = "In Correct Email or password";
+            return RedirectToAction("Login");
+
+            
         } 
         #endregion
         #endregion

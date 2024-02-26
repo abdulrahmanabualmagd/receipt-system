@@ -1,6 +1,12 @@
 ﻿ @model LoginCredentialsDTO
 
 <div>
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-warning fs-4 text-center">
+            @TempData["Message"]
+        </div>
+    }
     <div class="container h-100">
         <div class="d-flex justify-content-center align-items-center h-100">
 
@@ -10,10 +16,12 @@
 
                 <h1 class="display-5 mb-4 text-center">Login</h1>
 
+                <!-- Email Input -->
                 <div class="form-floating">
                     <input type="email" class="form-control" id="floatingInput"
                            placeholder="name@example.com" asp-for="Email">
                     <label for="floatingInput">Email address</label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <span class="my-2"></span>
@@ -22,6 +30,7 @@
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
                            asp-for="Password">
                     <label for="floatingPassword">Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
 
 
