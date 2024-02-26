@@ -32,10 +32,16 @@ namespace Web.Controllers
         public async Task<IActionResult> Register(RegisterCredentialsDTO data)
         {
 
-            var RegisterationResult = await _accountMangerService.RegisterAsync(data);
+            if (ModelState.IsValid)
+            {
+                var RegisterationResult = await _accountMangerService.RegisterAsync(data);
 
-            return Redirect("/Account/Login");
+                if (RegisterationResult)
+                    return Redirect("/Account/Login");
+            }
 
+            TempData["Message"] = "Wrong formt!";
+            return Redirect("/Account/Register");
         }
         #endregion
 
@@ -52,21 +58,16 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginCredentialsDTO data)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                return BadRequest();
+                var LoginResult = await _accountMangerService.LoginAsync(data);
+
+                if (LoginResult)
+                    return RedirectToAction("Index", "Home");
             }
 
-            var LoginResult = await _accountMangerService.LoginAsync(data);
-
-            if (LoginResult)
-                return RedirectToAction("Index", "Home");
-
-            else
-                TempData["Message"] = "In Correct Email or password";
+            TempData["Message"] = "In Correct Email or password";
             return RedirectToAction("Login");
-
-            
         } 
         #endregion
         #endregion

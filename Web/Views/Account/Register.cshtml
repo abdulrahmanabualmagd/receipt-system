@@ -1,17 +1,14 @@
-﻿<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-</head>
-
-<body>
+﻿
     @model RegisterCredentialsDTO
 
 
     <div>
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-warning fs-4 text-center">
+            @TempData["Message"]
+        </div>
+    }
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <form style="max-width: 30rem;"
@@ -141,41 +138,56 @@
                             <input type="text" class="form-control" id="floatingInput" placeholder="John"
                                    asp-for="FirstName">
                             <label for="floatingInput">First Name</label>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+
                         </div>
                         <div class="form-floating m-1 flex-grow-1">
                             <input type="text" class="form-control" id="floatingInput" placeholder="Doe"
                                    asp-for="LastName">
                             <label for="floatingInput">Last Name</label>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+
                         </div>
                     </div>
                     <div class="form-floating m-1">
                         <input type="text" class="form-control" id="floatingInput" placeholder="username"
                                asp-for="UserName">
                         <label for="floatingInput">Username</label>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+
                     </div>
 
                     <div class="form-floating m-1">
                         <input type="text" class="form-control" id="floatingInput"
                                placeholder="name@example.com" asp-for="PhoneNumber">
                         <label for="floatingInput">Phone Number</label>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
                     </div>
 
                     <div class="form-floating m-1">
                         <input type="email" class="form-control" id="floatingInput"
                                placeholder="name@example.com" asp-for="Email">
                         <label for="floatingInput">Email Address</label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
                     </div>
 
                     <div class="form-floating m-1">
                         <input type="password" class="form-control" id="floatingInput" placeholder=""
                                asp-for="Password">
                         <label for="floatingInput">Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+
                     </div>
 
                     <div class="form-floating m-1">
                         <input type="password" class="form-control" id="floatingInput"
                                placeholder="">
                         <label for="floatingInput">Confirm Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
                     </div>
 
                     <div class="row align-items-center py-3">
@@ -261,13 +273,3 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-</body>
-
-</html>

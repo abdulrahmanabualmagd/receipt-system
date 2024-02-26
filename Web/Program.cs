@@ -40,7 +40,7 @@ builder.Services.ConfigureAuthentication(builder.Configuration);
 // Build Application
 var app = builder.Build();
 
-// Seeding Identity Tables
+// Seeding Default Data
  await app.Services.SeedAsync();
 
 // Configure the HTTP request pipeline.
