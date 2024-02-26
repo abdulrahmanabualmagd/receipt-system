@@ -15,22 +15,22 @@ namespace Web.Extensions
                 .AddCookie()
                 .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
                 {
-                    options.ClientId = configuration["Authentication:Google:ClientID"] ?? "";
-                    options.ClientSecret = configuration["Authentication:Google:ClientSecret"] ?? "";
+                    options.ClientId = configuration["Authentication:Google:ClientID"] ?? "write something";
+                    options.ClientSecret = configuration["Authentication:Google:ClientSecret"] ?? "write something";
                     options.CallbackPath = new PathString("/signin-google");
                 })
 
                 .AddFacebook(FacebookDefaults.AuthenticationScheme ,options =>
                 {
-                    options.ClientId = configuration["Authentication:Facebook:ClientID"] ?? "";
-                    options.ClientSecret = configuration["Authentication:Facebook:ClientSecret"] ?? "";
+                    options.ClientId = configuration["Authentication:Facebook:ClientID"] ?? "write something";
+                    options.ClientSecret = configuration["Authentication:Facebook:ClientSecret"] ?? "write something";
 
                 })
 
                 .AddOAuth("GitHub", options =>
                 {
-                    options.ClientId = configuration["Authentication:GitHub:ClientID"] ?? "";
-                    options.ClientSecret = configuration["Authentication:GitHub:ClientSecret"] ?? "";
+                    options.ClientId = configuration["Authentication:GitHub:ClientID"] ?? "write something";
+                    options.ClientSecret = configuration["Authentication:GitHub:ClientSecret"] ?? "write something";
 
                     options.CallbackPath = "/signin-oauth";
 
