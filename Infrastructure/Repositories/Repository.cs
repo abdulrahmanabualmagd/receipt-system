@@ -63,6 +63,15 @@ namespace Infrastructure.Repositories
         }
         #endregion
 
+        #region GetTotalPagesAsync
+        public async Task<int> GetTotalPagesAsync(int pageSize)
+        {
+            int totalItemCount = await _context.Set<T>().CountAsync();
+            int totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+            return totalPages;
+        } 
+        #endregion
+
         #region FindAsync
         public async Task<T> FindAsync(Expression<Func<T, bool>> predicate, string[]? include = null)
         {
