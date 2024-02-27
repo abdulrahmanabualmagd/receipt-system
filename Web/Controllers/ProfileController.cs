@@ -22,7 +22,7 @@ namespace Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _profileService.GetProfile(User));
+            return View(await _profileService.GetProfileAsync(User));
         }
     }
 }

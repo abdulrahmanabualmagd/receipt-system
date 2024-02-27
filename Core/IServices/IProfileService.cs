@@ -12,7 +12,10 @@ namespace Core.IServices
 {
     public interface IProfileService
     {
-        Task<ProfileDto> GetProfile(ClaimsPrincipal user);
-        Task<int> GetCustomerId(ClaimsPrincipal user);
+        Task<ProfileDto> GetProfileAsync(ClaimsPrincipal user);
+        Task<int> GetCustomerIdAsync(ClaimsPrincipal user);
+
+        Task<bool> CustomerAddChange(ClaimsPrincipal user, decimal change);
+        Task<bool> CustomerPayAsync(ClaimsPrincipal user, decimal amount);
     }
 }

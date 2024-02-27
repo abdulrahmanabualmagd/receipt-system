@@ -14,6 +14,7 @@ namespace Core.DTOs
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public decimal Balance { get; set; }
         public List<Receipt> Receipts { get; set; } = new List<Receipt>();
     }
 }

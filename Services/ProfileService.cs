@@ -26,10 +26,11 @@ namespace Services
         }
         #endregion
 
-        public async Task<ProfileDto> GetProfile(ClaimsPrincipal user)
+        #region GetProfile
+        public async Task<ProfileDto> GetProfileAsync(ClaimsPrincipal user)
         {
             // Check user identity
-            if (user == null) 
+            if (user == null)
                 return new ProfileDto();
 
             var CurrentUser = await _userManager.GetUserAsync(user);
@@ -48,8 +49,9 @@ namespace Services
 
             var customerId = (await _unitOfWork.Repository<Customer>().FindAsync(c => c.UserId == userId)).Id;
 
-            var receipts = (await _unitOfWork.Repository<Receipt>().FindAllAsync(c=> c.CustomerId == customerId)).ToList();
-            
+            var receipts = (await _unitOfWork.Repository<Receipt>().FindAllAsync(c => c.CustomerId == customerId)).ToList();
+
+            var customerBalance = (await _unitOfWork.Repository<Customer>().FindAsync(c => c.Id == customerId)).Balance;
 
             return new ProfileDto
             {
@@ -57,22 +59,71 @@ namespace Services
                 Name = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
                 Phone = claims.FirstOrDefault(c => c.Type == ClaimTypes.MobilePhone)?.Value,
                 Email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
+                Balance = customerBalance,
                 Address = "N/A",
                 Receipts = receipts
             };
         }
+        #endregion
 
-        public async Task<int> GetCustomerId(ClaimsPrincipal user)
+        #region GetCustomerId
+        public async Task<int> GetCustomerIdAsync(ClaimsPrincipal user)
         {
             var currentUser = await _userManager.GetUserAsync(user);
 
             var claims = await _userManager.GetClaimsAsync(currentUser);
 
-            var userId = claims.FirstOrDefault(c=> c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var userId = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
             var customerId = (await _unitOfWork.Repository<Customer>().FindAsync(c => c.UserId == userId)).Id;
 
             return customerId;
         }
+        #endregion
+
+        #region Customer Pay
+        public async Task<bool> CustomerPayAsync(ClaimsPrincipal user, decimal amount)
+        {
+            var customerID = await GetCustomerIdAsync(user);
+
+            var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(customerID);
+
+            if (customer.Balance < amount)
+                return false;
+
+            customer.Balance = customer.Balance - amount;
+
+            _unitOfWork.Repository<Customer>().Update(customer);
+
+            try
+            {
+                await _unitOfWork.CompleteAsync();
+            }
+            catch { return false; }
+
+            return true;
+        }
+        #endregion
+
+        #region Customer Transaction Change
+        public async Task<bool> CustomerAddChange(ClaimsPrincipal user, decimal change)
+        {
+            var customerID = await GetCustomerIdAsync(user);
+
+            var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(customerID);
+
+            customer.Balance += change;
+
+            _unitOfWork.Repository<Customer>().Update(customer);
+
+            try
+            {
+                await _unitOfWork.CompleteAsync();
+            }
+            catch { return false; }
+
+            return true;
+        }
+        #endregion
     }
 }
