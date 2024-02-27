@@ -15,15 +15,27 @@
 
         <header class="mb-3 border-bottom bg-dark text-white py-3">
             <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <div class="row">
 
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a asp-controller="Home" asp-action="Index" class="btn btn-dark mx-1 nav-link px-2 text-white">Home</a></li>
-                        <li><a asp-controller="Category" asp-action="Index" class="btn btn-dark mx-1 nav-link px-2 text-white">Category</a></li>
-                        <li><a asp-controller="Item"     asp-action="Index" class="btn btn-dark mx-1 nav-link px-2 text-white">Items</a></li>
-                    </ul>
+                    <!--Brand-->
+                    <div class="col-lg-4 d-flex align-items-center display-5 fw-bold fst-italic">
+                        Web Store
+                    </div>
 
+                    <!--Main Nav-->
+                    <div class="col-lg-4 d-flex flex-wrap align-items-center justify-content-center">
+
+                            <div><a asp-controller="Home" asp-action="Index" class="btn btn-dark mx-1 nav-link p-2 text-white">Home</a></div>
+                            <div><a asp-controller="Category" asp-action="Index" class="btn btn-dark mx-1 nav-link p-2 text-white">Category</a></div>
+                            <div><a asp-controller="Item" asp-action="Index" class="btn btn-dark mx-1 nav-link p-2 text-white">Items</a></div>
+
+                    </div>
+
+                    <!--Account Info-->
+                    <div class="col-lg-4 d-flex justify-content-end align-items-center">
                         @Html.Partial("_LoginPartial.cshtml")
+                    </div>
+
                 </div>
             </div>
         </header>
@@ -50,7 +62,7 @@
 
     </div>
  
-    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
 
