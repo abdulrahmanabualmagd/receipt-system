@@ -78,6 +78,20 @@ namespace Services
         }
         #endregion
 
+        #region Update Item
+        public async Task<bool> UpdateAsync(Item item)
+        {
+            _unitOfWork.Repository<Item>().Update(item);
+
+            try
+            {
+                await _unitOfWork.CompleteAsync();
+            }
+            catch { return false; }
+
+            return true;
+        }
+        #endregion
 
         #region Get All Receipt Items
         public async Task<IEnumerable<Item>> UserGetAllAsync(ClaimsPrincipal user, int receiptId)

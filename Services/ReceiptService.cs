@@ -104,28 +104,87 @@ namespace Services
         {
 
             var receipt = await GetUserOpenReceiptAsync(user);
+
             var itemsreceiopt = receipt.Items.ToList();
 
-            decimal total = 0;
-            // Check for the stock limit
-            for (int i = 0; i < items.Count; i++)
+            #region Moving Quantities
+            bool flag = false;
+            foreach (var item in itemsreceiopt)
             {
-                if (items[i].Quantity > items[i].StockAmount)
-                    return false;
+                flag = false;
 
-                receipt.TotalAmount += items[i].Price * items[i].Quantity;
-
-                receipt.Items.ElementAt(i).Quantity = items[i].Quantity;
+                foreach (var item2 in items)
+                {
+                    if (item2.Id == item.Id)
+                    {
+                        flag = true;
+                        item.Quantity = item2.Quantity;
+                        continue;
+                    }
+                }
+                if (!flag)
+                {
+                    itemsreceiopt.Remove(item);
+                }
             }
+            #endregion
 
+
+
+            #region Ignored
+            //// Check for the stock limit
+            //for (int i = 0; i < items.Count; i++)
+            //{
+            //    if (items[i].Quantity > items[i].StockAmount)
+            //        return false;
+
+            //    receipt.TotalAmount += items[i].Price * items[i].Quantity;
+
+            //    receipt.Items.ElementAt(i).Quantity = items[i].Quantity;
+            //}
+
+            //for (int i = 0; i < items.Count; i++)
+            //{
+            //    if (items[i].Quantity > items[i].StockAmount)
+            //        return false;
+
+            //    receipt.TotalAmount += items[i].Price * items[i].Quantity;
+
+            //    receipt.Items.ElementAt(i).Quantity = items[i].Quantity;
+            //} 
+            #endregion
 
             receipt.ReleasedDate = DateTime.UtcNow;
 
             _unitOfWork.Repository<Receipt>().Update(receipt);
             await _unitOfWork.CompleteAsync();
 
+
+            #region Update Item Quantities
+            foreach (var item in itemsreceiopt)
+            {
+                item.StockAmount -= item.Quantity;
+                item.Quantity = 0;
+                await UpdateItemAsync(item);
+            }
+            #endregion
+
+
             return true;
         }
         #endregion
+
+        public async Task<bool> UpdateItemAsync(Item item)
+        {
+            _unitOfWork.Repository<Item>().Update(item);
+
+            try
+            {
+                await _unitOfWork.CompleteAsync();
+            }
+            catch { return false; }
+
+            return true;
+        }
     }
 }

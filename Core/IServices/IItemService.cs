@@ -15,8 +15,13 @@ namespace Core.IServices
         Task<IEnumerable<Item>> GetPageAsync(PaginationDto pagination);
         Task<int> GetTotalPagesAsync(int pageSize);
 
+        Task<bool> UpdateAsync(Item item);
+
+
+
         Task<IEnumerable<Item>> UserGetAllAsync(ClaimsPrincipal user, int receiptId);
         Task<bool> UserAddAsync(ClaimsPrincipal user, int itemId);
         Task<bool> UserDeleteAsync(ClaimsPrincipal user, int itemId);
+
     }
 }
