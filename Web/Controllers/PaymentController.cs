@@ -16,14 +16,13 @@ namespace Web.Controllers
         #endregion
 
         #region CustomerPayment
-        
         public async Task<IActionResult> Index()
         {
             return View(await _paymentService.UserGetAllAsync(User));
         }
 
-
-        public async Task<IActionResult> Receipt(int receiptId)
+        [HttpPost]
+        public async Task<IActionResult> Index(int receiptId)
         {
             return View(await _paymentService.UserGetByIdAsync(User, receiptId));
         } 
