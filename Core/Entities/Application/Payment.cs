@@ -10,7 +10,7 @@ namespace Core.Entities.Application
     public class Payment
     {
         public int Id { get; set; }
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
         public DateTime PaymentDate { get; set; }
 
         #region Receipt

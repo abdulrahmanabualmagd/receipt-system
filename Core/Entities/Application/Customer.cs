@@ -11,7 +11,7 @@ namespace Core.Entities.Application
     {
         public int Id { get; set; }
         public string Name { get; set; } = "N/A";
-        public int Balance { get; set; } = 0;
+        public decimal Balance { get; set; } = 0;
         public string Phone { get; set; } = "N/A";
         public string UserId { get; set; } = "N/A";
 
