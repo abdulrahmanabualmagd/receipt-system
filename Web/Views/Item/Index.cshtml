@@ -22,7 +22,7 @@
         <!-- Pagination Buttons --> 
         <div class="d-flex flex-nowrap justify-content-between w-25 m-auto">
             <div>
-                <form asp-action="Index" asp-controller="Receipt" method="post">
+                <form asp-action="Index" asp-controller="Item" method="post">
                     @if(ViewBag.Page > 1)
                     {
                         <input name="Page" value="@(ViewBag.Page-1)" hidden/>
@@ -44,7 +44,7 @@
                 <button disabled class="btn btn-light">@ViewBag.Page</button>
 
             <div>
-                <form asp-action="Index" asp-controller="Receipt" method="post">
+                <form asp-action="Index" asp-controller="Item" method="post">
                     <input name="Page" value="@(ViewBag.Page+1)" hidden />
                     @if(ViewBag.Page == ViewBag.TotalPages)
                     {
