@@ -3,10 +3,10 @@
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Items</th>
-            <th>Status</th>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Items</th>
+            <th class="text-center">Status</th>
         </tr>
     </thead>
     <tbody>
@@ -14,19 +14,23 @@
         @foreach(var item in Model)
         {
             <tr>
-                <td>@item.Id</td>
-                <td>
+                <td class="text-center">@item.Id</td>
+                <td class="text-center">
                     @item.Name
                 </td>
                 <td>
-                    @item.Items.Count
+                    <div class="input-group-text m-auto w-25   fw-bold">
+                        @item.Items.Count
+                    </div>
                 </td>
                 @if(@item.Items.Count > 0){
-                <td class="fw-bold">
+                <td class="fw-bold text-center">
                     In Stock
                 </td>
-                }else{
-                <td class="text-danger fw-bold">
+                }
+                else
+                {
+                <td class="text-danger fw-bold text-center">
                     Out of Stock
                 </td>
                 }

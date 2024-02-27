@@ -1,6 +1,6 @@
-﻿using Core.Entities.Application;
-using Core.IServices;
+﻿using Core.IServices;
 using Microsoft.AspNetCore.Mvc;
+using Core.DTOs;
 
 namespace Web.Controllers
 {
@@ -15,7 +15,32 @@ namespace Web.Controllers
         }
         #endregion
 
+        #region CustomerPayment
+        
         public async Task<IActionResult> Index()
-            => View(await _paymentService.UserGetAllAsync(User));
+        {
+            return View(await _paymentService.UserGetAllAsync(User));
+        }
+
+
+        public async Task<IActionResult> Receipt(int receiptId)
+        {
+            return View(await _paymentService.UserGetByIdAsync(User, receiptId));
+        } 
+        #endregion
+
+        #region PayReceipt
+        public async Task<IActionResult> PayReceipt(PaymentCredentialsDto paymentCredentials)
+        {
+            var result = await _paymentService.UserAddAsync(User, paymentCredentials);
+
+            if (result.IsValid)
+                TempData["Message"] = result.Message;
+            else
+                TempData["Message"] = "Payment Failed!";
+
+            return RedirectToAction("Index", "Receipt");
+        } 
+        #endregion
     }
 }

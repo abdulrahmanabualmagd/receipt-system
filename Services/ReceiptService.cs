@@ -27,7 +27,7 @@ namespace Services
         #region Add User Receipt
         public async Task<bool> UserAddAsync(ClaimsPrincipal user, Receipt item)
         {
-            var customerId = await _profileService.GetCustomerId(user);
+            var customerId = await _profileService.GetCustomerIdAsync(user);
 
             item.CustomerId = customerId;
 
@@ -42,7 +42,7 @@ namespace Services
         #region Get All User Receipts
         public async Task<IEnumerable<Receipt>> UserGetAllAsync(ClaimsPrincipal user)
         {
-            var customerId = await _profileService.GetCustomerId(user);
+            var customerId = await _profileService.GetCustomerIdAsync(user);
 
             // Get All Receipts
             var receipts = await _unitOfWork.Repository<Receipt>().FindAllAsync(c => c.CustomerId == customerId);
@@ -54,7 +54,7 @@ namespace Services
         #region Get User Receipt by Id
         public async Task<Receipt> UserGetByIdAsync(ClaimsPrincipal user, int itemId)
         {
-            var customerId = await _profileService.GetCustomerId(user);
+            var customerId = await _profileService.GetCustomerIdAsync(user);
             var receipt = await _unitOfWork.Repository<Receipt>().FindAsync(c => c.CustomerId == customerId && c.Id == itemId, ["Items", "Customer", "Payments"]);
             return receipt;
         }
@@ -63,7 +63,7 @@ namespace Services
         #region Get User Open Receipt
         public async Task<Receipt> GetUserOpenReceiptAsync(ClaimsPrincipal user)
         {
-            var customerId = await _profileService.GetCustomerId(user);
+            var customerId = await _profileService.GetCustomerIdAsync(user);
 
             // Get All Receipt
             var receipt = await _unitOfWork.Repository<Receipt>().FindAsync(c => c.CustomerId == customerId && c.TotalAmount == 0, ["Payments", "Items", "Customer"]);

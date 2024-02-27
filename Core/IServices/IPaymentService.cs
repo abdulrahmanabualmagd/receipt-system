@@ -1,4 +1,5 @@
-﻿using Core.Entities.Application;
+﻿using Core.DTOs;
+using Core.Entities.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Core.IServices
     public interface IPaymentService
     {
         Task<IEnumerable<Payment>> UserGetAllAsync(ClaimsPrincipal user);
-        Task<bool> UserAddAsync(ClaimsPrincipal user, Payment payment);
+        Task<IEnumerable<Payment>> UserGetByIdAsync(ClaimsPrincipal user, int receiptId);
+        Task<CheckDto> UserAddAsync(ClaimsPrincipal user, PaymentCredentialsDto Payment);
     }
 }
