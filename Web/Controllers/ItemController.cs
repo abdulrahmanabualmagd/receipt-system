@@ -1,4 +1,5 @@
-﻿using Core.Entities.Application;
+﻿using Core.DTOs;
+using Core.Entities.Application;
 using Core.IServices;
 using Core.IUoW;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,20 @@ namespace Web.Controllers
 
         #region Get All
         public async Task<IActionResult> Index()
-            => View(await _itemService.GetAllAsync());
+        {
+            var pagination = new PaginationDto();
+            ViewBag.Page = pagination.Page;
+            ViewBag.TotalPages = await _itemService.GetTotalPagesAsync(pagination.Size);
+            return View(await _itemService.GetPageAsync(pagination));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(PaginationDto pagination)
+        {
+            ViewBag.Page = pagination.Page;
+            ViewBag.TotalPages = await _itemService.GetTotalPagesAsync(pagination.Size);
+            return View(await _itemService.GetPageAsync(pagination));
+        }
         #endregion
 
 

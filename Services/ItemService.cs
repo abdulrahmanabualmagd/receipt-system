@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Core.Entities.UserIdentity;
+using Core.DTOs;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace Services
 {
@@ -28,7 +30,16 @@ namespace Services
         public async Task<IEnumerable<Item>> GetAllAsync()
         {
             return await _unitOfWork.Repository<Item>().GetAllAsync(["Category"]);
-        } 
+        }
+
+        public async Task<IEnumerable<Item>> GetPageAsync(PaginationDto pagination)
+        {
+            return await _unitOfWork.Repository<Item>().GetPageAsync(pagination.Page, pagination.Size,["Category"]);
+        }
+        public async Task<int> GetTotalPagesAsync(int pageSize)
+        {
+            return await _unitOfWork.Repository<Item>().GetTotalPagesAsync(pageSize);
+        }
         #endregion
 
 

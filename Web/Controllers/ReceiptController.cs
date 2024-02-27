@@ -2,6 +2,7 @@
 using Core.Entities.Application;
 using Core.IServices;
 using Microsoft.AspNetCore.Mvc;
+using Services;
 
 namespace Web.Controllers
 {
@@ -19,8 +20,20 @@ namespace Web.Controllers
         #region Get All Receipts
         public async Task<IActionResult> Index()
         {
-            return View(await _receiptService.UserGetAllAsync(User));
+            var pagination = new PaginationDto();
+            ViewBag.Page = pagination.Page;
+            ViewBag.TotalPages = await _receiptService.UserGetTotalPagesAsync(User, pagination.Size);
+            return View(await _receiptService.UserGetPagesAsync(User, pagination));
 
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Index(PaginationDto pagination)
+        {
+            ViewBag.Page = pagination.Page;
+            ViewBag.TotalPages = await _receiptService.UserGetTotalPagesAsync(User, pagination.Size);
+            return View(await _receiptService.UserGetPagesAsync(User, pagination));
         }
         #endregion
 

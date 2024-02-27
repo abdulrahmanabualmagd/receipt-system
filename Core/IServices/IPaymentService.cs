@@ -12,6 +12,8 @@ namespace Core.IServices
     public interface IPaymentService
     {
         Task<IEnumerable<Payment>> UserGetAllAsync(ClaimsPrincipal user);
+        Task<IEnumerable<Payment>> UserGetPagesAsync(ClaimsPrincipal user, PaginationDto pagination);
+        Task<int> UserGetTotalPagesAsync(ClaimsPrincipal user, int pageSize);
         Task<IEnumerable<Payment>> UserGetByIdAsync(ClaimsPrincipal user, int receiptId);
         Task<CheckDto> UserAddAsync(ClaimsPrincipal user, PaymentCredentialsDto Payment);
     }

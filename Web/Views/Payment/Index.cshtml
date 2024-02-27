@@ -1,41 +1,82 @@
 ﻿@model List<Payment>
 
-<h1 class="text-center">My Payments</h1>
+    <div class="container-fluid h-100">
+        <div class="row d-flex flex-column w-100 h-100">
+        <div class="text-center display-3">My Payments</div>
 
-<table class="table align-middle mt-4 bg-white">
-    <thead class="bg-light">
-        <tr>
-            <th class="text-center">Id</th>
-            <th class="text-center">ReceiptNo</th>
-            <th class="text-center">PaymentDate</th>
-            <th class="text-center">Amount</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="text-center">
-                    @item.Id
-                </td>
-                <td class="text-center">
-                    #@item.ReceiptId
-                </td>
-                <td class="text-center">
-                    @item.PaymentDate
-                </td>
-                <td class="text-center">
-                    <div class="input-group-text fw-bold w-50 m-auto">
-                        $@item.Amount
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <div class="flex-grow-1 mb-2">
+                <table class="table align-middle mt-4 bg-white">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="text-center">Id</th>
+                            <th class="text-center">ReceiptNo</th>
+                            <th class="text-center">PaymentDate</th>
+                            <th class="text-center">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    @item.Id
+                                </td>
+                                <td class="text-center">
+                                    #@item.ReceiptId
+                                </td>
+                                <td class="text-center">
+                                    @item.PaymentDate
+                                </td>
+                                <td class="text-center">
+                                    <div class="input-group-text fw-bold w-50 m-auto">
+                                        $@item.Amount
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
+            <div class="d-flex flex-nowrap justify-content-between w-25 m-auto">
+                <div>
+                    <form asp-action="Index" asp-controller="Payment" method="post">
+                        @if (ViewBag.Page > 1)
+                        {
+                            <input name="Page" value="@(ViewBag.Page-1)" hidden />
+                        }
+                        else
+                        {
+                            <input name="Page" value="@ViewBag.Page" hidden />
+                        }
 
+                        @if (ViewBag.Page == 1)
+                        {
+                            <button disabled class="btn btn-dark" type="submit">Prev</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-dark" type="submit">Prev</button>
+                        }
+                    </form>
+                </div>
 
+                <button disabled class="btn btn-light">@ViewBag.Page</button>
 
+                <div>
+                    <form asp-action="Index" asp-controller="Payment" method="post">
+                        <input name="Page" value="@(ViewBag.Page+1)" hidden />
+                        @if (ViewBag.Page == ViewBag.TotalPages)
+                        {
+                            <button disabled class="btn btn-dark" type="submit">Next</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-dark" type="submit">Next</button>
+                        }
+                    </form>
+                </div>
 
-
+            </div>
+        </div>
+    </div>

@@ -15,14 +15,29 @@ namespace Web.Controllers
         }
         #endregion
 
-        #region CustomerPayment
+        #region Get All
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _paymentService.UserGetAllAsync(User));
+            var pagination = new PaginationDto();
+            ViewBag.Page = pagination.Page;
+            ViewBag.TotalPages = await _paymentService.UserGetTotalPagesAsync(User, pagination.Size);
+            return View(await _paymentService.UserGetPagesAsync(User, pagination));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(int receiptId)
+        public async Task<IActionResult> Index(PaginationDto pagination)
+        {
+            ViewBag.Page = pagination.Page;
+            ViewBag.TotalPages = await _paymentService.UserGetTotalPagesAsync(User, pagination.Size);
+            return View(await _paymentService.UserGetPagesAsync(User, pagination));
+        }
+        #endregion
+        
+        #region CustomerPayment
+
+        [HttpPost]
+        public async Task<IActionResult> Receipt(int receiptId)
         {
             return View(await _paymentService.UserGetByIdAsync(User, receiptId));
         } 

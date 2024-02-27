@@ -88,8 +88,8 @@
                                 <li>Total Amount: $@item.TotalAmount</li>
                                 <li>Released: @item.ReleasedDate</li>
                             </ul>
-                            <a type="button" class="w-100 btn btn-lg btn-dark">Details</a>
-                            <a type="button" class="w-100 btn btn-lg btn-success mt-1">Pay</a>
+                            <a asp-action="Index" asp-controller="Receipt" type="button" class="w-100 btn btn-lg btn-dark">Details</a>
+                            <a asp-action="Index" asp-controller="Receipt" type="button" class="w-100 btn btn-lg btn-success mt-1">Pay</a>
                         </div>
                     </div>
                     }

@@ -4,6 +4,7 @@ using Core.IUoW;
 using System.Security.Claims;
 using Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Services
 {
@@ -19,6 +20,43 @@ namespace Services
             _receiptService = receiptService;
             _profileService = profileService;
         }
+        #endregion
+
+
+        #region Get All user Receipt Payments
+        public async Task<IEnumerable<Payment>> UserGetAllAsync(ClaimsPrincipal user)
+        {
+            // Get CustomerId
+            var customerId = await _profileService.GetCustomerIdAsync(user);
+
+            // Get All Payments
+            return await _unitOfWork.Repository<Payment>().FindAllAsync(c => c.Receipt.CustomerId == customerId, ["Receipt"]);   
+        }
+
+        // Get Pages
+        public async Task<IEnumerable<Payment>> UserGetPagesAsync(ClaimsPrincipal user, PaginationDto pagination)
+        {
+            var customerId = await _profileService.GetCustomerIdAsync(user);
+            return await _unitOfWork.Repository<Payment>()
+                .GetPageAsync(pagination.Page, pagination.Size, c=> c.Receipt.CustomerId == customerId, ["Receipt"]);
+        }
+        // Get Total Pages
+        public async Task<int> UserGetTotalPagesAsync(ClaimsPrincipal user, int pageSize)
+        {
+            var customerId = await _profileService.GetCustomerIdAsync(user);
+            return await _unitOfWork.Repository<Payment>().GetTotalPagesAsync(pageSize, c => c.Receipt.CustomerId == customerId, ["Receipt"]);
+        }
+        #endregion
+
+        #region Get Payment By Id
+        public async Task<IEnumerable<Payment>> UserGetByIdAsync(ClaimsPrincipal user, int receiptId)
+        {
+            // Get CustomerId
+            var customerId = await _profileService.GetCustomerIdAsync(user);
+
+            // Get All Payments
+            return await _unitOfWork.Repository<Payment>().FindAllAsync(c => c.Receipt.CustomerId == customerId && c.ReceiptId == receiptId, ["Receipt"]);
+        } 
         #endregion
 
         #region ReceiptPayment
@@ -85,28 +123,6 @@ namespace Services
                 return new CheckDto { IsValid = true, Message = $"Transaction Completed Successfully and ${change} would be added to you balance", Value = change };
 
             return new CheckDto { IsValid = true, Message = "Transaction Completed Successfully!", Value = change };
-        } 
-        #endregion
-
-        #region Get All user Receipt Payments
-        public async Task<IEnumerable<Payment>> UserGetAllAsync(ClaimsPrincipal user)
-        {
-            // Get CustomerId
-            var customerId = await _profileService.GetCustomerIdAsync(user);
-
-            // Get All Payments
-            return await _unitOfWork.Repository<Payment>().FindAllAsync(c => c.Receipt.CustomerId == customerId, ["Receipt"]);   
-        }
-        #endregion
-
-        #region Get Payment By Id
-        public async Task<IEnumerable<Payment>> UserGetByIdAsync(ClaimsPrincipal user, int receiptId)
-        {
-            // Get CustomerId
-            var customerId = await _profileService.GetCustomerIdAsync(user);
-
-            // Get All Payments
-            return await _unitOfWork.Repository<Payment>().FindAllAsync(c => c.Receipt.CustomerId == customerId && c.ReceiptId == receiptId, ["Receipt"]);
         } 
         #endregion
     }

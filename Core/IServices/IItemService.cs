@@ -1,4 +1,5 @@
-﻿using Core.Entities.Application;
+﻿using Core.DTOs;
+using Core.Entities.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Core.IServices
     public interface IItemService
     {
         Task<IEnumerable<Item>> GetAllAsync();
+        Task<IEnumerable<Item>> GetPageAsync(PaginationDto pagination);
+        Task<int> GetTotalPagesAsync(int pageSize);
 
         Task<IEnumerable<Item>> UserGetAllAsync(ClaimsPrincipal user, int receiptId);
         Task<bool> UserAddAsync(ClaimsPrincipal user, int itemId);

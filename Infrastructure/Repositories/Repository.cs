@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using Core.IRepositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Infrastructure.Data.Contexts.Application;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Infrastructure.Repositories
 {
@@ -53,6 +54,8 @@ namespace Infrastructure.Repositories
         #region GetPageAsync
         public async Task<IEnumerable<T>> GetPageAsync(int pageIndex, int pageSize, string[]? include = null)
         {
+            if(pageIndex < 1) pageIndex = 1;
+
             IQueryable<T> query = _context.Set<T>();
 
             if (include != null)
@@ -60,6 +63,19 @@ namespace Infrastructure.Repositories
                     query = query.Include(item);
 
             return await query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetPageAsync(int pageIndex, int pageSize, Expression<Func<T, bool>> predicate, string[]? include = null)
+        {
+            if (pageIndex < 1) pageIndex = 1;
+
+            IQueryable<T> query = _context.Set<T>();
+
+            if (include != null)
+                foreach (var item in include)
+                    query = query.Include(item);
+
+            return await query.Where(predicate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
         }
         #endregion
 
@@ -69,7 +85,19 @@ namespace Infrastructure.Repositories
             int totalItemCount = await _context.Set<T>().CountAsync();
             int totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
             return totalPages;
-        } 
+        }
+        public async Task<int> GetTotalPagesAsync(int pageSize, Expression<Func<T, bool>> predicate, string[]? include = null)            
+        {                                                                                                   
+            IQueryable<T> query = _context.Set<T>();
+
+            if (include != null)
+                foreach (var item in include)
+                    query = query.Include(item);
+
+            int totalItemCount = await query.Where(predicate).CountAsync();
+            int totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+            return totalPages;
+        }
         #endregion
 
         #region FindAsync
@@ -85,7 +113,7 @@ namespace Infrastructure.Repositories
         }
         #endregion
 
-        #region FindAsync
+        #region FindALLAsync
         public async Task<List<T>> FindAllAsync(Expression<Func<T, bool>> predicate, string[]? include = null)
         {
             IQueryable<T> query = _context.Set<T>();

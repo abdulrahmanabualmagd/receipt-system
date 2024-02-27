@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Core.DTOs;
 
 namespace Services
 {
@@ -49,6 +50,20 @@ namespace Services
 
             return receipts;
         }
+
+        public async Task<IEnumerable<Receipt>> UserGetPagesAsync(ClaimsPrincipal user, PaginationDto pagination)
+        {
+            var customerId = await _profileService.GetCustomerIdAsync(user);
+
+            return await _unitOfWork.Repository<Receipt>().GetPageAsync(pagination.Page, pagination.Size, c=> c.CustomerId == customerId , null);
+        }
+        public async Task<int> UserGetTotalPagesAsync(ClaimsPrincipal user, int pageSize)
+        {
+            var customerId = await _profileService.GetCustomerIdAsync(user);
+
+            return await _unitOfWork.Repository<Receipt>().GetTotalPagesAsync(pageSize, c=> c.CustomerId == customerId , null);
+        }
+
         #endregion
 
         #region Get User Receipt by Id
