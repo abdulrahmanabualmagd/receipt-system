@@ -13,7 +13,7 @@ namespace Web.Extensions
                     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 })
                 .AddCookie()
-                .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+                .AddGoogle(GoogleDefaults.AuthenticationScheme, (options) =>
                 {
                     options.ClientId = configuration["Authentication:Google:ClientID"] ?? "write something";
                     options.ClientSecret = configuration["Authentication:Google:ClientSecret"] ?? "write something";
@@ -38,8 +38,6 @@ namespace Web.Extensions
                     options.TokenEndpoint = "https://github.com/login/oauth/access_token";
                     options.UserInformationEndpoint = "https://api.github.com/user";
                 });
-
-
         }
     }
 }

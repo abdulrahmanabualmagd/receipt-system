@@ -1,6 +1,6 @@
 /*  ------------ [ To Do ] -----------------
  * Specifications Pattern
- * email vertification code 
+ * email verification code 
  * number vertification code 
  * cookie and cache 
  * what are the helpers 
@@ -34,7 +34,6 @@ builder.Services.ConfigureServices();
 builder.Services.ConfigureAutoMapper();
 
 builder.Services.ConfigureAuthentication(builder.Configuration);
-
 #endregion
 
 // Build Application
